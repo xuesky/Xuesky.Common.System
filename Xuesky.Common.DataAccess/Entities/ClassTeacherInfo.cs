@@ -2,7 +2,6 @@ using FreeSql.DataAnnotations;
 
 namespace Xuesky.Common.DataAccess
 {
-
 	/// <summary>
 	/// 班级基本信息表
 	/// </summary>

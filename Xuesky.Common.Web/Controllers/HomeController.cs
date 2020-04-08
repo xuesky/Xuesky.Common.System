@@ -19,6 +19,11 @@ namespace Xuesky.Common.Web.Controllers
         {
             return View();
         }
+        /// <summary>
+        /// Welcome
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="System.InvalidOperationException"></exception>
         public IActionResult Welcome()
         {
             var user = HttpContext.User;

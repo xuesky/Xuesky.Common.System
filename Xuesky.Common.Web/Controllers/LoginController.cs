@@ -43,8 +43,9 @@ namespace Xuesky.Common.Web.Controllers
             }
             return new JsonResult(result != null ? JsonResultWrap.Success("OK") : JsonResultWrap.Fail("登录失败"));
         }
-        public IActionResult Logout()
+        public async Task<IActionResult> Logout()
         {
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return RedirectToAction("index");
         }
     }

@@ -1,10 +1,12 @@
 using System;
+using System.ComponentModel;
 using System.Threading.Tasks;
 using Xuesky.Common.ClassLibary.Security;
 using Xuesky.Common.DataAccess;
 
 namespace Xuesky.Common.Service
 {
+    [Description("帐户信息管理")]
     public class AccountService : IAccountService
     {
         private readonly SystemDbContext context;
