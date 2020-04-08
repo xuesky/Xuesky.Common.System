@@ -1,0 +1,27 @@
+@model IEnumerable<Xuesky.Common.DataAccess.SysModule>
+    <ul id="nav">
+        @if (Model.Any())
+        {
+            @foreach (var module in Model.Where(s=>s.ModuleCode.Length==4))
+            {
+            <li>
+                <a href="javascript:;">
+                <i class="layui-icon @module.FontClass" lay-tips="@module.ModuleName"></i>
+                <cite>@module.ModuleName</cite>
+                <i class="iconfont nav_right">&#xe697;</i>
+                </a>
+                <ul class="sub-menu">
+                    @foreach (var child in Model.Where(s => s.ModuleCode.StartsWith(module.ModuleCode)&&s.ModuleCode!= module.ModuleCode))
+                    {
+                        <li>
+                            <a onclick="xadmin.add_tab('@child.ModuleName','@child.ModuleUrl')">
+                                <i class="iconfont">&#xe6a7;</i>
+                                <cite>@child.ModuleName</cite>
+                            </a>
+                        </li>
+                    }
+                </ul>
+            </li>
+            }
+        }
+    </ul>

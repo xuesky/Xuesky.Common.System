@@ -1,0 +1,135 @@
+@{
+    ViewData["Title"] = "系统模块维护";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="layui-col-md12">
+    <div class="layui-card">
+        <div class="layui-card-header">
+            <div class="layui-form layui-col-space5" lay-filter="search-form">
+                <div class="layui-inline layui-form-item layui-show-xs-block">
+                    <input type="search" name="key" placeholder="请输入名称或者编码" autocomplete="on" class="layui-input">
+                </div>
+                <div class="layui-inline layui-form-item layui-show-xs-block">
+                    <button class="layui-btn" lay-submit lay-filter="search"><i class="layui-icon layui-icon-search"></i></button>
+                </div>
+            </div>
+        </div>
+        <div class="layui-card-body ">
+            <table id="moduleList" lay-filter="moduleList"></table>
+        </div>
+    </div>
+</div>
+<script type="text/html" id="useTpl">
+    {{#  if(d.isUse){ }}
+    <a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="stop">启用</a>
+    {{#  } else { }}
+    <a class="layui-btn layui-btn-warm layui-btn-xs" lay-event="use">停用</a>
+    {{#  }}}
+</script>
+<script type="text/html" id="toolbar">
+    <div class="layui-btn-container">
+        <button class="layui-btn layui-btn-sm" lay-event="add"><i class="layui-icon layui-icon-add-circle"></i>添加</button>
+    </div>
+</script>
+<script type="text/html" id="barEdit">
+    <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+</script>
+<script>
+    layui.use('table', function () {
+        var table = layui.table
+            ,form = layui.form
+            ,$ = layui.jquery;
+        //第一个实例
+        var datalist = table.render({
+            elem: '#moduleList'
+            , url:'GetModuleList' //数据接口
+            , page:true //开启分页
+            , toolbar:'#toolbar'
+            , cols: [[ //表头
+                { field: 'moduleId', title: 'ID',  sort: true, fixed: 'left' }
+                ,{ field: 'moduleCode', title: '编码' }
+                ,{ field: 'moduleName', title: '名称'}
+                ,{ field: 'moduleUrl', title: '路径' }
+                ,{ field: 'isUse', title: '状态', templet: '#useTpl' }
+                ,{ fixed: 'right', title: '操作', templet: '#barEdit' }
+            ]]
+            , parseData: function (res) { //res 即为原始返回的数据
+                return {
+                    "code": res.succeed ? 0: -1, //解析接口状态
+                    "msg": res.message, //解析提示文本
+                    "count": res.total, //解析数据长度
+                    "data": res.data //解析数据列表
+                };
+            }
+        });
+        table.on('toolbar(moduleList)', function (obj) {
+            switch (obj.event) {
+                case 'add':
+                    xadmin.open('添加模块', 'Add', 800, 600);
+                    break;
+            };
+        });
+        table.on('tool(moduleList)', function (obj) {
+            var data = obj.data;
+            switch (obj.event) {
+                case 'del':
+                    layer.confirm('真的<strong class="x-red">删除-' + data.moduleName + '</strong>模块?', function (index) {
+                        //删除数据
+                        $.post('delete', { moduleId: data.moduleId }, function (result) {
+                            if (result.total) {
+                                obj.del();
+                                layer.msg('删除成功', { icon: 1, time: 1000 });
+                            }
+                            else {
+                                layer.msg('删除失败', { icon: 5, time: 1000 });
+                            }
+                        })
+                        layer.close(index);
+                    });
+                    break;
+                case 'use':
+                    layer.confirm('真的<strong class="x-red">启用-' + data.moduleName + '</strong>模块?', function (index) {
+                        //启用数据
+                        use('启用', obj, true, index)
+                    });
+                    break;
+                case 'stop':
+                    layer.confirm('真的<strong class="x-red">停用-' + data.moduleName + '</strong>模块?', function (index) {
+                        //启用数据
+                        use('停用', obj, false, index)
+                    });
+                    break;
+                case 'edit':
+                    xadmin.open('编辑模块', 'Add', 800, 600);
+                    break;
+            }
+        });
+        form.on('submit(search)', function (data) {
+            datalist.reload({
+                where: {
+                    key: data.field.key
+                }
+                , page: {
+                    curr:1
+                }
+            })
+            form.val('search-form', data.field.key)
+        })
+        function use(type, obj, status, index) {
+            $.post('use', { moduleId: obj.data.moduleId, isUse: status }, function (result) {
+                if (result.total) {
+                    layer.msg(type + '成功', { icon: 1, time: 1000 });
+                    obj.update({
+                        isUse : status
+                    })
+                }
+                else {
+                    layer.msg(type+'失败', { icon: 5, time: 1000 });
+                }
+            })
+            layer.close(index);
+        }
+    });
+</script>
+

@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FreeSql.DbContext" Version="1.3.4" />
+    <PackageReference Include="FreeSql.Extensions.LazyLoading" Version="1.3.4" />
+    <PackageReference Include="FreeSql.Provider.SqlServer" Version="1.3.4" />
+  </ItemGroup>
+
+</Project>

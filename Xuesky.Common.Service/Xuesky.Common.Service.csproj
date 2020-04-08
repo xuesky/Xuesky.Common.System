@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Xuesky.Common.ClassLibary\Xuesky.Common.ClassLibary.csproj" />
+    <ProjectReference Include="..\Xuesky.Common.DataAccess\Xuesky.Common.DataAccess.csproj" />
+  </ItemGroup>
+
+</Project>

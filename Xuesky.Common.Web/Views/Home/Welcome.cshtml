@@ -1,0 +1,47 @@
+
+@{
+    ViewData["Title"] = "欢迎页面";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model string
+<div class="layui-col-md12">
+    <div class="layui-card">
+        <div class="layui-card-body ">
+            <blockquote class="layui-elem-quote">
+                欢迎您：
+                <span class="x-red">@Model</span>！当前时间:<span id="clock"></span>
+            </blockquote>
+        </div>
+    </div>
+</div>
+<div class="layui-col-md12">
+</div>
+<script>
+    function clock() {
+        now = new Date();
+        year = now.getFullYear();
+        month = now.getMonth() + 1;
+        day = now.getDate();
+
+        today = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
+        week = today[now.getDay()];
+
+        hour = now.getHours();
+        min = now.getMinutes();
+        sec = now.getSeconds();
+        if (hour < 10) {
+            hour = "0" + hour;
+        }
+        if (min < 10) {
+            min = "0" + min;
+        }
+        if (sec < 10) {
+            sec = "0" + sec;
+        }
+        $("#clock").html(
+            year + "年" + month + "月" + day + "日" + "  " + week + " " + hour + ":" + min + ":" + sec
+        );
+    }
+    setInterval(clock, 1000);
+</script>
+
