@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Xuesky.Common.DataAccess;
 
@@ -12,38 +14,69 @@ namespace Xuesky.Common.Service
         {
             this.context = context;
         }
+        public async Task<SysUser> GetUser(int userId) => await context
+                        .SysUsers
+                        .Select
+                        .Where(s => s.UserId == userId)
+                        .FirstAsync();
 
+        public async Task<List<SysUser>> GetUserList(Expression<Func<SysUser, bool>> func) => await context
+            .SysUsers
+            .Select
+            .Where(func)
+            .ToListAsync();
+
+        public async Task<(long total, List<SysUser> list)> GetUserListPage(int page, int limit, string key)
+        {
+            var dataSource = context.SysUsers.Select
+            .WhereIf(!string.IsNullOrEmpty(key), s => s.UserName.Contains(key) || s.UserLogin.Contains(key))
+            .Count(out var total);
+            if (limit > 0)
+            {
+                dataSource = dataSource.Page(page, limit);
+            }
+            var list = await dataSource.ToListAsync();
+            return (total, list);
+        }
         public async Task<int> InsertSysUser(SysUser sysUser)
         {
             await context.SysUsers.AddAsync(sysUser);
             return await context.SaveChangesAsync();
         }
 
-        public async Task<int> InserSysUser(IEnumerable<SysUser> sysUsers)
+        public async Task<int> BatchInserSysUser(IEnumerable<SysUser> sysUsers)
         {
             await context.Orm.Insert(sysUsers).ExecuteSqlBulkCopyAsync();
-            //await context.AddRangeAsync(sysUserList);
             return await context.SaveChangesAsync();
         }
 
-        public Task<int> DelSysUser(SysUser sysUser)
+        public async Task<int> DeleteSysUser(int[] userIds) => await context
+                .Orm
+                .Update<SysUser>(userIds)
+                .Set(d => d.IsDelete, true)
+                .ExecuteAffrowsAsync();
+
+        public async Task<int> UpdateSysuer(Expression<Func<SysUser, bool>> condition, Expression<Func<SysUser, object>> obj)
         {
-            throw new System.NotImplementedException();
+            var userInfo = context
+                 .SysRoles
+                 .Select
+                 .Where(condition)
+                 .First();
+            if (userInfo == null)
+            {
+                await Task.CompletedTask;
+                return 0;
+            }
+            return await context.Orm.Update<SysUser>().Set(obj).Where(condition).ExecuteAffrowsAsync();
         }
 
-        public Task<int> DelSysUser(IEnumerable<SysUser> sysUsers)
-        {
-            throw new System.NotImplementedException();
-        }
+        public async Task<int> UseOrStopUser(int[] userIds, bool isUse) => await context
+                .Orm
+                .Update<SysUser>(userIds)
+                .Set(d => d.IsUse, isUse)
+                .ExecuteAffrowsAsync();
 
-        public Task<int> DelSysUser(int[] ids)
-        {
-            throw new System.NotImplementedException();
-        }
 
-        public Task<int> UpdateSysuer(SysUser sysUser)
-        {
-            throw new System.NotImplementedException();
-        }
     }
 }

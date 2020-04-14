@@ -9,6 +9,11 @@ namespace Xuesky.Common.Web
 {
     public class Program
     {
+        /// <summary>
+        /// Main
+        /// </summary>
+        /// <param name="args"></param>
+        /// <exception cref="System.UnauthorizedAccessException"></exception>
         public static void Main(string[] args)
         {
             CreateHostBuilder(args).Build().Run();

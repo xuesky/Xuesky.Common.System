@@ -48,13 +48,13 @@ namespace Xuesky.Common.DataAccess
 		/// 删除
 		/// </summary>
 		[Column(Name = "is_delete")]
-		public bool? IsDelete { get; set; }
+		public bool? IsDelete { get; set; } = false;
 
 		/// <summary>
-		/// 停用
+		/// 启用
 		/// </summary>
 		[Column(Name = "is_use")]
-		public bool? IsUse { get; set; }
+		public bool? IsUse { get; set; } = true;
 
 		/// <summary>
 		/// 昵称

@@ -1,5 +1,5 @@
 @{
-    ViewData["Title"] = "系统模块维护";
+    ViewData["Title"] = "系统模块列表";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="layui-col-md12">
@@ -7,7 +7,7 @@
         <div class="layui-card-header">
             <div class="layui-form layui-col-space5" lay-filter="search-form">
                 <div class="layui-inline layui-form-item layui-show-xs-block">
-                    <input type="search" name="key" placeholder="请输入名称或者编码" autocomplete="on" class="layui-input">
+                    <input type="search" name="key" placeholder="名称或者编码" autocomplete="on" class="layui-input">
                 </div>
                 <div class="layui-inline layui-form-item layui-show-xs-block">
                     <button class="layui-btn" lay-submit lay-filter="search"><i class="layui-icon layui-icon-search"></i></button>
@@ -32,8 +32,8 @@
     </div>
 </script>
 <script type="text/html" id="barEdit">
-    <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
-    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+    <a class="layui-btn layui-btn-xs" lay-event="edit"><i class="layui-icon layui-icon-edit"></i></a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del"><i class="layui-icon layui-icon-delete"></i></a>
 </script>
 <script>
     layui.use('table', function () {
@@ -66,7 +66,7 @@
         table.on('toolbar(moduleList)', function (obj) {
             switch (obj.event) {
                 case 'add':
-                    xadmin.open('添加模块', 'Add', 800, 600);
+                    xadmin.open('添加模块', 'AddModule', 700, 550);
                     break;
             };
         });
@@ -74,7 +74,7 @@
             var data = obj.data;
             switch (obj.event) {
                 case 'del':
-                    layer.confirm('真的<strong class="x-red">删除-' + data.moduleName + '</strong>模块?', function (index) {
+                    layer.confirm('真的删除<strong class="x-red">' + data.moduleName + '</strong>模块?', function (index) {
                         //删除数据
                         $.post('delete', { moduleId: data.moduleId }, function (result) {
                             if (result.total) {
@@ -82,26 +82,26 @@
                                 layer.msg('删除成功', { icon: 1, time: 1000 });
                             }
                             else {
-                                layer.msg('删除失败', { icon: 5, time: 1000 });
+                                layer.msg('删除失败', { icon: 2, time: 1000 });
                             }
                         })
                         layer.close(index);
                     });
                     break;
                 case 'use':
-                    layer.confirm('真的<strong class="x-red">启用-' + data.moduleName + '</strong>模块?', function (index) {
+                    layer.confirm('真的启用<strong class="x-red">' + data.moduleName + '</strong>模块?', function (index) {
                         //启用数据
                         use('启用', obj, true, index)
                     });
                     break;
                 case 'stop':
-                    layer.confirm('真的<strong class="x-red">停用-' + data.moduleName + '</strong>模块?', function (index) {
+                    layer.confirm('真的停用<strong class="x-red">' + data.moduleName + '</strong>模块?', function (index) {
                         //启用数据
                         use('停用', obj, false, index)
                     });
                     break;
                 case 'edit':
-                    xadmin.open('编辑模块', 'Add', 800, 600);
+                    xadmin.open('编辑模块', 'EditModule?moduleId=' + data.moduleId, 700, 600);
                     break;
             }
         });
@@ -125,7 +125,7 @@
                     })
                 }
                 else {
-                    layer.msg(type+'失败', { icon: 5, time: 1000 });
+                    layer.msg(type+'失败', { icon: 2, time: 1000 });
                 }
             })
             layer.close(index);

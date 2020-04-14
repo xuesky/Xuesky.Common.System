@@ -14,8 +14,8 @@ namespace Xuesky.Common.Web.ViewComponents
         }
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            var moduleData = await systemService.GetSysModules(1, 10000, "");
-            return View(moduleData.list);
+            var moduleData = await systemService.GetSysModuleList(s => true);
+            return View(moduleData);
         }
     }
 }

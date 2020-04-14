@@ -50,7 +50,7 @@ namespace Xuesky.Common.DataAccess
 		/// 是否删除
 		/// </summary>
 		[Column(Name = "is_delete")]
-		public bool IsDelete { get; set; }
+		public bool IsDelete { get; set; } = false;
 
 
 		#region 外键 => 导航属性，ManyToOne/OneToOne

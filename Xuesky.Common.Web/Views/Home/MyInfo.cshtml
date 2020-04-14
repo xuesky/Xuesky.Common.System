@@ -1,0 +1,81 @@
+@{
+    ViewData["Title"] = "我的信息";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="layui-col-md12">
+
+    <div class="layui-form layui-form-pane" lay-filter="formInfo">
+        <div class="layui-form-item">
+            <label class="layui-form-label">我的角色</label>
+            <div class="layui-input-inline">
+                <select name="roleId" disabled>
+                    @foreach (var o in ViewBag.Roles as IEnumerable<SysRole>)
+                    {
+                        <option value="@o.RoleId">@o.RoleName</option>
+                    }
+                </select>
+            </div>
+            <div class="layui-form-mid layui-word-aux">当前角色不可更改为其它角色</div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">用户名</label>
+            <div class="layui-input-inline">
+                <input type="text" name="userLogin" value="" disabled class="layui-input">
+            </div>
+            <div class="layui-form-mid layui-word-aux">系统登录ID,不可更改</div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">姓名</label>
+            <div class="layui-input-inline">
+                <input type="text" name="userName" value="" placeholder="请输入姓名" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">性别</label>
+            <div class="layui-input-block">
+                <input type="radio" name="userGender" value="男" title="男">
+                <input type="radio" name="userGender" value="女" title="女">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">手机</label>
+            <div class="layui-input-inline">
+                <input type="text" name="userTel" value="" lay-verify="phone" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">备注</label>
+            <div class="layui-input-block">
+                <textarea name="remark" placeholder="请输入内容" class="layui-textarea"></textarea>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button class="layui-btn" lay-submit lay-filter="updateMyInfo">确认修改</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    layui.use('form', function () {
+        var form = layui.form
+            , $ = layui.jquery;
+        $(function () {
+            $.get('/Home/GetMyInfo', function (res) {
+                form.val('formInfo', res.data)
+            })
+        })
+        form.on('submit(updateMyInfo)', function (data) {
+            $.post('/Home/UpdateMyInfo', data.field, function (res) {
+                if (res.succeed) {
+                    layer.confirm('修改成功,是否关闭当前窗口', { icon: 1, btn: ['关闭', '取消'] }, function () {
+                        xadmin.close()
+                    });
+                }
+                else {
+                    layer.msg('修改失败', { icon: 2, time: 1000 });
+                }
+            })
+        })
+    })
+</script>

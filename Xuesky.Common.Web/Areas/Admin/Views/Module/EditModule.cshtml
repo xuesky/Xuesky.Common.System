@@ -1,0 +1,107 @@
+@{
+    ViewData["Title"] = "编辑模块";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="layui-col-md12">
+    <div class="layui-form layui-form-pane" lay-filter="formModule">
+        <div class="layui-form-item">
+            <label class="layui-form-label">父级模块</label>
+            <div class="layui-input-inline">
+                <select name="parentModule" id="parentModule">
+                    <option value="0">一级模块</option>
+                    @foreach (var o in ViewBag.Modules as IEnumerable<SysModule>)
+                    {
+                        <option value="@o.ModuleCode">@o.ModuleCode-@o.ModuleName</option>
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">模块编码</label>
+            <div class="layui-input-inline">
+                <input type="text" name="moduleCode" placeholder="请输入模块编码" lay-verify="moduleCode" class="layui-input">
+            </div>
+            <div class="layui-form-mid layui-word-aux"><span class="x-red">*</span>编码格式:00010001,每4位为一级编码,长度为4位或8位</div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">模块名称</label>
+            <div class="layui-input-inline">
+                <input type="text" name="moduleName" placeholder="请输入模块名称" lay-verify="required" lay-reqText="模块名称不能为空" class="layui-input">
+            </div>
+            <div class="layui-form-mid layui-word-aux"><span class="x-red">*</span></div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">访问路径</label>
+            <div class="layui-input-inline">
+                <input type="text" name="moduleUrl" class="layui-input" placeholder="请输入访问路径">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">排序</label>
+            <div class="layui-input-inline">
+                <input type="text" name="order" value="0" lay-verify="number" class="layui-input">
+            </div>
+            <div class="layui-form-mid layui-word-aux"><span class="x-red">*</span>数据越大越靠前</div>
+        </div>
+        <div class="layui-form-item" pane>
+            <label class="layui-form-label">状态</label>
+            <div class="layui-input-inline">
+                <input type="checkbox" name="isUse" value="true" lay-text="开启|关闭" checked lay-skin="switch">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">图标样式</label>
+            <div class="layui-input-inline">
+                <input type="text" name="fontClass" class="layui-input">
+            </div>
+            <div class="layui-form-mid layui-word-aux">只对一级模块起使用</div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button class="layui-btn" lay-submit lay-filter="edit">确 认</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    layui.use('form', function () {
+        var form = layui.form,$ = layui.jquery;
+        $.get('GetModule?moduleId=@ViewBag.ModuleId', function (res) {
+            if (res.succeed) {
+                var data = res.data;
+                data.parentModule = data.moduleCode.length == 4 ? "0" : data.moduleCode.slice(0,4)
+                console.log(data);
+                form.val('formModule', data)
+            }
+            else {
+                layer.msg('获取数据失败', { icon: 2, time: 2000 });
+            }
+        })
+        form.verify({
+            moduleCode: function (value, item) {
+                if (!/^\d{4}(\d{4})?$/.test(value)) {
+                    return '编码长度不正确,只能是4或者8位的数字';
+                }
+                var selCode = $('#parentModule').val()
+                if (selCode != "0") {
+                    if (value.slice(0, 4) !== selCode) {
+                        return '编码前4位应该为:' + selCode;
+                    }
+                }
+            }
+        })
+        form.on('submit(edit)', function (data) {
+            data.field.moduleId=@ViewBag.ModuleId
+            $.post('EditModule', data.field, function (res) {
+                if (res.succeed) {
+                    layer.confirm('编辑成功,是否关闭当前窗口并刷新列表数据?', { icon: 1, btn: ['关闭', '取消'] }, function () {
+                        xadmin.father_reload()
+                    });
+                }
+                else {
+                    layer.msg(res.message, { icon: 2, time: 2000 });
+                }
+            })
+        })
+    })
+</script>

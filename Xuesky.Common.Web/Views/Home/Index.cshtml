@@ -27,13 +27,13 @@
         <div class="left_open">
             <a><i title="展开左侧栏" class="iconfont">&#xe699;</i></a>
         </div>
-        <ul class="layui-nav right" lay-filter="">
+        <ul class="layui-nav layui-layout-right" lay-filter="">
             <li class="layui-nav-item">
                 <a href="javascript:;">我的信息</a>
                 <dl class="layui-nav-child">
                     <!-- 二级菜单 -->
                     <dd>
-                        <a onclick="xadmin.open('个人信息','http://www.baidu.com')">个人信息</a>
+                        <a onclick="xadmin.open('设置我的资料','@Url.Action("MyInfo","Home")',680)">个人信息</a>
                     </dd>
                     <dd>
                         <a asp-action="Logout" asp-controller="Login">退出</a>

@@ -29,6 +29,12 @@ namespace Xuesky.Common.Service
         /// <param name="sysUserId"></param>
         /// <param name="loginId"></param>
         /// <returns></returns>
-        Task<SysUser> GetAccountInfo(int sysUserId, string loginId);
+        Task<VM_UserInfo> GetAccountInfo(int sysUserId, string loginId);
+        /// <summary>
+        /// 更新用户基本数据
+        /// </summary>
+        /// <param name="myinfo"></param>
+        /// <returns></returns>
+        Task<int> UpdateAccountInfo(VM_UserInfo myinfo);
     }
 }

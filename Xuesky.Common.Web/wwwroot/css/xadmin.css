@@ -82,10 +82,10 @@ body{
 }
 /*登录样式*/
 /*头部*/
-.container{
+.container {
     width: 100%;
     height: 45px;
-    background-color: #222;
+    background-color: #393D49;
 }
 .container a,.layui-nav .layui-nav-item a{
     color: #fff;
@@ -100,11 +100,10 @@ body{
     line-height: 45px;
     width: 200px;
 }
-.container .right{
+/*.container .right{
     background-color:rgba(0,0,0,0);
     float: right;
-
-}
+}*/
 .container .left_open{
     height: 45px;
     float: left;
@@ -125,7 +124,7 @@ body{
     background: rgba(255,255,255,0.3);
 }
 .container .layui-nav-item{
-    line-height: 36px;
+    line-height: 48px;
 }
 .container .layui-nav-more{
     top: 20px;
@@ -505,7 +504,6 @@ table th, table td {
 .x-admin-sm .layui-input,.x-admin-sm .layui-select,.x-admin-sm .layui-textarea{
     height: 30px;
 }
-
 .x-admin-sm .layui-form-pane .layui-form-label{
     height: 30px;
     line-height: 14px;

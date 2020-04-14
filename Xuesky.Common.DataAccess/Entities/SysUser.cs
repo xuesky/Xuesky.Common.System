@@ -15,7 +15,7 @@ namespace Xuesky.Common.DataAccess
 		/// <summary>
 		/// 用户主键
 		/// </summary>
-		[Column(Name = "user_id", IsPrimary = true, IsIdentity = true)]
+		[Column(Name = "user_id", IsPrimary = true, CanUpdate = false, IsIdentity = true)]
 		public int UserId { get; set; }
 
 		/// <summary>
@@ -34,16 +34,16 @@ namespace Xuesky.Common.DataAccess
 		private int _OrgId;
 
 		/// <summary>
-		/// 是否删除
+		/// 删除
 		/// </summary>
 		[Column(Name = "is_delete")]
-		public bool IsDelete { get; set; }
+		public bool IsDelete { get; set; } = false;
 
 		/// <summary>
-		/// 是否使用
+		/// 启用
 		/// </summary>
 		[Column(Name = "is_use")]
-		public bool? IsUse { get; set; }
+		public bool? IsUse { get; set; } = true;
 
 		/// <summary>
 		/// 用户关联老师ID
@@ -93,6 +93,11 @@ namespace Xuesky.Common.DataAccess
 		[Column(Name = "user_tel", DbType = "varchar(32)")]
 		public string UserTel { get; set; }
 
+		/// <summary>
+		/// 备注
+		/// </summary>
+		[Column(Name = "remark", DbType = "varchar(512)")]
+		public string Remark { get; set; }
 
 		#region 外键 => 导航属性，ManyToOne/OneToOne
 

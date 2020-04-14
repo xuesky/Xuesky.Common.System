@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Newtonsoft.Json;
 using System;
 using Xuesky.Common.DataAccess;
 using Xuesky.Common.Web.Extenstions;
@@ -27,8 +28,12 @@ namespace Xuesky.Common.Web
             {
                 config.LoginPath = "/Login";
                 config.ExpireTimeSpan = TimeSpan.FromDays(1);
+                config.SlidingExpiration = true;
             });
-            services.AddControllersWithViews().AddRazorRuntimeCompilation();
+            services.AddControllersWithViews().AddRazorRuntimeCompilation().AddNewtonsoftJson(options =>
+            {
+                options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+            });
             var IFreeSql = FreeSqlExtentions.InitFreesql(Configuration);
             services.AddSingleton(IFreeSql);
             services.AddFreeDbContext<SystemDbContext>(options => options.UseFreeSql(IFreeSql));

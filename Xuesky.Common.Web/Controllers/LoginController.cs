@@ -39,7 +39,12 @@ namespace Xuesky.Common.Web.Controllers
                 ClaimsIdentity claimsIdentity = new ClaimsIdentity(claims, "User");
                 ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
 
-                await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, claimsPrincipal);
+                await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, claimsPrincipal, new AuthenticationProperties
+                {
+                    //IssuedUtc 凭证颁发的日期,ExpiresUtc 凭证的有效截止日期,AllowRefresh 快到期时是否刷新凭证,IsPersistent 是否将凭证保存到cookie中
+                    IsPersistent = true,
+                    AllowRefresh = true
+                });
             }
             return new JsonResult(result != null ? JsonResultWrap.Success("OK") : JsonResultWrap.Fail("登录失败"));
         }

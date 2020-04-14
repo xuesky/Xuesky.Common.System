@@ -23,16 +23,16 @@ namespace Xuesky.Common.DataAccess
 		public string FontClass { get; set; }
 
 		/// <summary>
-		/// 是否删除
+		/// 删除
 		/// </summary>
 		[Column(Name = "is_delete")]
-		public bool IsDelete { get; set; }
+		public bool IsDelete { get; set; } = false;
 
 		/// <summary>
-		/// 是否使用
+		/// 启用
 		/// </summary>
 		[Column(Name = "is_use")]
-		public bool IsUse { get; set; }
+		public bool IsUse { get; set; } = true;
 
 		/// <summary>
 		/// 模块编码
