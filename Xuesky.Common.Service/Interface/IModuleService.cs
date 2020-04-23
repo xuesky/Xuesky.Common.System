@@ -6,7 +6,7 @@ using Xuesky.Common.DataAccess;
 
 namespace Xuesky.Common.Service
 {
-    public interface ISystemService
+    public interface IModuleService
     {
         #region Module
         /// <summary>
@@ -14,13 +14,13 @@ namespace Xuesky.Common.Service
         /// </summary>
         /// <param name="moduleId"></param>
         /// <returns></returns>
-        Task<SysModule> GetSysModule(int moduleId);
+        Task<SysModuleOutput> GetSysModule(int moduleId);
         /// <summary>
         /// 获取模块数据
         /// </summary>
         /// <param name="moduleId"></param>
         /// <returns></returns>
-        Task<List<SysModule>> GetSysModuleList(Expression<Func<SysModule, bool>> func);
+        Task<List<SysModuleOutput>> GetSysModuleList(Expression<Func<SysModule, bool>> func);
         /// <summary>
         /// 获取模块数据列表
         /// </summary>
@@ -28,14 +28,14 @@ namespace Xuesky.Common.Service
         /// <param name="limit">每页显示条数</param>
         /// <param name="key">关键字</param>
         /// <returns></returns>
-        Task<(long total, List<SysModule> list)> GetSysModuleListPage(int page, int limit, string key);
+        Task<(long total, List<SysModuleOutput> list)> GetSysModuleListPage(int page, int limit, string key);
 
         /// <summary>
         /// 添加模块数据
         /// </summary>
-        /// <param name="sysModule"></param>
+        /// <param name="sysModuleAddInput"></param>
         /// <returns></returns>
-        Task<int> InsertSysModule(SysModule sysModule);
+        Task<int> InsertSysModule(SysModuleAddInput sysModuleAddInput);
 
         /// <summary>
         /// 更新模块数据
@@ -43,7 +43,7 @@ namespace Xuesky.Common.Service
         /// <param name="condition">查询条件</param>
         /// <param name="obj">更新对象</param>
         /// <returns></returns>
-        Task<int> UpdateSysModule(Expression<Func<SysModule, bool>> condition, Expression<Func<SysModule, object>> obj);
+        Task<int> UpdateSysModule(Expression<Func<SysModule, bool>> condition, object obj);
 
         /// <summary>
         /// 删除模块数据

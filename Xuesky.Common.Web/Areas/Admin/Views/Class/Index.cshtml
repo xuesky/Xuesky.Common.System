@@ -74,7 +74,7 @@
             var data = obj.data;
             switch (obj.event) {
                 case 'del':
-                    layer.confirm('真的<strong class="x-red">删除班级-' + data.className + '</strong>?', function (index) {
+                    layer.confirm('真的删除<strong class="x-red">' + data.className + '</strong>班级?', function (index) {
                         //删除数据
                         $.post('delete', { classId: data.classId }, function (result) {
                             if (result.total) {
@@ -89,13 +89,13 @@
                     });
                     break;
                 case 'use':
-                    layer.confirm('真的<strong class="x-red">启用班级-' + data.className + '</strong>?', function (index) {
+                    layer.confirm('真的启用<strong class="x-red">' + data.className + '</strong>班级?', function (index) {
                         //启用数据
                         use('启用', obj, true, index)
                     });
                     break;
                 case 'stop':
-                    layer.confirm('真的<strong class="x-red">停用班级-' + data.className + '</strong>?', function (index) {
+                    layer.confirm('真的停用<strong class="x-red">' + data.className + '</strong>班级?', function (index) {
                         //启用数据
                         use('停用', obj, false, index)
                     });

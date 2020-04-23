@@ -10,31 +10,31 @@ namespace Xuesky.Common.Service
     {
         #region Rose
         /// <summary>
-        /// 获取角色实体数据
+        /// 获取角色视图数据
         /// </summary>
         /// <param name="roleId"></param>
         /// <returns></returns>
-        Task<SysRole> GetRole(int roleId);
+        Task<SysRoleOutput> GetRole(int roleId);
         /// <summary>
-        /// 获取角色列表
+        /// 获取角色视图列表
         /// </summary>
         /// <returns></returns>
-        Task<List<SysRole>> GetRoleList(Expression<Func<SysRole, bool>> func);
+        Task<List<SysRoleOutput>> GetRoleList(Expression<Func<SysRole, bool>> func);
         /// <summary>
-        /// 获取角色列表分页数据
+        /// 获取角色视图分页数据
         /// </summary>
         /// <param name="page"></param>
         /// <param name="limit"></param>
         /// <param name="key"></param>
         /// <returns></returns>
-        Task<(long total, List<SysRole> list)> GetRoleListPage(int page, int limit, string key);
+        Task<(long total, List<SysRoleOutput> list)> GetRoleListPage(int page, int limit, string key);
 
         /// <summary>
         /// 添加角色数据
         /// </summary>
-        /// <param name="Role"></param>
+        /// <param name="sysRoleAddInputole"></param>
         /// <returns></returns>
-        Task<int> InsertRole(SysRole Role);
+        Task<int> InsertRole(SysRoleAddInput sysRoleAddInputole);
 
         /// <summary>
         /// 更新角色数据
@@ -42,7 +42,7 @@ namespace Xuesky.Common.Service
         /// <param name="condition">查询条件</param>
         /// <param name="obj">更新对象</param>
         /// <returns></returns>
-        Task<int> UpdateRole(Expression<Func<SysRole, bool>> condition, Expression<Func<SysRole, object>> obj);
+        Task<int> UpdateRole(Expression<Func<SysRole, bool>> condition, object obj);
 
         /// <summary>
         /// 删除角色数据

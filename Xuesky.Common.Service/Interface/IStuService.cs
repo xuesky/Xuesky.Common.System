@@ -14,12 +14,12 @@ namespace Xuesky.Common.Service
         /// </summary>
         /// <param name="StuId"></param>
         /// <returns></returns>
-        Task<StuInfo> GetStu(int StuId);
+        Task<StuInfoOutput> GetStu(int StuId);
         /// <summary>
         /// 获取学生列表
         /// </summary>
         /// <returns></returns>
-        Task<List<StuInfo>> GetStuList(Expression<Func<StuInfo, bool>> func);
+        Task<List<StuInfoOutput>> GetStuList(Expression<Func<StuInfo, bool>> func);
         /// <summary>
         /// 获取学生列表分页数据
         /// </summary>
@@ -27,14 +27,14 @@ namespace Xuesky.Common.Service
         /// <param name="limit"></param>
         /// <param name="key"></param>
         /// <returns></returns>
-        Task<(long total, List<StuInfo> list)> GetStuListPage(int page, int limit, string key);
+        Task<(long total, List<StuInfoClassInfoOutput> list)> GetStuListPage(int page, int limit, string key);
 
         /// <summary>
         /// 添加学生数据
         /// </summary>
         /// <param name="Stu"></param>
         /// <returns></returns>
-        Task<int> InsertStu(StuInfo Stu);
+        Task<int> InsertStu(StuInfoAddInput Stu);
 
         /// <summary>
         /// 更新学生数据
@@ -42,7 +42,7 @@ namespace Xuesky.Common.Service
         /// <param name="condition">查询条件</param>
         /// <param name="obj">更新对象</param>
         /// <returns></returns>
-        Task<int> UpdateStu(Expression<Func<StuInfo, bool>> condition, Expression<Func<StuInfo, object>> obj);
+        Task<int> UpdateStu(Expression<Func<StuInfo, bool>> condition, object obj);
 
         /// <summary>
         /// 删除学生数据

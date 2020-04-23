@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using Xuesky.Common.ClassLibary.Wrap;
+using Xuesky.Common.ClassLibary;
 using Xuesky.Common.Service;
 using Xuesky.Common.Web.Extenstions;
 
@@ -47,15 +47,15 @@ namespace Xuesky.Common.Web.Controllers
         /// <summary>
         /// UpdateMyInfo
         /// </summary>
-        /// <param name="myinfo"></param>
+        /// <param name="sysUserUpdateInput"></param>
         /// <returns></returns>
         /// <exception cref="System.InvalidOperationException"></exception>
         [HttpPost]
-        public async Task<JsonResult> UpdateMyInfo(VM_UserInfo myinfo)
+        public async Task<JsonResult> UpdateMyInfo(SysUserUpdateInput sysUserUpdateInput)
         {
             int userId = int.Parse(identityExtentions.getClaimValue(ClaimTypes.PrimarySid));
-            myinfo.UserId = userId;
-            var result = await accountService.UpdateAccountInfo(myinfo);
+            sysUserUpdateInput.UserId = userId;
+            var result = await accountService.UpdateAccountInfo(sysUserUpdateInput);
 
             return new JsonResult(result > 0 ? JsonResultWrap.Success("OK") : JsonResultWrap.Fail("更新失败"));
         }

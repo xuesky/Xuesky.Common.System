@@ -1,11 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
-using Omu.ValueInjecter;
-using System;
 using System.Linq;
 using System.Threading.Tasks;
-using Xuesky.Common.ClassLibary.Security;
-using Xuesky.Common.ClassLibary.Wrap;
-using Xuesky.Common.DataAccess;
+using Xuesky.Common.ClassLibary;
 using Xuesky.Common.Service;
 
 namespace Xuesky.Common.Web.Areas.Admin.Controllers
@@ -42,42 +38,39 @@ namespace Xuesky.Common.Web.Areas.Admin.Controllers
         }
         public async Task<JsonResult> GetUser(int userId)
         {
-            var role = await sysUserService.GetUser(userId);
-            return new JsonResult(JsonResultWrap.Success("获取成功", 1, role));
+            var user = await sysUserService.GetUser(userId);
+            return new JsonResult(JsonResultWrap.Success("获取成功", 1, user));
         }
         [HttpPost]
-        public async Task<JsonResult> EditUser(VM_UserInfo vmUser)
+        public async Task<JsonResult> EditUser(SysUserUpdateInput sysUserUpdateInput)
         {
-            var userList = await sysUserService.GetUserList(s => s.UserLogin == vmUser.UserLogin);
-            if (userList.Any() && userList[0].UserId != vmUser.UserId)
+            var userList = await sysUserService.GetUserList(s => s.UserLogin == sysUserUpdateInput.UserLogin);
+            if (userList.Any() && userList[0].UserId != sysUserUpdateInput.UserId)
             {
-                return new JsonResult(JsonResultWrap.Fail($"修改失败,登录ID:[{vmUser.UserLogin}]已经存在"));
+                return new JsonResult(JsonResultWrap.Fail($"修改失败,登录ID:[{sysUserUpdateInput.UserLogin}]已经存在"));
             }
-            var result = await sysUserService.UpdateSysuer(s => s.UserId == vmUser.UserId,
-                o => new { vmUser.UserLogin, vmUser.UserName, vmUser.UserGender, vmUser.UserTel, vmUser.IsUse, vmUser.Remark });
+            var result = await sysUserService.UpdateSysuer(s => s.UserId == sysUserUpdateInput.UserId, sysUserUpdateInput);
             return new JsonResult(result > 0 ? JsonResultWrap.Success("修改成功", result) : JsonResultWrap.Fail("修改失败"));
         }
         /// <summary>
-        /// AddRole
+        /// AddUser
         /// </summary>
-        /// <param name="vmUser"></param>
+        /// <param name="sysUserAddInput"></param>
         /// <returns></returns>
         /// <exception cref="System.InvalidOperationException"></exception>
+        /// <exception cref="System.Reflection.TargetInvocationException"></exception>
         [HttpPost]
-        public async Task<JsonResult> AddUser(VM_UserInfo vmUser)
+        public async Task<JsonResult> AddUser(SysUserAddInput sysUserAddInput)
         {
-            var userList = await sysUserService.GetUserList(s => s.UserLogin == vmUser.UserLogin);
-            if (userList.Any() && userList.First().UserId
-                != vmUser.UserId)
+            var userList = await sysUserService.GetUserList(s => s.UserLogin == sysUserAddInput.UserLogin);
+            if (userList.Any())
             {
-                return new JsonResult(JsonResultWrap.Fail($"添加失败,角色名称:[{vmUser.UserLogin}]已经被占用"));
+                return new JsonResult(JsonResultWrap.Fail($"添加失败,登录ID:[{sysUserAddInput.UserLogin}]已经存在"));
             }
 
-            var sysUser = Mapper.Map<VM_UserInfo, SysUser>(vmUser);
-            sysUser.UserAddtime = sysUser.UserLasttime = DateTime.Now;
-            sysUser.OrgId = 1;
-            sysUser.UserPwd = Md5Crypto.Md5Hash(sysUser.UserPwd);
-            var result = await sysUserService.InsertSysUser(sysUser);
+            sysUserAddInput.OrgId = 1;
+            sysUserAddInput.UserPwd = Md5Crypto.Md5Hash(sysUserAddInput.UserPwd);
+            var result = await sysUserService.InsertSysUser(sysUserAddInput);
             return new JsonResult(result > 0 ? JsonResultWrap.Success("添加成功", result) : JsonResultWrap.Fail("添加失败"));
         }
         [HttpPost]

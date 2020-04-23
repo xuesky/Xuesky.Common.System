@@ -3,35 +3,35 @@
     ViewData["Title"] = "修改角色";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-    <div class="layui-col-md12">
-        <div class="layui-form layui-form-pane" lay-filter="formRole">
-            <div class="layui-form-item">
-                <label class="layui-form-label">角色名称</label>
-                <div class="layui-input-inline">
-                    <input type="text" name="roleName" placeholder="请输入角色名称" lay-verify="required" lay-reqText="角色名称不能为空" class="layui-input">
-                </div>
-                <div class="layui-form-mid layui-word-aux"><span class="x-red">*</span></div>
+<div class="layui-col-md12">
+    <div class="layui-form layui-form-pane" lay-filter="formRole">
+        <div class="layui-form-item">
+            <label class="layui-form-label">角色名称</label>
+            <div class="layui-input-inline">
+                <input type="text" name="roleName" placeholder="请输入角色名称" lay-verify="required" lay-reqText="角色名称不能为空" class="layui-input">
             </div>
-            <div class="layui-form-item" pane>
-                <label class="layui-form-label">状态</label>
-                <div class="layui-input-inline">
-                    <input type="checkbox" name="isUse" value="true" lay-text="开启|关闭" checked lay-skin="switch">
-                </div>
+            <div class="layui-form-mid layui-word-aux"><span class="x-red">*</span></div>
+        </div>
+        <div class="layui-form-item" pane>
+            <label class="layui-form-label">状态</label>
+            <div class="layui-input-inline">
+                <input type="checkbox" name="isUse" value="true" lay-text="开启|关闭" checked lay-skin="switch">
             </div>
-            <div class="layui-form-item layui-form-text">
-                <label class="layui-form-label">角色说明</label>
-                <div class="layui-input-block">
-                    <textarea name="roleDesc" placeholder="输入角色说明" class="layui-textarea"></textarea>
-                </div>
+        </div>
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">角色说明</label>
+            <div class="layui-input-block">
+                <textarea name="roleDesc" placeholder="输入角色说明" class="layui-textarea"></textarea>
             </div>
-            <div class="layui-form-item">
-                <div class="layui-input-block">
-                    <button class="layui-btn" lay-submit lay-filter="edit">确 认</button>
-                </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button class="layui-btn" lay-submit lay-filter="edit">确 认</button>
             </div>
         </div>
     </div>
-    <script>
+</div>
+<script>
     layui.use('form', function () {
         var form = layui.form, $ = layui.jquery;
             $.get('GetRole?roleId=@ViewBag.RoleId', function (res) {
@@ -43,7 +43,8 @@
             }
         })
         form.on('submit(edit)', function (data) {
-            data.field.roleId=@ViewBag.roleId
+            data.field.roleId =@ViewBag.roleId
+                console.log(data)
             $.post('EditRole', data.field, function (res) {
                 if (res.succeed) {
                     layer.confirm('编辑成功,是否关闭当前窗口并刷新列表数据?', { icon: 1, btn: ['关闭', '取消'] }, function () {
@@ -56,5 +57,5 @@
             })
         })
     })
-    </script>
+</script>
 

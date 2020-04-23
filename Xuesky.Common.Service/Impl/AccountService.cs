@@ -3,7 +3,7 @@ using System;
 using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
-using Xuesky.Common.ClassLibary.Security;
+using Xuesky.Common.ClassLibary;
 using Xuesky.Common.DataAccess;
 
 namespace Xuesky.Common.Service
@@ -17,7 +17,7 @@ namespace Xuesky.Common.Service
         {
             this.context = context;
         }
-        public Task<int> ChangePassword(int sysUserId, string loginId, string newPassword)
+        public Task<int> ChangePassword(SysUserChangePasswordInput sysUserChangePasswordInput)
         {
             throw new NotImplementedException();
         }
@@ -27,41 +27,50 @@ namespace Xuesky.Common.Service
         /// <param name="sysUserId"></param>
         /// <param name="loginId"></param>
         /// <returns></returns>
-        /// <exception cref="InvalidOperationException"></exception>
-        public async Task<VM_UserInfo> GetAccountInfo(int sysUserId, string loginId)
+        /// <exception cref="InvalidOperationException">Ignore.</exception>
+        public async Task<SysUserAddInput> GetAccountInfo(int sysUserId, string loginId)
         {
             var sysUser = await context.SysUsers.Where(s => s.UserId == sysUserId && s.UserLogin == loginId).FirstAsync();
-            Mapper.AddMap<SysUser, VM_UserInfo>(src =>
+            Mapper.AddMap<SysUser, SysUserAddInput>(src =>
             {
-                var vm = new VM_UserInfo();
+                var vm = new SysUserAddInput();
                 vm.InjectFrom(src);
-                vm.RoleId = sysUser.sys_user_roles.First().RoleId;
+                vm.RoleId = sysUser.sys_user_roles.First(s => s.UserId == sysUser.UserId).RoleId;
                 return vm;
             });
-            return Mapper.Map<SysUser, VM_UserInfo>(sysUser);
+            return Mapper.Map<SysUser, SysUserAddInput>(sysUser);
         }
 
         /// <summary>
         /// 登录
         /// </summary>
-        /// <param name="loginId"></param>
-        /// <param name="password"></param>
+        /// <param name="sysUserLoginInput"></param>
         /// <returns></returns>
-        /// <exception cref="System.Reflection.TargetInvocationException">Ignore.</exception>
         /// <exception cref="ObjectDisposedException">Ignore.</exception>
-        public async Task<SysUser> Login(string loginId, string password)
+        /// <exception cref="System.Reflection.TargetInvocationException"></exception>
+        public async Task<SysUserLoginOutput> Login(SysUserLoginInput sysUserLoginInput)
         {
-            password = Md5Crypto.Md5Hash(password);
-            return await context.SysUsers
-                .Where(s => s.UserLogin == loginId && s.UserPwd == password).FirstAsync();
+            string password = Md5Crypto.Md5Hash(sysUserLoginInput.UserPwd);
+            var sysUser = await context.SysUsers
+                .Where(s => s.UserLogin == sysUserLoginInput.UserLogin && s.UserPwd == password).FirstAsync();
+            var userRole = sysUser.sys_user_roles.FirstOrDefault(s => s.UserId == sysUser.UserId);
+
+            Mapper.AddMap<SysUser, SysUserLoginOutput>(src =>
+            {
+                var vm = new SysUserLoginOutput();
+                vm.InjectFrom(src);
+                vm.RoleId = userRole != null ? userRole.RoleId : 2;//2:普通用户;
+                return vm;
+            });
+            var sysUserLoginOutput = Mapper.Map<SysUser, SysUserLoginOutput>(sysUser);
+            return sysUserLoginOutput;
         }
 
-        public async Task<int> UpdateAccountInfo(VM_UserInfo myinfo)
+        public async Task<int> UpdateAccountInfo(SysUserUpdateInput sysUserUpdateInput)
         {
             int result = await context.Orm.Update<SysUser>()
-                .IgnoreColumns(s => new { s.UserId })
-                .SetDto(myinfo)
-                .Where(s => s.UserId == myinfo.UserId)
+                .SetDto(sysUserUpdateInput)
+                .Where(s => s.UserId == sysUserUpdateInput.UserId)
                 .ExecuteAffrowsAsync();
             return result;
         }

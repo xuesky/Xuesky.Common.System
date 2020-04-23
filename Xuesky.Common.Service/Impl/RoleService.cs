@@ -1,3 +1,4 @@
+using Omu.ValueInjecter;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
@@ -21,37 +22,38 @@ namespace Xuesky.Common.Service
                 .Set(d => d.IsDelete, true)
                 .ExecuteAffrowsAsync();
 
-        public async Task<SysRole> GetRole(int roleId) => await context
+        public async Task<SysRoleOutput> GetRole(int roleId) => await context
                         .SysRoles
                         .Select
                         .Where(s => s.RoleId == roleId)
-                        .FirstAsync();
-        public async Task<List<SysRole>> GetRoleList(Expression<Func<SysRole, bool>> func) => await context
+                        .FirstAsync<SysRoleOutput>();
+        public async Task<List<SysRoleOutput>> GetRoleList(Expression<Func<SysRole, bool>> func) => await context
             .SysRoles
             .Select
             .Where(func)
-            .ToListAsync();
+            .ToListAsync<SysRoleOutput>();
 
-        public async Task<(long total, List<SysRole> list)> GetRoleListPage(int page, int limit, string key)
+        public async Task<(long total, List<SysRoleOutput> list)> GetRoleListPage(int page, int limit, string key)
         {
             var dataSource = context.SysRoles.Select
-    .WhereIf(!string.IsNullOrEmpty(key), s => s.RoleName.Contains(key))
-    .Count(out var total);
+            .WhereIf(!string.IsNullOrEmpty(key), s => s.RoleName.Contains(key))
+            .Count(out var total);
             if (limit > 0)
             {
                 dataSource = dataSource.Page(page, limit);
             }
-            var list = await dataSource.ToListAsync();
+            var list = await dataSource.ToListAsync<SysRoleOutput>();
             return (total, list);
         }
 
-        public async Task<int> InsertRole(SysRole Role)
+        public async Task<int> InsertRole(SysRoleAddInput sysRoleAddInput)
         {
-            context.SysRoles.Add(Role);
+            var role = Mapper.MapDefault<SysRole>(sysRoleAddInput);
+            context.SysRoles.Add(role);
             return await context.SaveChangesAsync();
         }
 
-        public async Task<int> UpdateRole(Expression<Func<SysRole, bool>> condition, Expression<Func<SysRole, object>> obj)
+        public async Task<int> UpdateRole(Expression<Func<SysRole, bool>> condition, object obj)
         {
             var roleInfo = context
                 .SysRoles
@@ -63,7 +65,7 @@ namespace Xuesky.Common.Service
                 await Task.CompletedTask;
                 return 0;
             }
-            return await context.Orm.Update<SysRole>().Set(obj).Where(condition).ExecuteAffrowsAsync();
+            return await context.Orm.Update<SysRole>().SetDto(obj).Where(condition).ExecuteAffrowsAsync();
         }
 
         public async Task<int> UseOrStopRole(int[] roleIds, bool isUse) => await context

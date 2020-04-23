@@ -10,31 +10,31 @@ namespace Xuesky.Common.Service
     {
         #region Teacher
         /// <summary>
-        /// 获取老师实体数据
+        /// 获取老师基本信息视图数据
         /// </summary>
         /// <param name="teacherId"></param>
         /// <returns></returns>
-        Task<TeacherInfo> GetTeacher(int teacherId);
+        Task<TeacherInfoOutput> GetTeacher(int teacherId);
         /// <summary>
-        /// 获取老师列表
+        /// 获取老师基本信息视图数据列表
         /// </summary>
         /// <returns></returns>
-        Task<List<TeacherInfo>> GetTeacherList(Expression<Func<TeacherInfo, bool>> func);
+        Task<List<TeacherInfoOutput>> GetTeacherList(Expression<Func<TeacherInfo, bool>> func);
         /// <summary>
-        /// 获取老师列表分页数据
+        /// 获取老师基本信息视图数据分页数据
         /// </summary>
         /// <param name="page"></param>
         /// <param name="limit"></param>
         /// <param name="key"></param>
         /// <returns></returns>
-        Task<(long total, List<TeacherInfo> list)> GetTeacherListPage(int page, int limit, string key);
+        Task<(long total, List<TeacherInfoOutput> list)> GetTeacherListPage(int page, int limit, string key);
 
         /// <summary>
         /// 添加老师数据
         /// </summary>
         /// <param name="Teacher"></param>
         /// <returns></returns>
-        Task<int> InsertTeacher(TeacherInfo Teacher);
+        Task<int> InsertTeacher(TeacherInfoAddInput Teacher);
 
         /// <summary>
         /// 更新老师数据
@@ -42,7 +42,7 @@ namespace Xuesky.Common.Service
         /// <param name="condition">查询条件</param>
         /// <param name="obj">更新对象</param>
         /// <returns></returns>
-        Task<int> UpdateTeacher(Expression<Func<TeacherInfo, bool>> condition, Expression<Func<TeacherInfo, object>> obj);
+        Task<int> UpdateTeacher(Expression<Func<TeacherInfo, bool>> condition, object obj);
 
         /// <summary>
         /// 删除老师数据

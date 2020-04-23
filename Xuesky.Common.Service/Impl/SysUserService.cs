@@ -1,3 +1,4 @@
+using Omu.ValueInjecter;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
@@ -14,19 +15,22 @@ namespace Xuesky.Common.Service
         {
             this.context = context;
         }
-        public async Task<SysUser> GetUser(int userId) => await context
+        public async Task<SysUserOutput> GetUser(int userId) => await context
                         .SysUsers
                         .Select
                         .Where(s => s.UserId == userId)
-                        .FirstAsync();
+                        .FirstAsync<SysUserOutput>();
 
-        public async Task<List<SysUser>> GetUserList(Expression<Func<SysUser, bool>> func) => await context
-            .SysUsers
-            .Select
-            .Where(func)
-            .ToListAsync();
+        public async Task<List<SysUserOutput>> GetUserList(Expression<Func<SysUser, bool>> func)
+        {
+            return await context
+             .SysUsers
+             .Select
+             .Where(func)
+             .ToListAsync<SysUserOutput>();
+        }
 
-        public async Task<(long total, List<SysUser> list)> GetUserListPage(int page, int limit, string key)
+        public async Task<(long total, List<SysUserOutput> list)> GetUserListPage(int page, int limit, string key)
         {
             var dataSource = context.SysUsers.Select
             .WhereIf(!string.IsNullOrEmpty(key), s => s.UserName.Contains(key) || s.UserLogin.Contains(key))
@@ -35,17 +39,21 @@ namespace Xuesky.Common.Service
             {
                 dataSource = dataSource.Page(page, limit);
             }
-            var list = await dataSource.ToListAsync();
+            var list = await dataSource.ToListAsync<SysUserOutput>();
             return (total, list);
         }
-        public async Task<int> InsertSysUser(SysUser sysUser)
+        public async Task<int> InsertSysUser(SysUserAddInput sysUserAddInput)
         {
+            var sysUser = Mapper.Map<SysUserAddInput, SysUser>(sysUserAddInput);
+            sysUser.UserAddtime = sysUser.UserLasttime = DateTime.Now;
+
             await context.SysUsers.AddAsync(sysUser);
             return await context.SaveChangesAsync();
         }
 
-        public async Task<int> BatchInserSysUser(IEnumerable<SysUser> sysUsers)
+        public async Task<int> BatchInserSysUser(IEnumerable<SysUserAddInput> sysUserAddInputs)
         {
+            var sysUsers = Mapper.Map<IEnumerable<SysUserAddInput>, IEnumerable<SysUser>>(sysUserAddInputs);
             await context.Orm.Insert(sysUsers).ExecuteSqlBulkCopyAsync();
             return await context.SaveChangesAsync();
         }
@@ -56,10 +64,10 @@ namespace Xuesky.Common.Service
                 .Set(d => d.IsDelete, true)
                 .ExecuteAffrowsAsync();
 
-        public async Task<int> UpdateSysuer(Expression<Func<SysUser, bool>> condition, Expression<Func<SysUser, object>> obj)
+        public async Task<int> UpdateSysuer(Expression<Func<SysUser, bool>> condition, object obj)
         {
             var userInfo = context
-                 .SysRoles
+                 .SysUsers
                  .Select
                  .Where(condition)
                  .First();
@@ -68,7 +76,7 @@ namespace Xuesky.Common.Service
                 await Task.CompletedTask;
                 return 0;
             }
-            return await context.Orm.Update<SysUser>().Set(obj).Where(condition).ExecuteAffrowsAsync();
+            return await context.Orm.Update<SysUser>().SetDto(obj).Where(condition).ExecuteAffrowsAsync();
         }
 
         public async Task<int> UseOrStopUser(int[] userIds, bool isUse) => await context

@@ -1,8 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using System.Threading.Tasks;
-using Xuesky.Common.ClassLibary.Wrap;
-using Xuesky.Common.DataAccess;
+using Xuesky.Common.ClassLibary;
 using Xuesky.Common.Service;
 
 namespace Xuesky.Common.Web.Areas.Admin.Controllers
@@ -36,33 +35,33 @@ namespace Xuesky.Common.Web.Areas.Admin.Controllers
             return new JsonResult(JsonResultWrap.Success("获取成功", 1, role));
         }
         [HttpPost]
-        public async Task<JsonResult> EditRole(SysRole vmRole)
+        public async Task<JsonResult> EditRole(SysRoleUpdateInput sysRoleUpdateInput)
         {
-            var roleList = await roleService.GetRoleList(s => s.RoleName == vmRole.RoleName);
-            if (roleList.Any() && roleList[0].RoleId != vmRole.RoleId)
+            var roleList = await roleService.GetRoleList(s => s.RoleName == sysRoleUpdateInput.RoleName);
+            if (roleList.Any() && roleList[0].RoleId != sysRoleUpdateInput.RoleId)
             {
-                return new JsonResult(JsonResultWrap.Fail($"修改失败,角色名称:[{vmRole.RoleName}]已经存在"));
+                return new JsonResult(JsonResultWrap.Fail($"修改失败,角色名称:[{sysRoleUpdateInput.RoleName}]已经存在"));
             }
-            var result = await roleService.UpdateRole(s => s.RoleId == vmRole.RoleId,
-                o => new { vmRole.RoleName, vmRole.RoleDesc });
+            var result = await roleService.UpdateRole(s => s.RoleId == sysRoleUpdateInput.RoleId,
+                sysRoleUpdateInput);
             return new JsonResult(result > 0 ? JsonResultWrap.Success("修改成功", result) : JsonResultWrap.Fail("修改失败"));
         }
         /// <summary>
         /// AddRole
         /// </summary>
-        /// <param name="vmRole"></param>
+        /// <param name="sysRoleAddInput"></param>
         /// <returns></returns>
         /// <exception cref="System.InvalidOperationException"></exception>
         [HttpPost]
-        public async Task<JsonResult> AddRole(SysRole vmRole)
+        public async Task<JsonResult> AddRole(SysRoleAddInput sysRoleAddInput)
         {
-            var roleList = await roleService.GetRoleList(s => s.RoleName == vmRole.RoleName);
+            var roleList = await roleService.GetRoleList(s => s.RoleName == sysRoleAddInput.RoleName);
             if (roleList.Any() && roleList.First().RoleId
-                != vmRole.RoleId)
+                != sysRoleAddInput.RoleId)
             {
-                return new JsonResult(JsonResultWrap.Fail($"添加失败,角色名称:[{vmRole.RoleName}]已经被占用"));
+                return new JsonResult(JsonResultWrap.Fail($"添加失败,角色名称:[{sysRoleAddInput.RoleName}]已经被占用"));
             }
-            var result = await roleService.InsertRole(vmRole);
+            var result = await roleService.InsertRole(sysRoleAddInput);
             return new JsonResult(result > 0 ? JsonResultWrap.Success("添加成功", result) : JsonResultWrap.Fail("添加失败"));
         }
         [HttpPost]

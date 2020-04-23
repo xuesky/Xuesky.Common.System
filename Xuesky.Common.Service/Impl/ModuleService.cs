@@ -1,3 +1,4 @@
+using Omu.ValueInjecter;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
@@ -6,17 +7,18 @@ using Xuesky.Common.DataAccess;
 
 namespace Xuesky.Common.Service
 {
-    public class SystemService : ISystemService
+    public class ModuleService : IModuleService
     {
         private readonly SystemDbContext context;
 
-        public SystemService(SystemDbContext context)
+        public ModuleService(SystemDbContext context)
         {
             this.context = context;
         }
 
-        public async Task<int> InsertSysModule(SysModule sysModule)
+        public async Task<int> InsertSysModule(SysModuleAddInput sysModuleAddInput)
         {
+            var sysModule = Mapper.MapDefault<SysModule>(sysModuleAddInput);
             context.SysModules.Add(sysModule);
             return await context.SaveChangesAsync();
         }
@@ -26,27 +28,28 @@ namespace Xuesky.Common.Service
                 .Update<SysModule>(moduleIds)
                 .Set(d => d.IsDelete, true)
                 .ExecuteAffrowsAsync();
-        public async Task<SysModule> GetSysModule(int moduleId) => await context
+        public async Task<SysModuleOutput> GetSysModule(int moduleId) => await context
                 .SysModules
                 .Select
                 .Where(s => s.ModuleId == moduleId)
-                .FirstAsync();
-        public async Task<List<SysModule>> GetSysModuleList(Expression<Func<SysModule, bool>> func) => await context
+                .FirstAsync<SysModuleOutput>();
+        public async Task<List<SysModuleOutput>> GetSysModuleList(Expression<Func<SysModule, bool>> func) => await context
             .SysModules
             .Select
             .Where(func)
-            .ToListAsync();
+            .ToListAsync<SysModuleOutput>();
 
-        public async Task<(long total, List<SysModule> list)> GetSysModuleListPage(int page, int limit, string key)
+        public async Task<(long total, List<SysModuleOutput> list)> GetSysModuleListPage(int page, int limit, string key)
         {
             var dataSource = context.SysModules.Select
                 .WhereIf(!string.IsNullOrEmpty(key), s => s.ModuleName.Contains(key) || s.ModuleCode.Contains(key))
-                .Count(out var total);
+                .Count(out var total)
+                ;
             if (limit > 0)
             {
                 dataSource = dataSource.Page(page, limit);
             }
-            var list = await dataSource.ToListAsync();
+            var list = await dataSource.ToListAsync<SysModuleOutput>();
             return (total, list);
         }
 
@@ -56,7 +59,7 @@ namespace Xuesky.Common.Service
                 .Set(d => d.IsUse, isUse)
                 .ExecuteAffrowsAsync();
 
-        public async Task<int> UpdateSysModule(Expression<Func<SysModule, bool>> condition, Expression<Func<SysModule, object>> obj)
+        public async Task<int> UpdateSysModule(Expression<Func<SysModule, bool>> condition, object obj)
         {
             var moduleInfo = context
                 .SysModules
@@ -68,7 +71,7 @@ namespace Xuesky.Common.Service
                 await Task.CompletedTask;
                 return 0;
             }
-            return await context.Orm.Update<SysModule>().Set(obj).Where(condition).ExecuteAffrowsAsync();
+            return await context.Orm.Update<SysModule>().SetDto(obj).Where(condition).ExecuteAffrowsAsync();
 
         }
     }

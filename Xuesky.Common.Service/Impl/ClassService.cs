@@ -1,3 +1,4 @@
+using Omu.ValueInjecter;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
@@ -21,18 +22,18 @@ namespace Xuesky.Common.Service
                 .Set(d => d.IsDelete, true)
                 .ExecuteAffrowsAsync();
 
-        public async Task<ClassInfo> GetClass(int classId) => await context
+        public async Task<ClassInfoOutput> GetClass(int classId) => await context
                         .ClassInfos
                         .Select
                         .Where(s => s.ClassId == classId)
-                        .FirstAsync();
-        public async Task<List<ClassInfo>> GetClassList(Expression<Func<ClassInfo, bool>> func) => await context
+                        .FirstAsync<ClassInfoOutput>();
+        public async Task<List<ClassInfoOutput>> GetClassList(Expression<Func<ClassInfo, bool>> func) => await context
             .ClassInfos
             .Select
             .Where(func)
-            .ToListAsync();
+            .ToListAsync<ClassInfoOutput>();
 
-        public async Task<(long total, List<ClassInfo> list)> GetClassListPage(int page, int limit, string key)
+        public async Task<(long total, List<ClassInfoOutput> list)> GetClassListPage(int page, int limit, string key)
         {
             var dataSource = context.ClassInfos.Select
             .WhereIf(!string.IsNullOrEmpty(key), s => s.ClassName.Contains(key) || s.ClassNo.Contains(key))
@@ -41,17 +42,18 @@ namespace Xuesky.Common.Service
             {
                 dataSource = dataSource.Page(page, limit);
             }
-            var list = await dataSource.ToListAsync();
+            var list = await dataSource.ToListAsync<ClassInfoOutput>();
             return (total, list);
         }
 
-        public async Task<int> InsertClass(ClassInfo classInfo)
+        public async Task<int> InsertClass(ClassInfoAddInput classInfoAddInput)
         {
+            var classInfo = Mapper.MapDefault<ClassInfo>(classInfoAddInput);
             context.ClassInfos.Add(classInfo);
             return await context.SaveChangesAsync();
         }
 
-        public async Task<int> UpdateClass(Expression<Func<ClassInfo, bool>> condition, Expression<Func<ClassInfo, object>> obj)
+        public async Task<int> UpdateClass(Expression<Func<ClassInfo, bool>> condition, object obj)
         {
             var roleInfo = context
                 .ClassInfos
@@ -63,7 +65,7 @@ namespace Xuesky.Common.Service
                 await Task.CompletedTask;
                 return 0;
             }
-            return await context.Orm.Update<ClassInfo>().Set(obj).Where(condition).ExecuteAffrowsAsync();
+            return await context.Orm.Update<ClassInfo>().SetDto(obj).Where(condition).ExecuteAffrowsAsync();
         }
 
         public async Task<int> UseOrStopClass(int[] classIds, bool isUse) => await context

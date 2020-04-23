@@ -9,11 +9,14 @@
             <div class="layui-input-inline">
                 <select id="stuClass" name="classId" lay-verify="stuClass">
                     <option value="0">选择班级</option>
-                    @foreach (var o in ViewBag.Classes as IEnumerable<ClassInfo>)
+                    @foreach (var o in ViewBag.Classes as IEnumerable<ClassInfoOutput>)
                     {
                         <option value="@o.ClassId">@o.ClassNo-@o.ClassName</option>
                     }
                 </select>
+            </div>
+            <div class="layui-form-mid layui-word-aux">
+                <span class="x-red">*</span>
             </div>
         </div>
         <div class="layui-form-item">
@@ -67,9 +70,9 @@
     layui.use('form', function () {
         var form = layui.form;
         form.verify({
-            stuClass:function(value,item) {
-              if(value==="0")
-                  return "请选择班级"
+            stuClass: function (value, item) {
+                if (value === "0")
+                    return "请选择班级"
             }
         })
         form.on('submit(add)', function (data) {

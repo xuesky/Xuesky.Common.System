@@ -1,8 +1,7 @@
+using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Xuesky.Common.ClassLibary.Wrap;
-using Xuesky.Common.DataAccess;
+using Xuesky.Common.ClassLibary;
 using Xuesky.Common.Service;
 
 namespace Xuesky.Common.Web.Areas.Admin.Controllers
@@ -13,7 +12,7 @@ namespace Xuesky.Common.Web.Areas.Admin.Controllers
         private readonly IStuService stuService;
         private readonly IClassService classService;
 
-        public StuController(IStuService stuService,IClassService classService)
+        public StuController(IStuService stuService, IClassService classService)
         {
             this.stuService = stuService;
             this.classService = classService;
@@ -27,45 +26,45 @@ namespace Xuesky.Common.Web.Areas.Admin.Controllers
             ViewBag.Classes = await classService.GetClassList(s => true);
             return View();
         }
-        public async Task<IActionResult> EditStu(int StuId)
+        public async Task<IActionResult> EditStu(int stuId)
         {
             ViewBag.Classes = await classService.GetClassList(s => true);
-            ViewBag.StuId = StuId;
+            ViewBag.StuId = stuId;
             return View();
         }
-        public async Task<JsonResult> GetStu(int StuId)
+        public async Task<JsonResult> GetStu(int stuId)
         {
-            var stu = await stuService.GetStu(StuId);
+            var stu = await stuService.GetStu(stuId);
             return new JsonResult(JsonResultWrap.Success("获取成功", 1, stu));
         }
         [HttpPost]
-        public async Task<JsonResult> EditStu(StuInfo vmStu)
+        public async Task<JsonResult> EditStu(StuInfoUpdateInput stuInfoUpdateInput)
         {
-            var stuList = await stuService.GetStuList(s => s.StuNo == vmStu.StuNo);
-            if (stuList.Any() && stuList[0].StuId != vmStu.StuId)
+            var stuList = await stuService.GetStuList(s => s.StuNo == stuInfoUpdateInput.StuNo);
+            if (stuList.Any() && stuList[0].StuId != stuInfoUpdateInput.StuId)
             {
-                return new JsonResult(JsonResultWrap.Fail($"修改失败,学号:[{vmStu.StuNo}]已经存在"));
+                return new JsonResult(JsonResultWrap.Fail($"修改失败,学号:[{stuInfoUpdateInput.StuNo}]已经存在"));
             }
-            var result = await stuService.UpdateStu(s => s.StuId == vmStu.StuId,
-                o => new { vmStu.StuNo, vmStu.StuName, vmStu.StuGender, vmStu.StuMobile, vmStu.IsUse, vmStu.ClassId });
+            var result = await stuService.UpdateStu(s => s.StuId == stuInfoUpdateInput.StuId,
+                stuInfoUpdateInput);
             return new JsonResult(result > 0 ? JsonResultWrap.Success("修改成功", result) : JsonResultWrap.Fail("修改失败"));
         }
         /// <summary>
         /// AddStu
         /// </summary>
-        /// <param name="vmStu"></param>
+        /// <param name="stuInfoAddInput"></param>
         /// <returns></returns>
         /// <exception cref="System.InvalidOperationException"></exception>
         [HttpPost]
-        public async Task<JsonResult> AddStu(StuInfo vmStu)
+        public async Task<JsonResult> AddStu(StuInfoAddInput stuInfoAddInput)
         {
-            var stuList = await stuService.GetStuList(s => s.StuNo == vmStu.StuNo);
+            var stuList = await stuService.GetStuList(s => s.StuNo == stuInfoAddInput.StuNo);
             if (stuList.Any() && stuList.First().StuId
-                != vmStu.StuId)
+                != stuInfoAddInput.StuId)
             {
-                return new JsonResult(JsonResultWrap.Fail($"添加失败,工号:[{vmStu.StuNo}]已经被占用"));
+                return new JsonResult(JsonResultWrap.Fail($"添加失败,工号:[{stuInfoAddInput.StuNo}]已经被占用"));
             }
-            var result = await stuService.InsertStu(vmStu);
+            var result = await stuService.InsertStu(stuInfoAddInput);
             return new JsonResult(result > 0 ? JsonResultWrap.Success("添加成功", result) : JsonResultWrap.Fail("添加失败"));
         }
         [HttpPost]

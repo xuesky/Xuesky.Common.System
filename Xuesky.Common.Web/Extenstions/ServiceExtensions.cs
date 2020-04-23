@@ -15,7 +15,7 @@ namespace Xuesky.Common.Web.Extenstions
         {
             services.AddTransient<IAccountService, AccountService>();
             services.AddTransient<ISysUserService, SysUserService>();
-            services.AddTransient<ISystemService, SystemService>();
+            services.AddTransient<IModuleService, ModuleService>();
             services.AddTransient<IRoleService, RoleService>();
             services.AddTransient<ITeacherService, TeacherService>();
             services.AddTransient<IClassService, ClassService>();

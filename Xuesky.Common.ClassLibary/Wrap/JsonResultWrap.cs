@@ -1,6 +1,6 @@
 using System;
 
-namespace Xuesky.Common.ClassLibary.Wrap
+namespace Xuesky.Common.ClassLibary
 {
     /// <summary>
     /// 返回结果的结构包装定义。

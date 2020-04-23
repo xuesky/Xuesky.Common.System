@@ -1,4 +1,5 @@
-﻿using System;
+using Omu.ValueInjecter;
+using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
@@ -6,7 +7,7 @@ using Xuesky.Common.DataAccess;
 
 namespace Xuesky.Common.Service
 {
-    public class StuService:IStuService
+    public class StuService : IStuService
     {
         private readonly SystemDbContext context;
 
@@ -21,37 +22,39 @@ namespace Xuesky.Common.Service
                 .Set(d => d.IsDelete, true)
                 .ExecuteAffrowsAsync();
 
-        public async Task<StuInfo> GetStu(int StuId) => await context
+        public async Task<StuInfoOutput> GetStu(int StuId) => await context
                         .StuInfos
                         .Select
                         .Where(s => s.StuId == StuId)
-                        .FirstAsync();
-        public async Task<List<StuInfo>> GetStuList(Expression<Func<StuInfo, bool>> func) => await context
+                        .FirstAsync<StuInfoOutput>();
+        public async Task<List<StuInfoOutput>> GetStuList(Expression<Func<StuInfo, bool>> func) => await context
             .StuInfos
             .Select
             .Where(func)
-            .ToListAsync();
+            .ToListAsync<StuInfoOutput>();
 
-        public async Task<(long total, List<StuInfo> list)> GetStuListPage(int page, int limit, string key)
+        public async Task<(long total, List<StuInfoClassInfoOutput> list)> GetStuListPage(int page, int limit, string key)
         {
             var dataSource = context.StuInfos.Select
             .WhereIf(!string.IsNullOrEmpty(key), s => s.StuName.Contains(key) || s.StuNo.Contains(key))
+            .Include(s => s.class_info)
             .Count(out var total);
             if (limit > 0)
             {
                 dataSource = dataSource.Page(page, limit);
             }
-            var list = await dataSource.ToListAsync();
+            var list = await dataSource.ToListAsync<StuInfoClassInfoOutput>();
             return (total, list);
         }
 
-        public async Task<int> InsertStu(StuInfo Role)
+        public async Task<int> InsertStu(StuInfoAddInput stuInfoAddInput)
         {
-            context.StuInfos.Add(Role);
+            var stuInfo = Mapper.MapDefault<StuInfo>(stuInfoAddInput);
+            context.StuInfos.Add(stuInfo);
             return await context.SaveChangesAsync();
         }
 
-        public async Task<int> UpdateStu(Expression<Func<StuInfo, bool>> condition, Expression<Func<StuInfo, object>> obj)
+        public async Task<int> UpdateStu(Expression<Func<StuInfo, bool>> condition, object obj)
         {
             var roleInfo = context
                 .StuInfos
@@ -63,7 +66,7 @@ namespace Xuesky.Common.Service
                 await Task.CompletedTask;
                 return 0;
             }
-            return await context.Orm.Update<StuInfo>().Set(obj).Where(condition).ExecuteAffrowsAsync();
+            return await context.Orm.Update<StuInfo>().SetDto(obj).Where(condition).ExecuteAffrowsAsync();
         }
 
         public async Task<int> UseOrStopStu(int[] stuIds, bool isUse) => await context

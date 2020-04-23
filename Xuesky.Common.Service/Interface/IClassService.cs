@@ -14,12 +14,12 @@ namespace Xuesky.Common.Service
         /// </summary>
         /// <param name="classId"></param>
         /// <returns></returns>
-        Task<ClassInfo> GetClass(int classId);
+        Task<ClassInfoOutput> GetClass(int classId);
         /// <summary>
         /// 获取班级列表
         /// </summary>
         /// <returns></returns>
-        Task<List<ClassInfo>> GetClassList(Expression<Func<ClassInfo, bool>> func);
+        Task<List<ClassInfoOutput>> GetClassList(Expression<Func<ClassInfo, bool>> func);
         /// <summary>
         /// 获取班级列表分页数据
         /// </summary>
@@ -27,14 +27,14 @@ namespace Xuesky.Common.Service
         /// <param name="limit"></param>
         /// <param name="key"></param>
         /// <returns></returns>
-        Task<(long total, List<ClassInfo> list)> GetClassListPage(int page, int limit, string key);
+        Task<(long total, List<ClassInfoOutput> list)> GetClassListPage(int page, int limit, string key);
 
         /// <summary>
         /// 添加班级数据
         /// </summary>
         /// <param name="classInfo"></param>
         /// <returns></returns>
-        Task<int> InsertClass(ClassInfo classInfo);
+        Task<int> InsertClass(ClassInfoAddInput classInfo);
 
         /// <summary>
         /// 更新班级数据
@@ -42,7 +42,7 @@ namespace Xuesky.Common.Service
         /// <param name="condition">查询条件</param>
         /// <param name="obj">更新对象</param>
         /// <returns></returns>
-        Task<int> UpdateClass(Expression<Func<ClassInfo, bool>> condition, Expression<Func<ClassInfo, object>> obj);
+        Task<int> UpdateClass(Expression<Func<ClassInfo, bool>> condition, object obj);
 
         /// <summary>
         /// 删除班级数据

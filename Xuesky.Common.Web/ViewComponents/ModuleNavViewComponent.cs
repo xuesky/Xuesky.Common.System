@@ -6,9 +6,9 @@ namespace Xuesky.Common.Web.ViewComponents
 {
     public class ModuleNavViewComponent : ViewComponent
     {
-        private readonly ISystemService systemService;
+        private readonly IModuleService systemService;
 
-        public ModuleNavViewComponent(ISystemService systemService)
+        public ModuleNavViewComponent(IModuleService systemService)
         {
             this.systemService = systemService;
         }

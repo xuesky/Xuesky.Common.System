@@ -1,3 +1,4 @@
+using Omu.ValueInjecter;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
@@ -21,18 +22,18 @@ namespace Xuesky.Common.Service
                 .Set(d => d.IsDelete, true)
                 .ExecuteAffrowsAsync();
 
-        public async Task<TeacherInfo> GetTeacher(int teacherId) => await context
+        public async Task<TeacherInfoOutput> GetTeacher(int teacherId) => await context
                         .TeacherInfos
                         .Select
                         .Where(s => s.TeacherId == teacherId)
-                        .FirstAsync();
-        public async Task<List<TeacherInfo>> GetTeacherList(Expression<Func<TeacherInfo, bool>> func) => await context
+                        .FirstAsync<TeacherInfoOutput>();
+        public async Task<List<TeacherInfoOutput>> GetTeacherList(Expression<Func<TeacherInfo, bool>> func) => await context
             .TeacherInfos
             .Select
             .Where(func)
-            .ToListAsync();
+            .ToListAsync<TeacherInfoOutput>();
 
-        public async Task<(long total, List<TeacherInfo> list)> GetTeacherListPage(int page, int limit, string key)
+        public async Task<(long total, List<TeacherInfoOutput> list)> GetTeacherListPage(int page, int limit, string key)
         {
             var dataSource = context.TeacherInfos.Select
             .WhereIf(!string.IsNullOrEmpty(key), s => s.TeacherName.Contains(key) || s.TeacherNo.Contains(key))
@@ -41,17 +42,18 @@ namespace Xuesky.Common.Service
             {
                 dataSource = dataSource.Page(page, limit);
             }
-            var list = await dataSource.ToListAsync();
+            var list = await dataSource.ToListAsync<TeacherInfoOutput>();
             return (total, list);
         }
 
-        public async Task<int> InsertTeacher(TeacherInfo Role)
+        public async Task<int> InsertTeacher(TeacherInfoAddInput teacherInfoAddInput)
         {
-            context.TeacherInfos.Add(Role);
+            var teacher = Mapper.MapDefault<TeacherInfo>(teacherInfoAddInput);
+            context.TeacherInfos.Add(teacher);
             return await context.SaveChangesAsync();
         }
 
-        public async Task<int> UpdateTeacher(Expression<Func<TeacherInfo, bool>> condition, Expression<Func<TeacherInfo, object>> obj)
+        public async Task<int> UpdateTeacher(Expression<Func<TeacherInfo, bool>> condition, object obj)
         {
             var roleInfo = context
                 .TeacherInfos
@@ -63,7 +65,7 @@ namespace Xuesky.Common.Service
                 await Task.CompletedTask;
                 return 0;
             }
-            return await context.Orm.Update<TeacherInfo>().Set(obj).Where(condition).ExecuteAffrowsAsync();
+            return await context.Orm.Update<TeacherInfo>().SetDto(obj).Where(condition).ExecuteAffrowsAsync();
         }
 
         public async Task<int> UseOrStopTeacher(int[] teacherIds, bool isUse) => await context

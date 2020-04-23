@@ -1,8 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using System.Threading.Tasks;
-using Xuesky.Common.ClassLibary.Wrap;
-using Xuesky.Common.DataAccess;
+using Xuesky.Common.ClassLibary;
 using Xuesky.Common.Service;
 
 namespace Xuesky.Common.Web.Areas.Admin.Controllers
@@ -35,33 +34,33 @@ namespace Xuesky.Common.Web.Areas.Admin.Controllers
             return new JsonResult(JsonResultWrap.Success("获取成功", 1, teacher));
         }
         [HttpPost]
-        public async Task<JsonResult> EditTeacher(TeacherInfo vmTeacher)
+        public async Task<JsonResult> EditTeacher(TeacherInfoUpdateInput teacherInfoUpdateInput)
         {
-            var TeacherList = await teacherService.GetTeacherList(s => s.TeacherNo == vmTeacher.TeacherNo);
-            if (TeacherList.Any() && TeacherList[0].TeacherId != vmTeacher.TeacherId)
+            var TeacherList = await teacherService.GetTeacherList(s => s.TeacherNo == teacherInfoUpdateInput.TeacherNo);
+            if (TeacherList.Any() && TeacherList[0].TeacherId != teacherInfoUpdateInput.TeacherId)
             {
-                return new JsonResult(JsonResultWrap.Fail($"修改失败,工号:[{vmTeacher.TeacherNo}]已经存在"));
+                return new JsonResult(JsonResultWrap.Fail($"修改失败,工号:[{teacherInfoUpdateInput.TeacherNo}]已经存在"));
             }
-            var result = await teacherService.UpdateTeacher(s => s.TeacherId == vmTeacher.TeacherId,
-                o => new { vmTeacher.TeacherNo, vmTeacher.TeacherName, vmTeacher.TeacherGender, vmTeacher.TeacherMobile, vmTeacher.IsUse, vmTeacher.Remark });
+            var result = await teacherService.UpdateTeacher(s => s.TeacherId == teacherInfoUpdateInput.TeacherId,
+                teacherInfoUpdateInput);
             return new JsonResult(result > 0 ? JsonResultWrap.Success("修改成功", result) : JsonResultWrap.Fail("修改失败"));
         }
         /// <summary>
         /// AddTeacher
         /// </summary>
-        /// <param name="vmTeacher"></param>
+        /// <param name="teacherInfoAddInput"></param>
         /// <returns></returns>
         /// <exception cref="System.InvalidOperationException"></exception>
         [HttpPost]
-        public async Task<JsonResult> AddTeacher(TeacherInfo vmTeacher)
+        public async Task<JsonResult> AddTeacher(TeacherInfoAddInput teacherInfoAddInput)
         {
-            var TeacherList = await teacherService.GetTeacherList(s => s.TeacherNo == vmTeacher.TeacherNo);
+            var TeacherList = await teacherService.GetTeacherList(s => s.TeacherNo == teacherInfoAddInput.TeacherNo);
             if (TeacherList.Any() && TeacherList.First().TeacherId
-                != vmTeacher.TeacherId)
+                != teacherInfoAddInput.TeacherId)
             {
-                return new JsonResult(JsonResultWrap.Fail($"添加失败,工号:[{vmTeacher.TeacherNo}]已经被占用"));
+                return new JsonResult(JsonResultWrap.Fail($"添加失败,工号:[{teacherInfoAddInput.TeacherNo}]已经被占用"));
             }
-            var result = await teacherService.InsertTeacher(vmTeacher);
+            var result = await teacherService.InsertTeacher(teacherInfoAddInput);
             return new JsonResult(result > 0 ? JsonResultWrap.Success("添加成功", result) : JsonResultWrap.Fail("添加失败"));
         }
         [HttpPost]

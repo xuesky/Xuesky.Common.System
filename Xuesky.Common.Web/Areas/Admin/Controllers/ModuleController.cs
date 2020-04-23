@@ -1,8 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using System.Threading.Tasks;
-using Xuesky.Common.ClassLibary.Wrap;
-using Xuesky.Common.DataAccess;
+using Xuesky.Common.ClassLibary;
 using Xuesky.Common.Service;
 
 namespace Xuesky.Common.Web.Areas.Admin.Controllers
@@ -10,9 +9,9 @@ namespace Xuesky.Common.Web.Areas.Admin.Controllers
     [Area("admin")]
     public class ModuleController : Controller
     {
-        private readonly ISystemService systemService;
+        private readonly IModuleService systemService;
 
-        public ModuleController(ISystemService systemService)
+        public ModuleController(IModuleService systemService)
         {
             this.systemService = systemService;
         }
@@ -43,26 +42,26 @@ namespace Xuesky.Common.Web.Areas.Admin.Controllers
         /// <param name="vmModule"></param>
         /// <returns></returns>
         [HttpPost]
-        public async Task<JsonResult> EditModule(SysModule vmModule)
+        public async Task<JsonResult> EditModule(SysModuleUpdateInput sysModuleUpdateInput)
         {
-            var moduleList = await systemService.GetSysModuleList(s => s.ModuleCode == vmModule.ModuleCode);
-            if (moduleList.Any() && moduleList[0].ModuleId != vmModule.ModuleId)
+            var moduleList = await systemService.GetSysModuleList(s => s.ModuleCode == sysModuleUpdateInput.ModuleCode);
+            if (moduleList.Any() && moduleList[0].ModuleId != sysModuleUpdateInput.ModuleId)
             {
-                return new JsonResult(JsonResultWrap.Fail($"修改失败,编码:[{vmModule.ModuleCode}]已经被占用"));
+                return new JsonResult(JsonResultWrap.Fail($"修改失败,编码:[{sysModuleUpdateInput.ModuleCode}]已经被占用"));
             }
-            var result = await systemService.UpdateSysModule(s => s.ModuleId == vmModule.ModuleId,
-                o => new { vmModule.ModuleCode, vmModule.ModuleName, vmModule.ModuleUrl, vmModule.FontClass, vmModule.Order });
+            var result = await systemService.UpdateSysModule(s => s.ModuleId == sysModuleUpdateInput.ModuleId,
+                sysModuleUpdateInput);
             return new JsonResult(result > 0 ? JsonResultWrap.Success("修改成功", result) : JsonResultWrap.Fail("修改失败"));
         }
         [HttpPost]
-        public async Task<JsonResult> AddModule(SysModule vmModule)
+        public async Task<JsonResult> AddModule(SysModuleAddInput sysModuleAddInput)
         {
-            var moduleList = await systemService.GetSysModuleList(s => s.ModuleCode == vmModule.ModuleCode);
+            var moduleList = await systemService.GetSysModuleList(s => s.ModuleCode == sysModuleAddInput.ModuleCode);
             if (moduleList.Any())
             {
-                return new JsonResult(JsonResultWrap.Fail($"添加失败,编码:[{vmModule.ModuleCode}]已经被占用"));
+                return new JsonResult(JsonResultWrap.Fail($"添加失败,编码:[{sysModuleAddInput.ModuleCode}]已经被占用"));
             }
-            var result = await systemService.InsertSysModule(vmModule);
+            var result = await systemService.InsertSysModule(sysModuleAddInput);
             return new JsonResult(result > 0 ? JsonResultWrap.Success("添加成功", result) : JsonResultWrap.Fail("添加失败"));
         }
         [HttpPost]

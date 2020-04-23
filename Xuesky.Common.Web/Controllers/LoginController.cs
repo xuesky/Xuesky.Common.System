@@ -2,10 +2,9 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
-using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using Xuesky.Common.ClassLibary.Wrap;
+using Xuesky.Common.ClassLibary;
 using Xuesky.Common.Service;
 
 namespace Xuesky.Common.Web.Controllers
@@ -23,18 +22,16 @@ namespace Xuesky.Common.Web.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<JsonResult> Login(string loginId, string password)
+        public async Task<JsonResult> Login(SysUserLoginInput sysUserLoginInput)
         {
-            var result = await accountService.Login(loginId, password);
+            var result = await accountService.Login(sysUserLoginInput);
             if (result != null)
             {
-                var userRole = result.sys_user_roles.FirstOrDefault(s => s.UserId == result.UserId);
-                int roleId = userRole != null ? userRole.RoleId : 2;//2:普通用户
                 var claims = new List<Claim>{
                 new Claim(ClaimTypes.PrimarySid,result.UserId.ToString()),
                 new Claim(ClaimTypes.Sid,result.UserLogin),
                 new Claim(ClaimTypes.Name,result.UserName),
-                new Claim(ClaimTypes.Role,roleId.ToString())
+                new Claim(ClaimTypes.Role,result.RoleId.ToString())
                 };
                 ClaimsIdentity claimsIdentity = new ClaimsIdentity(claims, "User");
                 ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
