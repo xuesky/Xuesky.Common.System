@@ -8,6 +8,11 @@ namespace Xuesky.Common.ClassLibary
     /// </summary>
     public static class UtilConvert
     {
+        /// <summary>
+        /// <see cref="object"/> to <see cref="int"/>
+        /// </summary>
+        /// <param name="thisValue"></param>
+        /// <returns></returns>
         public static int ToInt(this object thisValue)
         {
             int reval = 0;
@@ -18,6 +23,12 @@ namespace Xuesky.Common.ClassLibary
             }
             return reval;
         }
+        /// <summary>
+        /// <see cref="object"/> to <see cref="int"/>
+        /// </summary>
+        /// <param name="thisValue"></param>
+        /// <param name="errorValue">默认值</param>
+        /// <returns></returns>
         public static int ToInt(this object thisValue, int errorValue)
         {
             int reval;
@@ -27,15 +38,24 @@ namespace Xuesky.Common.ClassLibary
             }
             return errorValue;
         }
-
-        public static long ToLong(this object s)
+        /// <summary>
+        /// <see cref="object"/> to <see cref="long"/>
+        /// </summary>
+        /// <param name="thisValue"></param>
+        /// <returns></returns>
+        public static long ToLong(this object thisValue)
         {
-            if (s == null || s == DBNull.Value)
+            if (thisValue == null || thisValue == DBNull.Value)
                 return 0L;
 
-            long.TryParse(s.ToString(), out long result);
+            long.TryParse(thisValue.ToString(), out long result);
             return result;
         }
+        /// <summary>
+        /// <see cref="object"/> to <see cref="double"/>
+        /// </summary>
+        /// <param name="thisValue"></param>
+        /// <returns></returns>
         public static double ToMoney(this object thisValue)
         {
             double reval;
@@ -45,6 +65,12 @@ namespace Xuesky.Common.ClassLibary
             }
             return 0;
         }
+        /// <summary>
+        /// <see cref="object"/> to <see cref="double"/>
+        /// </summary>
+        /// <param name="thisValue"></param>
+        /// <param name="errorValue"></param>
+        /// <returns></returns>
         public static double ToMoney(this object thisValue, double errorValue)
         {
             double reval;
@@ -54,16 +80,32 @@ namespace Xuesky.Common.ClassLibary
             }
             return errorValue;
         }
+        /// <summary>
+        /// <see cref="object"/> to <see cref="string"/>
+        /// </summary>
+        /// <param name="thisValue"></param>
+        /// <returns></returns>
         public static string ToString(this object thisValue)
         {
             if (thisValue != null) return thisValue.ToString().Trim();
             return "";
         }
+        /// <summary>
+        /// <see cref="object"/> to <see cref="string"/>
+        /// </summary>
+        /// <param name="thisValue"></param>
+        /// <param name="errorValue"></param>
+        /// <returns></returns>
         public static string ToString(this object thisValue, string errorValue)
         {
             if (thisValue != null) return thisValue.ToString().Trim();
             return errorValue;
         }
+        /// <summary>
+        /// <see cref="object"/> to <see cref="decimal"/>
+        /// </summary>
+        /// <param name="thisValue"></param>
+        /// <returns></returns>
         public static decimal ToDecimal(this object thisValue)
         {
             decimal reval;
@@ -73,6 +115,12 @@ namespace Xuesky.Common.ClassLibary
             }
             return 0;
         }
+        /// <summary>
+        /// <see cref="object"/> to <see cref="decimal"/>
+        /// </summary>
+        /// <param name="thisValue"></param>
+        /// <param name="errorValue"></param>
+        /// <returns></returns>
         public static decimal ToDecimal(this object thisValue, decimal errorValue)
         {
             decimal reval;
@@ -82,6 +130,12 @@ namespace Xuesky.Common.ClassLibary
             }
             return errorValue;
         }
+        /// <summary>
+        /// <see cref="object"/> to <see cref="DateTime"/>
+        /// </summary>
+        /// <param name="thisValue"></param>
+        /// <returns></returns>
+        /// <exception cref="InvalidCastException"></exception>
         public static DateTime ToDate(this object thisValue)
         {
             DateTime reval = DateTime.MinValue;
@@ -91,6 +145,12 @@ namespace Xuesky.Common.ClassLibary
             }
             return reval;
         }
+        /// <summary>
+        /// <see cref="object"/> to <see cref="DateTime"/>
+        /// </summary>
+        /// <param name="thisValue"></param>
+        /// <param name="errorValue"></param>
+        /// <returns></returns>
         public static DateTime ToDate(this object thisValue, DateTime errorValue)
         {
             DateTime reval;
@@ -100,6 +160,11 @@ namespace Xuesky.Common.ClassLibary
             }
             return errorValue;
         }
+        /// <summary>
+        /// <see cref="object"/> to <see cref="bool"/>
+        /// </summary>
+        /// <param name="thisValue"></param>
+        /// <returns></returns>
         public static bool ToBool(this object thisValue)
         {
             bool reval = false;
@@ -109,6 +174,11 @@ namespace Xuesky.Common.ClassLibary
             }
             return reval;
         }
+        /// <summary>
+        /// <see cref="object"/> to <see cref="byte"/>
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
         public static byte ToByte(this object s)
         {
             if (s == null || s == DBNull.Value)
@@ -119,7 +189,8 @@ namespace Xuesky.Common.ClassLibary
         }
         #region ==字节转换==
         /// <summary>
-        /// 转换为16进制
+        /// 字节转换为16进制,<see cref="byte[]"/> to <see cref="string"/>
+        /// 如:{255,254} 转为 FFFE
         /// </summary>
         /// <param name="bytes"></param>
         /// <param name="lowerCase">是否小写</param>
@@ -140,7 +211,8 @@ namespace Xuesky.Common.ClassLibary
         }
 
         /// <summary>
-        /// 16进制转字节数组
+        /// 16进制转字节数组,<see cref="string"/> to <see cref="byte[]"/>
+        /// 如:FFFE 转为 {255,254}
         /// </summary>
         /// <param name="s"></param>
         /// <returns></returns>
@@ -160,7 +232,7 @@ namespace Xuesky.Common.ClassLibary
         }
 
         /// <summary>
-        /// 转换为Base64
+        /// 转换为Base64,<see cref="byte[]"/> to <see cref="string"/>
         /// </summary>
         /// <param name="bytes"></param>
         /// <returns></returns>
@@ -171,7 +243,6 @@ namespace Xuesky.Common.ClassLibary
 
             return Convert.ToBase64String(bytes);
         }
-
         #endregion
     }
 }

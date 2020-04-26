@@ -6,6 +6,9 @@ using Xuesky.Common.Service;
 
 namespace Xuesky.Common.Web.Areas.Admin.Controllers
 {
+    /// <summary>
+    /// 模块信息管理
+    /// </summary>
     [Area("admin")]
     public class ModuleController : Controller
     {
@@ -37,9 +40,9 @@ namespace Xuesky.Common.Web.Areas.Admin.Controllers
             return new JsonResult(JsonResultWrap.Success("获取成功", 1, module));
         }
         /// <summary>
-        /// EditModule
+        /// 修改模块数据
         /// </summary>
-        /// <param name="vmModule"></param>
+        /// <param name="sysModuleUpdateInput"></param>
         /// <returns></returns>
         [HttpPost]
         public async Task<JsonResult> EditModule(SysModuleUpdateInput sysModuleUpdateInput)
@@ -49,6 +52,7 @@ namespace Xuesky.Common.Web.Areas.Admin.Controllers
             {
                 return new JsonResult(JsonResultWrap.Fail($"修改失败,编码:[{sysModuleUpdateInput.ModuleCode}]已经被占用"));
             }
+            sysModuleUpdateInput.ModuleUrl = sysModuleUpdateInput.ModuleUrl.ToLower();
             var result = await systemService.UpdateSysModule(s => s.ModuleId == sysModuleUpdateInput.ModuleId,
                 sysModuleUpdateInput);
             return new JsonResult(result > 0 ? JsonResultWrap.Success("修改成功", result) : JsonResultWrap.Fail("修改失败"));
@@ -61,6 +65,7 @@ namespace Xuesky.Common.Web.Areas.Admin.Controllers
             {
                 return new JsonResult(JsonResultWrap.Fail($"添加失败,编码:[{sysModuleAddInput.ModuleCode}]已经被占用"));
             }
+            sysModuleAddInput.ModuleUrl = sysModuleAddInput.ModuleUrl.ToLower();
             var result = await systemService.InsertSysModule(sysModuleAddInput);
             return new JsonResult(result > 0 ? JsonResultWrap.Success("添加成功", result) : JsonResultWrap.Fail("添加失败"));
         }

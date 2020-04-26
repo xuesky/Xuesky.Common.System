@@ -6,6 +6,9 @@ using Xuesky.Common.Service;
 
 namespace Xuesky.Common.Web.Areas.Admin.Controllers
 {
+    /// <summary>
+    /// 角色信息管理
+    /// </summary>
     [Area("admin")]
     public class RoleController : Controller
     {
