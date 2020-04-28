@@ -54,7 +54,7 @@ namespace Xuesky.Common.Service
         public async Task<int> BatchInserSysUser(IEnumerable<SysUserAddInput> sysUserAddInputs)
         {
             var sysUsers = Mapper.Map<IEnumerable<SysUserAddInput>, IEnumerable<SysUser>>(sysUserAddInputs);
-            await context.Orm.Insert(sysUsers).ExecuteSqlBulkCopyAsync();
+            await context.Orm.Insert(sysUsers).ExecuteAffrowsAsync();
             return await context.SaveChangesAsync();
         }
 

@@ -8,7 +8,7 @@ namespace Xuesky.Common.Service
 {
     public interface IRoleService
     {
-        #region Rose
+        #region Role
         /// <summary>
         /// 获取角色视图数据
         /// </summary>
@@ -57,6 +57,16 @@ namespace Xuesky.Common.Service
         /// <param name="roleIds"></param>
         /// <returns></returns>
         Task<int> UseOrStopRole(int[] roleIds, bool isUse);
+        #endregion
+
+        #region RoleModule
+        /// <summary>
+        /// 用户模块受权
+        /// </summary>
+        /// <param name="roleId"></param>
+        /// <param name="modules"></param>
+        /// <returns></returns>
+        Task<int> RoleModuleAuthorize(int roleId, int[] modules);
         #endregion
     }
 }

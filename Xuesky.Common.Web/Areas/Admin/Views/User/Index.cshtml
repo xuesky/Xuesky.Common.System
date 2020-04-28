@@ -29,39 +29,39 @@
 </script>
 <script type="text/html" id="toolbar">
     <div class="layui-btn-container">
-        <button class="layui-btn layui-btn-sm" lay-event="add"><i class="layui-icon layui-icon-add-circle"></i>添加</button>
+        <button class="layui-btn layui-btn-sm" lay-event="add" title="添加"><i class="layui-icon layui-icon-add-circle"></i>添加</button>
     </div>
 </script>
 <script type="text/html" id="barEdit">
-    <a class="layui-btn layui-btn-xs" lay-event="edit"><i class="layui-icon layui-icon-edit"></i></a>
+    <a class="layui-btn layui-btn-xs" lay-event="edit" title="编辑"><i class="layui-icon layui-icon-edit"></i></a>
     {{#  if(d.LAY_INDEX>1){ }}
-    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del"><i class="layui-icon layui-icon-delete"></i></a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del" title="删除"><i class="layui-icon layui-icon-delete"></i></a>
     {{#  }}}
 </script>
 <script>
     layui.use('table', function () {
         var table = layui.table
-            ,form = layui.form
-            ,$ = layui.jquery;
+            , form = layui.form
+            , $ = layui.jquery;
         //第一个实例
         var datalist = table.render({
             elem: '#userList'
-            , url:'GetUserList' //数据接口
-            , page:true //开启分页
-            , toolbar:'#toolbar'
+            , url: 'GetUserList' //数据接口
+            , page: true //开启分页
+            , toolbar: '#toolbar'
             , cols: [[ //表头
-                { field: 'userId', title: 'ID',  sort: true, fixed: 'left' }
-                ,{ field: 'userLogin', title: '登录ID' }
-                ,{ field: 'userName', title: '姓名'}
+                { field: 'userId', title: 'ID', sort: true, fixed: 'left' }
+                , { field: 'userLogin', title: '登录ID' }
+                , { field: 'userName', title: '姓名' }
                 , { field: 'userGender', title: '性别' }
                 , { field: 'userTel', title: '手机' }
                 , { field: 'userAddtime', title: '添加时间' }
-                ,{ field: 'isUse', title: '状态', templet: '#useTpl' }
-                ,{ fixed: 'right', title: '操作', templet: '#barEdit' }
+                , { field: 'isUse', title: '状态', templet: '#useTpl' }
+                , { fixed: 'right', title: '操作', templet: '#barEdit' }
             ]]
             , parseData: function (res) { //res 即为原始返回的数据
                 return {
-                    "code": res.succeed ? 0: -1, //解析接口状态
+                    "code": res.succeed ? 0 : -1, //解析接口状态
                     "msg": res.message, //解析提示文本
                     "count": res.total, //解析数据长度
                     "data": res.data //解析数据列表
@@ -116,7 +116,7 @@
                     key: data.field.key
                 }
                 , page: {
-                    curr:1
+                    curr: 1
                 }
             })
             form.val('search-form', data.field.key)
@@ -126,11 +126,11 @@
                 if (result.total) {
                     layer.msg(type + '成功', { icon: 1, time: 1000 });
                     obj.update({
-                        isUse : status
+                        isUse: status
                     })
                 }
                 else {
-                    layer.msg(type+'失败', { icon: 2, time: 1000 });
+                    layer.msg(type + '失败', { icon: 2, time: 1000 });
                 }
             })
             layer.close(index);

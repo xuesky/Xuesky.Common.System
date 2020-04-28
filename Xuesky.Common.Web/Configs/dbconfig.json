@@ -1,0 +1,7 @@
+{
+  "Master": "Data Source=.;Initial Catalog=SystemDb;User ID=sa;Password=123456;",
+  "Slaves": [
+    { "DbConn": "Data Source=.;Initial Catalog=SystemDb;User ID=sa;Password=123456;" },
+    { "DbConn": "Data Source=.;Initial Catalog=SystemDb;User ID=sa;Password=123456;" }
+  ]
+}

@@ -1,3 +1,4 @@
+using CSScriptLib;
 using Omu.ValueInjecter;
 using System;
 using System.Collections.Generic;
@@ -15,7 +16,7 @@ namespace Xuesky.Common.Service
         {
             this.context = context;
         }
-
+        #region Role
         public async Task<int> DeleteRole(int[] roleIds) => await context
                 .Orm
                 .Update<SysModule>(roleIds)
@@ -53,6 +54,8 @@ namespace Xuesky.Common.Service
             return await context.SaveChangesAsync();
         }
 
+
+
         public async Task<int> UpdateRole(Expression<Func<SysRole, bool>> condition, object obj)
         {
             var roleInfo = context
@@ -73,5 +76,18 @@ namespace Xuesky.Common.Service
                 .Update<SysRole>(roleIds)
                 .Set(d => d.IsUse, isUse)
                 .ExecuteAffrowsAsync();
+        #endregion
+        public async Task<int> RoleModuleAuthorize(int roleId, int[] modules)
+        {
+            await context.SysRoleModules.RemoveAsync(s => s.RoleId == roleId);
+            List<SysRoleModule> list = new List<SysRoleModule>();
+            modules.ForEach(s =>
+            {
+                list.Add(new SysRoleModule { RoleId = roleId, ModuleId = s, IsDelete = false });
+            });
+            await context.SysRoleModules.AddRangeAsync(list);
+
+            return await context.SaveChangesAsync();
+        }
     }
 }

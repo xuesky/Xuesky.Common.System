@@ -18,9 +18,17 @@ namespace Xuesky.Common.Service
         /// <summary>
         /// 获取模块数据
         /// </summary>
-        /// <param name="moduleId"></param>
+        /// <param name="func"></param>
         /// <returns></returns>
         Task<List<SysModuleOutput>> GetSysModuleList(Expression<Func<SysModule, bool>> func);
+        /// <summary>
+        /// 获取模块数据
+        /// </summary>
+        /// <param name="roleId"></param>
+        /// <param name="func"></param>
+        /// <returns></returns>
+        Task<List<SysModuleOutput>> GetSysModuleByRoleList(int roleId, Expression<Func<SysModule, bool>> func);
+
         /// <summary>
         /// 获取模块数据列表
         /// </summary>

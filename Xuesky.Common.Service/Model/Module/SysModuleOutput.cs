@@ -40,5 +40,9 @@ namespace Xuesky.Common.Service
         /// 启用
         /// </summary>
         public bool IsUse { get; set; }
+        /// <summary>
+        /// 是否包含该模块权限
+        /// </summary>
+        public bool IsProcess { get; set; }
     }
 }

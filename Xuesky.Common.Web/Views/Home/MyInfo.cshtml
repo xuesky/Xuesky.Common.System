@@ -9,7 +9,7 @@
             <label class="layui-form-label">我的角色</label>
             <div class="layui-input-inline">
                 <select name="roleId" disabled>
-                    @foreach (var o in ViewBag.Roles as IEnumerable<SysRole>)
+                    @foreach (var o in ViewBag.Roles as IEnumerable<SysRoleOutput>)
                     {
                         <option value="@o.RoleId">@o.RoleName</option>
                     }

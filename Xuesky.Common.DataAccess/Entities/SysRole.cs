@@ -17,6 +17,27 @@ namespace Xuesky.Common.DataAccess
         [Column(Name = "role_id", IsPrimary = true, IsIdentity = true, CanUpdate = false)]
         public int RoleId { get; set; }
 
+
+        /// <summary>
+        /// 角色编码
+        /// </summary>
+        [Column(Name = "role_code", DbType = "varchar(64)")]
+        public string RoleCode { get; set; }
+
+        /// <summary>
+        /// 角色名称
+        /// </summary>
+        [Column(Name = "role_name", DbType = "varchar(64)")]
+        public string RoleName { get; set; }
+
+
+        /// <summary>
+        /// 角色说明
+        /// </summary>
+        [Column(Name = "role_desc", DbType = "varchar(MAX)")]
+        public string RoleDesc { get; set; }
+
+
         /// <summary>
         /// 删除
         /// </summary>
@@ -28,18 +49,6 @@ namespace Xuesky.Common.DataAccess
         /// </summary>
         [Column(Name = "is_use")]
         public bool IsUse { get; set; } = true;
-
-        /// <summary>
-        /// 角色说明
-        /// </summary>
-        [Column(Name = "role_desc", DbType = "varchar(MAX)")]
-        public string RoleDesc { get; set; }
-
-        /// <summary>
-        /// 角色名称
-        /// </summary>
-        [Column(Name = "role_name", DbType = "varchar(64)")]
-        public string RoleName { get; set; }
 
 
         #region 外键 => 导航属性，OneToMany

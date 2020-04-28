@@ -11,6 +11,11 @@ namespace Xuesky.Common.Service
         public int RoleId { get; set; }
 
         /// <summary>
+        /// 角色编码
+        /// </summary>
+        public string RoleCode { get; set; }
+
+        /// <summary>
         /// 角色名称
         /// </summary>
         public string RoleName { get; set; }

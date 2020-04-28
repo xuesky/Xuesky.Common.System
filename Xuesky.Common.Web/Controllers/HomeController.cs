@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Security.Claims;
 using System.Threading.Tasks;
 using Xuesky.Common.ClassLibary;
 using Xuesky.Common.Service;
@@ -39,8 +38,8 @@ namespace Xuesky.Common.Web.Controllers
         /// <exception cref="System.InvalidOperationException"></exception>
         public async Task<JsonResult> GetMyInfo()
         {
-            int userId = int.Parse(identityExtentions.getClaimValue(ClaimTypes.PrimarySid));
-            string loginId = identityExtentions.getClaimValue(ClaimTypes.Sid);
+            int userId = identityExtentions.getUserId();
+            string loginId = identityExtentions.getLoginId();
             var result = await accountService.GetAccountInfo(userId, loginId);
             return new JsonResult(JsonResultWrap.Success("OK", 0, result));
         }
@@ -53,7 +52,7 @@ namespace Xuesky.Common.Web.Controllers
         [HttpPost]
         public async Task<JsonResult> UpdateMyInfo(SysUserUpdateInput sysUserUpdateInput)
         {
-            int userId = int.Parse(identityExtentions.getClaimValue(ClaimTypes.PrimarySid));
+            int userId = identityExtentions.getUserId();
             sysUserUpdateInput.UserId = userId;
             var result = await accountService.UpdateAccountInfo(sysUserUpdateInput);
 
@@ -69,7 +68,7 @@ namespace Xuesky.Common.Web.Controllers
             var user = HttpContext.User;
             if (user.Identity.IsAuthenticated)
             {
-                var userName = identityExtentions.getClaimValue(ClaimTypes.Name);
+                var userName = identityExtentions.getUserName();
                 return View("Welcome", userName);
             }
             return View("Welcome", "请登录");

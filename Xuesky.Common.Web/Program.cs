@@ -3,7 +3,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using NLog.Web;
-using System.IO;
+using Xuesky.Common.Web.ConfigModels;
+using Xuesky.Common.Web.Extenstions;
 
 namespace Xuesky.Common.Web
 {
@@ -26,13 +27,11 @@ namespace Xuesky.Common.Web
         /// <exception cref="System.UnauthorizedAccessException"></exception>
         public static IHostBuilder CreateHostBuilder(string[] args)
         {
+            var appConfig = ConfigExtentions.Get<AppConfig>("appconfig") ?? new AppConfig();
             var config = new ConfigurationBuilder()
-            .SetBasePath(Directory.GetCurrentDirectory())
-            .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-            //.AddJsonFile("hostsettings.json", optional: true, reloadOnChange: true)
-            .AddCommandLine(args)//命令行指定参数
             .Build();
             return Host.CreateDefaultBuilder(args)
+                        //.AddConfigsSetting()
                         .ConfigureWebHostDefaults(webBuilder =>
                         {
                             webBuilder.UseConfiguration(config)
@@ -43,7 +42,9 @@ namespace Xuesky.Common.Web
                                 NLogBuilder.ConfigureNLog("nlog.config");
                             })
                             .UseNLog()
-                            .UseStartup<Startup>();
+                            .UseStartup<Startup>()
+                            .UseUrls(appConfig.Urls)
+                            ;
                         });
         }
     }

@@ -31,7 +31,7 @@ namespace Xuesky.Common.Web.Controllers
                 new Claim(ClaimTypes.PrimarySid,result.UserId.ToString()),
                 new Claim(ClaimTypes.Sid,result.UserLogin),
                 new Claim(ClaimTypes.Name,result.UserName),
-                new Claim(ClaimTypes.Role,result.RoleId.ToString())
+                new Claim(ClaimTypes.Role,result.RoleId.ToString()),
                 };
                 ClaimsIdentity claimsIdentity = new ClaimsIdentity(claims, "User");
                 ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal(claimsIdentity);

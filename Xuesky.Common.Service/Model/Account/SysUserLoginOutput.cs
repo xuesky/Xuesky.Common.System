@@ -14,6 +14,10 @@ namespace Xuesky.Common.Service
         /// </summary>
         public int RoleId { get; set; }
         /// <summary>
+        /// 角色编码
+        /// </summary>
+        public string RoleCode { get; set; }
+        /// <summary>
         /// 登录ID
         /// </summary>
         public string UserLogin { get; set; }

@@ -1,4 +1,3 @@
-using FreeSql;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -14,11 +13,13 @@ namespace Xuesky.Common.Web
 {
     public class Startup
     {
+        private readonly IWebHostEnvironment env;
         public IConfiguration Configuration { get; }
 
-        public Startup(IConfiguration configuration)
+        public Startup(IConfiguration configuration, IWebHostEnvironment env)
         {
             Configuration = configuration;
+            this.env = env;
         }
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -34,10 +35,11 @@ namespace Xuesky.Common.Web
             {
                 options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
             });
-            var IFreeSql = FreeSqlExtentions.InitFreesql(Configuration);
+            var IFreeSql = FreeSqlExtentions.InitFreesql(Configuration, env);
             services.AddSingleton(IFreeSql);
             services.AddFreeDbContext<SystemDbContext>(options => options.UseFreeSql(IFreeSql));
             services.AddServices();
+            services.AddCache(env);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

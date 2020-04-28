@@ -5,6 +5,13 @@
 <div class="layui-col-md12">
     <div class="layui-form layui-form-pane" lay-filter="formRole">
         <div class="layui-form-item">
+            <label class="layui-form-label">角色编码</label>
+            <div class="layui-input-inline">
+                <input type="text" name="roleCode" placeholder="请输入角色编码" lay-verify="required" lay-reqText="角色编码不能为空" class="layui-input">
+            </div>
+            <div class="layui-form-mid layui-word-aux"><span class="x-red">*</span></div>
+        </div>
+        <div class="layui-form-item">
             <label class="layui-form-label">角色名称</label>
             <div class="layui-input-inline">
                 <input type="text" name="roleName" placeholder="请输入角色名称" lay-verify="required" lay-reqText="角色名称不能为空" class="layui-input">

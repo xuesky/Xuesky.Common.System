@@ -1,0 +1,88 @@
+@{
+    ViewData["Title"] = "角色模块";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    @model IEnumerable<Xuesky.Common.Service.SysModuleOutput>
+}
+<div class="layui-col-md12">
+    <div class="layui-form layui-col-space5 layui-form-pane" lay-filter="role-form">
+        <div class="layui-form-item">
+            <label class="layui-form-label">角色名称</label>
+            <div class="layui-input-inline">
+                <input type="text" name="roleName" readonly lay-verify="required" value="@ViewBag.RoleName" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">
+                拥有权限
+            </label>
+            <table class="layui-table layui-input-block">
+                <tbody>
+                    @if (Model.Any())
+                    {
+                        @foreach (var module in Model.Where(s => s.ModuleCode.Length == 4))
+                        {
+                            <tr>
+                                <td>
+                                    <input type="checkbox" name="module" lay-skin="primary" lay-filter="father" checked="@module.IsProcess" value="@module.ModuleId" title="@module.ModuleName">
+                                </td>
+                                <td>
+                                    @foreach (var child in Model.Where(s => s.ModuleCode.StartsWith(module.ModuleCode) && s.ModuleCode != module.ModuleCode))
+                                    {
+                                        <input type="checkbox" name="module" lay-skin="primary" lay-filter="father" checked="@module.IsProcess" value="@child.ModuleId" title="@child.ModuleName">
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button class="layui-btn" lay-submit lay-filter="save">保  存</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    layui.use(['form', 'layer'], function () {
+        var form = layui.form
+            , $ = layui.jquery
+            , layer = layui.layer;
+        var roleId = layui.url().search.roleId;
+        //监听提交
+        form.on('submit(save)', function (data) {
+            var modules = []
+            $("input:checkbox[name='module']:checked").each(function () {
+                modules.push($(this).val());
+            });
+            $.post('RoleAuz', { modules, roleId }, function (res) {
+                if (res.succeed) {
+                    layer.confirm('保存成功,是否关闭当前窗口?', { icon: 1, btn: ['确定', '取消'] }, function () {
+                        xadmin.close()
+                    });
+                }
+                else {
+                    layer.msg(res.message, { icon: 2, time: 2000 });
+                }
+            })
+        });
+        form.on('checkbox(father)', function (data) {
+
+            if (data.elem.checked) {
+                $(data.elem).parent().siblings('td').find('input').prop("checked", true);
+                form.render();
+            } else {
+                var checked = false;
+                $(data.elem).siblings('input').each(function () {
+                    if ($(this).prop("checked")) {
+                        checked = true;
+                        return;
+                    }
+                });
+                $(data.elem).parent().siblings('td').find('input').prop("checked", checked);
+                form.render();
+            }
+        });
+    });
+</script>

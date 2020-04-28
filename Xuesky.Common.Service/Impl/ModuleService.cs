@@ -1,6 +1,7 @@
 using Omu.ValueInjecter;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Xuesky.Common.DataAccess;
@@ -38,7 +39,28 @@ namespace Xuesky.Common.Service
             .Select
             .Where(func)
             .ToListAsync<SysModuleOutput>();
+        /// <summary>
+        /// GetSysModuleByRoleList
+        /// </summary>
+        /// <param name="roleId"></param>
+        /// <param name="func"></param>
+        /// <returns></returns>
+        public async Task<List<SysModuleOutput>> GetSysModuleByRoleList(int roleId, Expression<Func<SysModule, bool>> func)
+        {
+            var modules = await context
+             .SysModules
+             .Select
+             .Where(func)
+             .OrderByDescending(s => s.Order)
+             .ToListAsync<SysModuleOutput>();
 
+            var roleModules = await context.SysRoleModules.Select.Where(s => s.RoleId == roleId).ToListAsync();
+            modules.ForEach(s =>
+            {
+                s.IsProcess = roleModules.Any(a => a.ModuleId == s.ModuleId);
+            });
+            return modules;
+        }
         public async Task<(long total, List<SysModuleOutput> list)> GetSysModuleListPage(int page, int limit, string key)
         {
             var dataSource = context.SysModules.Select

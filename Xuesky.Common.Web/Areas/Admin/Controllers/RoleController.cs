@@ -13,12 +13,13 @@ namespace Xuesky.Common.Web.Areas.Admin.Controllers
     public class RoleController : Controller
     {
         private readonly IRoleService roleService;
+        private readonly IModuleService systemService;
 
-        public RoleController(IRoleService roleService)
+        public RoleController(IRoleService roleService, IModuleService systemService)
         {
             this.roleService = roleService;
+            this.systemService = systemService;
         }
-
         public IActionResult Index()
         {
             return View();
@@ -58,11 +59,10 @@ namespace Xuesky.Common.Web.Areas.Admin.Controllers
         [HttpPost]
         public async Task<JsonResult> AddRole(SysRoleAddInput sysRoleAddInput)
         {
-            var roleList = await roleService.GetRoleList(s => s.RoleName == sysRoleAddInput.RoleName);
-            if (roleList.Any() && roleList.First().RoleId
-                != sysRoleAddInput.RoleId)
+            var roleList = await roleService.GetRoleList(s => s.RoleName == sysRoleAddInput.RoleName || s.RoleCode == sysRoleAddInput.RoleCode);
+            if (roleList.Any())
             {
-                return new JsonResult(JsonResultWrap.Fail($"添加失败,角色名称:[{sysRoleAddInput.RoleName}]已经被占用"));
+                return new JsonResult(JsonResultWrap.Fail($"添加失败,角色编码或名称已经被占用"));
             }
             var result = await roleService.InsertRole(sysRoleAddInput);
             return new JsonResult(result > 0 ? JsonResultWrap.Success("添加成功", result) : JsonResultWrap.Fail("添加失败"));
@@ -83,6 +83,22 @@ namespace Xuesky.Common.Web.Areas.Admin.Controllers
         {
             var (total, list) = await roleService.GetRoleListPage(page, limit, key);
             return new JsonResult(JsonResultWrap.Success("OK", total, list));
+        }
+
+        public async Task<IActionResult> RoleAuz(int roleId)
+        {
+            var queryParameters = Request.Query;
+            ViewBag.RoleName = queryParameters["roleName"].Count > 0
+                ? queryParameters["roleName"].ToString()
+                : "参数错误";
+            var moduleData = await systemService.GetSysModuleByRoleList(roleId, s => true);
+            return View(moduleData);
+        }
+        [HttpPost]
+        public async Task<JsonResult> RoleAuz(int roleId, int[] modules)
+        {
+            await roleService.RoleModuleAuthorize(roleId, modules);
+            return new JsonResult(JsonResultWrap.Success("OK"));
         }
     }
 }
