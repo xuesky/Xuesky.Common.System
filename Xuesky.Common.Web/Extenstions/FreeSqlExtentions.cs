@@ -11,7 +11,7 @@ namespace Xuesky.Common.Web.Extenstions
     {
         public static IFreeSql InitFreesql(IConfiguration configuration, IWebHostEnvironment env)
         {
-            var dbConfig = ConfigExtentions.Get<DbConfig>("dbconfig", env.EnvironmentName);
+            var dbConfig = configuration.Get<DbConfig>();
             var logger = NLogBuilder.ConfigureNLog("nlog.config").GetCurrentClassLogger();
             var Fsql = new FreeSqlBuilder()
                .UseConnectionString(FreeSql.DataType.SqlServer, dbConfig.Master)

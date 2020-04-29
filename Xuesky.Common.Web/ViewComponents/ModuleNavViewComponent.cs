@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
@@ -14,12 +15,14 @@ namespace Xuesky.Common.Web.ViewComponents
         private readonly IModuleService systemService;
         private readonly IdentityExtentions identityExtentions;
         private readonly ICache cache;
+        private readonly IConfiguration configuration;
 
-        public ModuleNavViewComponent(IModuleService systemService, IdentityExtentions identityExtentions, ICache cache)
+        public ModuleNavViewComponent(IModuleService systemService, IdentityExtentions identityExtentions, ICache cache, IConfiguration configuration)
         {
             this.systemService = systemService;
             this.identityExtentions = identityExtentions;
             this.cache = cache;
+            this.configuration = configuration;
         }
         /// <summary>
         /// InvokeAsync
@@ -28,7 +31,7 @@ namespace Xuesky.Common.Web.ViewComponents
         /// <exception cref="System.InvalidOperationException"></exception>
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            var userRoleConfig = ConfigExtentions.Get<UserRoleConfig>("userroleconfig", "", true) ?? new UserRoleConfig();
+            var userRoleConfig = configuration.Get<UserRoleConfig>();
             int roleId = identityExtentions.getRoleId();
             Expression<System.Func<DataAccess.SysModule, bool>> func = null;
             if (roleId == userRoleConfig.SuperRole)

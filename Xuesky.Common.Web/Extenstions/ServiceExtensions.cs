@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Xuesky.Common.ClassLibary.Cache;
 using Xuesky.Common.Service;
@@ -34,9 +35,9 @@ namespace Xuesky.Common.Web.Extenstions
         /// <param name="services"></param>
         /// <param name="configuration"></param>
         /// <returns></returns>
-        public static IServiceCollection AddCache(this IServiceCollection services, IWebHostEnvironment env)
+        public static IServiceCollection AddCache(this IServiceCollection services, IConfiguration configuration, IWebHostEnvironment env)
         {
-            var cacheConfig = ConfigExtentions.Get<CacheConfig>("cacheconfig", env.EnvironmentName);
+            var cacheConfig = configuration.Get<CacheConfig>();
             if (cacheConfig.Type == CacheType.Redis)
             {
                 var csredis = new CSRedis.CSRedisClient(cacheConfig.Redis.ConnectionString);

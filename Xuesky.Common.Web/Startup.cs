@@ -39,7 +39,7 @@ namespace Xuesky.Common.Web
             services.AddSingleton(IFreeSql);
             services.AddFreeDbContext<SystemDbContext>(options => options.UseFreeSql(IFreeSql));
             services.AddServices();
-            services.AddCache(env);
+            services.AddCache(Configuration, env);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

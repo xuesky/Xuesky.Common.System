@@ -1,9 +1,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using NLog.Web;
-using Xuesky.Common.Web.ConfigModels;
 using Xuesky.Common.Web.Extenstions;
 
 namespace Xuesky.Common.Web
@@ -27,25 +25,27 @@ namespace Xuesky.Common.Web
         /// <exception cref="System.UnauthorizedAccessException"></exception>
         public static IHostBuilder CreateHostBuilder(string[] args)
         {
-            var appConfig = ConfigExtentions.Get<AppConfig>("appconfig") ?? new AppConfig();
-            var config = new ConfigurationBuilder()
-            .Build();
             return Host.CreateDefaultBuilder(args)
-                        //.AddConfigsSetting()
+                        .ConfigureAppConfiguration((context, config) =>
+                            {
+                                config.AddConfiguration(ConfigExtentions.GetConfigsSetting(context.HostingEnvironment.EnvironmentName, reloadOnChange: true));
+                            }
+                        )
+                        .AddConfigsSetting(reloadOnChange: true)
                         .ConfigureWebHostDefaults(webBuilder =>
                         {
-                            webBuilder.UseConfiguration(config)
+                            webBuilder
                             .ConfigureLogging(log =>
                             {
                                 //log.ClearProviders();
-                                log.SetMinimumLevel(LogLevel.Information);
+                                //log.SetMinimumLevel(LogLevel.Information);
                                 NLogBuilder.ConfigureNLog("nlog.config");
                             })
                             .UseNLog()
                             .UseStartup<Startup>()
-                            .UseUrls(appConfig.Urls)
                             ;
-                        });
+                        })
+                        ;
         }
     }
 }

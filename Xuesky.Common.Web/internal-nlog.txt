@@ -1,60 +1,672 @@
-2020-04-28 11:24:14.6741 Info Message Template Auto Format enabled
-2020-04-28 11:24:14.7276 Info Adding target FileTarget(Name=info-web)
-2020-04-28 11:24:14.7276 Info Adding target NullTarget(Name=blackhole)
-2020-04-28 11:24:14.7276 Info Adding target FileTarget(Name=error-web)
-2020-04-28 11:24:14.7276 Info Adding target NullTarget(Name=blackhole)
-2020-04-28 11:24:14.7491 Info Found 48 configuration items
-2020-04-28 11:24:15.0653 Info Configuring from an XML element in D:\Dotnet\Xuesky.Common.System\Xuesky.Common.Web\bin\Debug\netcoreapp3.1\nlog.config...
-2020-04-28 11:24:15.0653 Info Message Template Auto Format enabled
-2020-04-28 11:24:15.0653 Info Adding target FileTarget(Name=info-web)
-2020-04-28 11:24:15.0653 Info Adding target NullTarget(Name=blackhole)
-2020-04-28 11:24:15.0653 Info Adding target FileTarget(Name=error-web)
-2020-04-28 11:24:15.0653 Info Adding target NullTarget(Name=blackhole)
-2020-04-28 11:24:15.0653 Info Closing old configuration.
-2020-04-28 11:24:15.1215 Info Found 48 configuration items
-2020-04-28 11:36:18.9745 Info Message Template Auto Format enabled
-2020-04-28 11:36:19.0078 Info Adding target FileTarget(Name=info-web)
-2020-04-28 11:36:19.0078 Info Adding target NullTarget(Name=blackhole)
-2020-04-28 11:36:19.0095 Info Adding target FileTarget(Name=error-web)
-2020-04-28 11:36:19.0095 Info Adding target NullTarget(Name=blackhole)
-2020-04-28 11:36:19.0267 Info Found 48 configuration items
-2020-04-28 11:36:19.0720 Info Configuring from an XML element in D:\Dotnet\Xuesky.Common.System\Xuesky.Common.Web\bin\Debug\netcoreapp3.1\nlog.config...
-2020-04-28 11:36:19.0720 Info Message Template Auto Format enabled
-2020-04-28 11:36:19.0720 Info Adding target FileTarget(Name=info-web)
-2020-04-28 11:36:19.0720 Info Adding target NullTarget(Name=blackhole)
-2020-04-28 11:36:19.0720 Info Adding target FileTarget(Name=error-web)
-2020-04-28 11:36:19.0720 Info Adding target NullTarget(Name=blackhole)
-2020-04-28 11:36:19.0720 Info Closing old configuration.
-2020-04-28 11:36:19.0720 Info Found 48 configuration items
-2020-04-28 11:36:54.2453 Info AppDomain Shutting down. Logger closing...
-2020-04-28 11:36:54.2453 Info Logger has been shut down.
-2020-04-28 11:47:09.9301 Info Message Template Auto Format enabled
-2020-04-28 11:47:09.9766 Info Adding target FileTarget(Name=info-web)
-2020-04-28 11:47:09.9778 Info Adding target NullTarget(Name=blackhole)
-2020-04-28 11:47:09.9778 Info Adding target FileTarget(Name=error-web)
-2020-04-28 11:47:09.9778 Info Adding target NullTarget(Name=blackhole)
-2020-04-28 11:47:10.0015 Info Found 48 configuration items
-2020-04-28 11:47:10.3581 Info Configuring from an XML element in D:\Dotnet\Xuesky.Common.System\Xuesky.Common.Web\bin\Debug\netcoreapp3.1\nlog.config...
-2020-04-28 11:47:10.3581 Info Message Template Auto Format enabled
-2020-04-28 11:47:10.3581 Info Adding target FileTarget(Name=info-web)
-2020-04-28 11:47:10.3581 Info Adding target NullTarget(Name=blackhole)
-2020-04-28 11:47:10.3581 Info Adding target FileTarget(Name=error-web)
-2020-04-28 11:47:10.3581 Info Adding target NullTarget(Name=blackhole)
-2020-04-28 11:47:10.3581 Info Closing old configuration.
-2020-04-28 11:47:10.4045 Info Found 48 configuration items
-2020-04-28 12:05:17.3368 Info Message Template Auto Format enabled
-2020-04-28 12:05:17.3685 Info Adding target FileTarget(Name=info-web)
-2020-04-28 12:05:17.3685 Info Adding target NullTarget(Name=blackhole)
-2020-04-28 12:05:17.3685 Info Adding target FileTarget(Name=error-web)
-2020-04-28 12:05:17.3685 Info Adding target NullTarget(Name=blackhole)
-2020-04-28 12:05:17.3872 Info Found 48 configuration items
-2020-04-28 12:05:17.4287 Info Configuring from an XML element in D:\Dotnet\Xuesky.Common.System\Xuesky.Common.Web\bin\Debug\netcoreapp3.1\nlog.config...
-2020-04-28 12:05:17.4287 Info Message Template Auto Format enabled
-2020-04-28 12:05:17.4287 Info Adding target FileTarget(Name=info-web)
-2020-04-28 12:05:17.4304 Info Adding target NullTarget(Name=blackhole)
-2020-04-28 12:05:17.4304 Info Adding target FileTarget(Name=error-web)
-2020-04-28 12:05:17.4304 Info Adding target NullTarget(Name=blackhole)
-2020-04-28 12:05:17.4304 Info Closing old configuration.
-2020-04-28 12:05:17.4304 Info Found 48 configuration items
-2020-04-28 12:13:46.5474 Info AppDomain Shutting down. Logger closing...
-2020-04-28 12:13:46.5474 Info Logger has been shut down.
+2020-04-28 18:25:06.9473 Info Message Template Auto Format enabled
+2020-04-28 18:25:07.0185 Info Adding target FileTarget(Name=info-web)
+2020-04-28 18:25:07.0185 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 18:25:07.0185 Info Adding target FileTarget(Name=error-web)
+2020-04-28 18:25:07.0258 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 18:25:07.0510 Info Found 48 configuration items
+2020-04-28 18:25:07.3566 Info Configuring from an XML element in D:\Dotnet\Xuesky.Common.System\Xuesky.Common.Web\bin\Debug\netcoreapp3.1\nlog.config...
+2020-04-28 18:25:07.3566 Info Message Template Auto Format enabled
+2020-04-28 18:25:07.3566 Info Adding target FileTarget(Name=info-web)
+2020-04-28 18:25:07.3566 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 18:25:07.3566 Info Adding target FileTarget(Name=error-web)
+2020-04-28 18:25:07.3566 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 18:25:07.3566 Info Closing old configuration.
+2020-04-28 18:25:07.4117 Info Found 48 configuration items
+2020-04-28 18:26:01.5631 Info Message Template Auto Format enabled
+2020-04-28 18:26:01.6186 Info Adding target FileTarget(Name=info-web)
+2020-04-28 18:26:01.6186 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 18:26:01.6186 Info Adding target FileTarget(Name=error-web)
+2020-04-28 18:26:01.6186 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 18:26:01.6413 Info Found 48 configuration items
+2020-04-28 18:26:01.9185 Info Configuring from an XML element in D:\Dotnet\Xuesky.Common.System\Xuesky.Common.Web\bin\Debug\netcoreapp3.1\nlog.config...
+2020-04-28 18:26:01.9185 Info Message Template Auto Format enabled
+2020-04-28 18:26:01.9185 Info Adding target FileTarget(Name=info-web)
+2020-04-28 18:26:01.9185 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 18:26:01.9185 Info Adding target FileTarget(Name=error-web)
+2020-04-28 18:26:01.9185 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 18:26:01.9185 Info Closing old configuration.
+2020-04-28 18:26:01.9643 Info Found 48 configuration items
+2020-04-28 18:26:14.3373 Info AppDomain Shutting down. Logger closing...
+2020-04-28 18:26:14.3373 Info Logger has been shut down.
+2020-04-28 18:26:33.6569 Info Message Template Auto Format enabled
+2020-04-28 18:26:33.7396 Info Adding target FileTarget(Name=info-web)
+2020-04-28 18:26:33.7396 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 18:26:33.7396 Info Adding target FileTarget(Name=error-web)
+2020-04-28 18:26:33.7396 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 18:26:33.7631 Info Found 48 configuration items
+2020-04-28 18:26:34.0760 Info Configuring from an XML element in D:\Dotnet\Xuesky.Common.System\Xuesky.Common.Web\bin\Debug\netcoreapp3.1\nlog.config...
+2020-04-28 18:26:34.0760 Info Message Template Auto Format enabled
+2020-04-28 18:26:34.0760 Info Adding target FileTarget(Name=info-web)
+2020-04-28 18:26:34.0760 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 18:26:34.0760 Info Adding target FileTarget(Name=error-web)
+2020-04-28 18:26:34.0760 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 18:26:34.0760 Info Closing old configuration.
+2020-04-28 18:26:34.1494 Info Found 48 configuration items
+2020-04-28 18:26:51.2779 Info AppDomain Shutting down. Logger closing...
+2020-04-28 18:26:51.2779 Info Logger has been shut down.
+2020-04-28 18:27:12.6366 Info Message Template Auto Format enabled
+2020-04-28 18:27:12.7157 Info Adding target FileTarget(Name=info-web)
+2020-04-28 18:27:12.7157 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 18:27:12.7157 Info Adding target FileTarget(Name=error-web)
+2020-04-28 18:27:12.7157 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 18:27:12.7387 Info Found 48 configuration items
+2020-04-28 18:27:13.0122 Info Configuring from an XML element in D:\Dotnet\Xuesky.Common.System\Xuesky.Common.Web\bin\Debug\netcoreapp3.1\nlog.config...
+2020-04-28 18:27:13.0122 Info Message Template Auto Format enabled
+2020-04-28 18:27:13.0122 Info Adding target FileTarget(Name=info-web)
+2020-04-28 18:27:13.0122 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 18:27:13.0122 Info Adding target FileTarget(Name=error-web)
+2020-04-28 18:27:13.0122 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 18:27:13.0122 Info Closing old configuration.
+2020-04-28 18:27:13.0585 Info Found 48 configuration items
+2020-04-28 18:28:21.5514 Info Message Template Auto Format enabled
+2020-04-28 18:28:21.6263 Info Adding target FileTarget(Name=info-web)
+2020-04-28 18:28:21.6263 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 18:28:21.6263 Info Adding target FileTarget(Name=error-web)
+2020-04-28 18:28:21.6263 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 18:28:21.6486 Info Found 48 configuration items
+2020-04-28 18:28:21.9346 Info Configuring from an XML element in D:\Dotnet\Xuesky.Common.System\Xuesky.Common.Web\bin\Debug\netcoreapp3.1\nlog.config...
+2020-04-28 18:28:21.9346 Info Message Template Auto Format enabled
+2020-04-28 18:28:21.9346 Info Adding target FileTarget(Name=info-web)
+2020-04-28 18:28:21.9346 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 18:28:21.9346 Info Adding target FileTarget(Name=error-web)
+2020-04-28 18:28:21.9346 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 18:28:21.9346 Info Closing old configuration.
+2020-04-28 18:28:21.9797 Info Found 48 configuration items
+2020-04-28 18:28:28.4275 Info AppDomain Shutting down. Logger closing...
+2020-04-28 18:28:28.4372 Info Logger has been shut down.
+2020-04-28 18:30:00.7066 Info Message Template Auto Format enabled
+2020-04-28 18:30:00.7821 Info Adding target FileTarget(Name=info-web)
+2020-04-28 18:30:00.7821 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 18:30:00.7821 Info Adding target FileTarget(Name=error-web)
+2020-04-28 18:30:00.7821 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 18:30:00.8060 Info Found 48 configuration items
+2020-04-28 18:30:01.0821 Info Configuring from an XML element in D:\Dotnet\Xuesky.Common.System\Xuesky.Common.Web\bin\Release\netcoreapp3.1\nlog.config...
+2020-04-28 18:30:01.0821 Info Message Template Auto Format enabled
+2020-04-28 18:30:01.0821 Info Adding target FileTarget(Name=info-web)
+2020-04-28 18:30:01.0821 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 18:30:01.0821 Info Adding target FileTarget(Name=error-web)
+2020-04-28 18:30:01.0821 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 18:30:01.0821 Info Closing old configuration.
+2020-04-28 18:30:01.1217 Info Found 48 configuration items
+2020-04-28 18:30:18.1861 Info AppDomain Shutting down. Logger closing...
+2020-04-28 18:30:18.1861 Info Logger has been shut down.
+2020-04-28 18:32:35.2844 Info Message Template Auto Format enabled
+2020-04-28 18:32:35.3412 Info Adding target FileTarget(Name=info-web)
+2020-04-28 18:32:35.3412 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 18:32:35.3412 Info Adding target FileTarget(Name=error-web)
+2020-04-28 18:32:35.3412 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 18:32:35.3620 Info Found 48 configuration items
+2020-04-28 18:32:35.6300 Info Configuring from an XML element in D:\Dotnet\Xuesky.Common.System\Xuesky.Common.Web\bin\Release\netcoreapp3.1\nlog.config...
+2020-04-28 18:32:35.6300 Info Message Template Auto Format enabled
+2020-04-28 18:32:35.6300 Info Adding target FileTarget(Name=info-web)
+2020-04-28 18:32:35.6300 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 18:32:35.6300 Info Adding target FileTarget(Name=error-web)
+2020-04-28 18:32:35.6300 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 18:32:35.6345 Info Closing old configuration.
+2020-04-28 18:32:35.6831 Info Found 48 configuration items
+2020-04-28 18:32:53.8145 Info AppDomain Shutting down. Logger closing...
+2020-04-28 18:32:53.8145 Info Logger has been shut down.
+2020-04-28 18:35:59.7105 Info Message Template Auto Format enabled
+2020-04-28 18:35:59.7748 Info Adding target FileTarget(Name=info-web)
+2020-04-28 18:35:59.7748 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 18:35:59.7748 Info Adding target FileTarget(Name=error-web)
+2020-04-28 18:35:59.7748 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 18:35:59.7968 Info Found 48 configuration items
+2020-04-28 18:36:00.0684 Info Configuring from an XML element in D:\Dotnet\Xuesky.Common.System\Xuesky.Common.Web\bin\Release\netcoreapp3.1\nlog.config...
+2020-04-28 18:36:00.0684 Info Message Template Auto Format enabled
+2020-04-28 18:36:00.0684 Info Adding target FileTarget(Name=info-web)
+2020-04-28 18:36:00.0684 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 18:36:00.0711 Info Adding target FileTarget(Name=error-web)
+2020-04-28 18:36:00.0711 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 18:36:00.0711 Info Closing old configuration.
+2020-04-28 18:36:00.1250 Info Found 48 configuration items
+2020-04-28 18:40:32.9985 Info AppDomain Shutting down. Logger closing...
+2020-04-28 18:40:32.9985 Info Logger has been shut down.
+2020-04-28 18:40:56.0402 Info Message Template Auto Format enabled
+2020-04-28 18:40:56.1266 Info Adding target FileTarget(Name=info-web)
+2020-04-28 18:40:56.1266 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 18:40:56.1266 Info Adding target FileTarget(Name=error-web)
+2020-04-28 18:40:56.1266 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 18:40:56.1483 Info Found 48 configuration items
+2020-04-28 18:40:56.4147 Info Configuring from an XML element in D:\Dotnet\Xuesky.Common.System\Xuesky.Common.Web\bin\Release\netcoreapp3.1\nlog.config...
+2020-04-28 18:40:56.4147 Info Message Template Auto Format enabled
+2020-04-28 18:40:56.4147 Info Adding target FileTarget(Name=info-web)
+2020-04-28 18:40:56.4147 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 18:40:56.4147 Info Adding target FileTarget(Name=error-web)
+2020-04-28 18:40:56.4147 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 18:40:56.4147 Info Closing old configuration.
+2020-04-28 18:40:56.4667 Info Found 48 configuration items
+2020-04-28 18:42:48.9181 Info Message Template Auto Format enabled
+2020-04-28 18:42:48.9853 Info Adding target FileTarget(Name=info-web)
+2020-04-28 18:42:48.9853 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 18:42:48.9853 Info Adding target FileTarget(Name=error-web)
+2020-04-28 18:42:48.9853 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 18:42:49.0071 Info Found 48 configuration items
+2020-04-28 18:42:49.2859 Info Configuring from an XML element in D:\Dotnet\Xuesky.Common.System\Xuesky.Common.Web\bin\Release\netcoreapp3.1\nlog.config...
+2020-04-28 18:42:49.2859 Info Message Template Auto Format enabled
+2020-04-28 18:42:49.2859 Info Adding target FileTarget(Name=info-web)
+2020-04-28 18:42:49.2859 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 18:42:49.2859 Info Adding target FileTarget(Name=error-web)
+2020-04-28 18:42:49.2859 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 18:42:49.2901 Info Closing old configuration.
+2020-04-28 18:42:49.3382 Info Found 48 configuration items
+2020-04-28 18:43:17.9641 Info Message Template Auto Format enabled
+2020-04-28 18:43:18.0291 Info Adding target FileTarget(Name=info-web)
+2020-04-28 18:43:18.0291 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 18:43:18.0291 Info Adding target FileTarget(Name=error-web)
+2020-04-28 18:43:18.0291 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 18:43:18.0642 Info Found 48 configuration items
+2020-04-28 19:57:24.0807 Info Message Template Auto Format enabled
+2020-04-28 19:57:24.1602 Info Adding target FileTarget(Name=info-web)
+2020-04-28 19:57:24.1602 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 19:57:24.1602 Info Adding target FileTarget(Name=error-web)
+2020-04-28 19:57:24.1602 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 19:57:24.1824 Info Found 48 configuration items
+2020-04-28 20:04:06.9751 Info Message Template Auto Format enabled
+2020-04-28 20:04:07.0564 Info Adding target FileTarget(Name=info-web)
+2020-04-28 20:04:07.0564 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 20:04:07.0564 Info Adding target FileTarget(Name=error-web)
+2020-04-28 20:04:07.0564 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 20:04:07.0771 Info Found 48 configuration items
+2020-04-28 20:30:31.3384 Info Message Template Auto Format enabled
+2020-04-28 20:30:31.4112 Info Adding target FileTarget(Name=info-web)
+2020-04-28 20:30:31.4112 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 20:30:31.4112 Info Adding target FileTarget(Name=error-web)
+2020-04-28 20:30:31.4112 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 20:30:31.4334 Info Found 48 configuration items
+2020-04-28 20:30:31.7012 Info Configuring from an XML element in D:\Dotnet\Xuesky.Common.System\Xuesky.Common.Web\bin\Release\netcoreapp3.1\nlog.config...
+2020-04-28 20:30:31.7012 Info Message Template Auto Format enabled
+2020-04-28 20:30:31.7012 Info Adding target FileTarget(Name=info-web)
+2020-04-28 20:30:31.7012 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 20:30:31.7012 Info Adding target FileTarget(Name=error-web)
+2020-04-28 20:30:31.7012 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 20:30:31.7012 Info Closing old configuration.
+2020-04-28 20:30:31.7472 Info Found 48 configuration items
+2020-04-28 20:30:41.0459 Info AppDomain Shutting down. Logger closing...
+2020-04-28 20:30:41.0618 Info Logger has been shut down.
+2020-04-28 20:31:30.7874 Info Message Template Auto Format enabled
+2020-04-28 20:31:30.8536 Info Adding target FileTarget(Name=info-web)
+2020-04-28 20:31:30.8536 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 20:31:30.8536 Info Adding target FileTarget(Name=error-web)
+2020-04-28 20:31:30.8536 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 20:31:30.8744 Info Found 48 configuration items
+2020-04-28 20:31:31.1431 Info Configuring from an XML element in D:\Dotnet\Xuesky.Common.System\Xuesky.Common.Web\bin\Release\netcoreapp3.1\nlog.config...
+2020-04-28 20:31:31.1431 Info Message Template Auto Format enabled
+2020-04-28 20:31:31.1431 Info Adding target FileTarget(Name=info-web)
+2020-04-28 20:31:31.1431 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 20:31:31.1431 Info Adding target FileTarget(Name=error-web)
+2020-04-28 20:31:31.1431 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 20:31:31.1431 Info Closing old configuration.
+2020-04-28 20:31:31.1881 Info Found 48 configuration items
+2020-04-28 20:31:36.5506 Info AppDomain Shutting down. Logger closing...
+2020-04-28 20:31:36.5506 Info Logger has been shut down.
+2020-04-28 20:31:46.3889 Info Message Template Auto Format enabled
+2020-04-28 20:31:46.4622 Info Adding target FileTarget(Name=info-web)
+2020-04-28 20:31:46.4622 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 20:31:46.4622 Info Adding target FileTarget(Name=error-web)
+2020-04-28 20:31:46.4622 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 20:31:46.4836 Info Found 48 configuration items
+2020-04-28 20:31:46.8153 Info Configuring from an XML element in D:\Dotnet\Xuesky.Common.System\Xuesky.Common.Web\bin\Debug\netcoreapp3.1\nlog.config...
+2020-04-28 20:31:46.8153 Info Message Template Auto Format enabled
+2020-04-28 20:31:46.8153 Info Adding target FileTarget(Name=info-web)
+2020-04-28 20:31:46.8153 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 20:31:46.8153 Info Adding target FileTarget(Name=error-web)
+2020-04-28 20:31:46.8153 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 20:31:46.8153 Info Closing old configuration.
+2020-04-28 20:31:46.8536 Info Found 48 configuration items
+2020-04-28 20:32:04.7727 Info Message Template Auto Format enabled
+2020-04-28 20:32:04.8330 Info Adding target FileTarget(Name=info-web)
+2020-04-28 20:32:04.8330 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 20:32:04.8330 Info Adding target FileTarget(Name=error-web)
+2020-04-28 20:32:04.8330 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 20:32:04.8529 Info Found 48 configuration items
+2020-04-28 20:32:05.1239 Info Configuring from an XML element in D:\Dotnet\Xuesky.Common.System\Xuesky.Common.Web\bin\Debug\netcoreapp3.1\nlog.config...
+2020-04-28 20:32:05.1239 Info Message Template Auto Format enabled
+2020-04-28 20:32:05.1239 Info Adding target FileTarget(Name=info-web)
+2020-04-28 20:32:05.1239 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 20:32:05.1239 Info Adding target FileTarget(Name=error-web)
+2020-04-28 20:32:05.1239 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 20:32:05.1239 Info Closing old configuration.
+2020-04-28 20:32:05.1694 Info Found 48 configuration items
+2020-04-28 20:33:04.0046 Info Message Template Auto Format enabled
+2020-04-28 20:33:04.0801 Info Adding target FileTarget(Name=info-web)
+2020-04-28 20:33:04.0801 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 20:33:04.0801 Info Adding target FileTarget(Name=error-web)
+2020-04-28 20:33:04.0801 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 20:33:04.1023 Info Found 48 configuration items
+2020-04-28 20:33:04.3674 Info Configuring from an XML element in D:\Dotnet\Xuesky.Common.System\Xuesky.Common.Web\bin\Debug\netcoreapp3.1\nlog.config...
+2020-04-28 20:33:04.3674 Info Message Template Auto Format enabled
+2020-04-28 20:33:04.3688 Info Adding target FileTarget(Name=info-web)
+2020-04-28 20:33:04.3688 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 20:33:04.3688 Info Adding target FileTarget(Name=error-web)
+2020-04-28 20:33:04.3688 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 20:33:04.3688 Info Closing old configuration.
+2020-04-28 20:33:04.4148 Info Found 48 configuration items
+2020-04-28 20:33:57.0563 Info Message Template Auto Format enabled
+2020-04-28 20:33:57.1272 Info Adding target FileTarget(Name=info-web)
+2020-04-28 20:33:57.1272 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 20:33:57.1272 Info Adding target FileTarget(Name=error-web)
+2020-04-28 20:33:57.1272 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 20:33:57.1480 Info Found 48 configuration items
+2020-04-28 20:33:57.4136 Info Configuring from an XML element in D:\Dotnet\Xuesky.Common.System\Xuesky.Common.Web\bin\Debug\netcoreapp3.1\nlog.config...
+2020-04-28 20:33:57.4136 Info Message Template Auto Format enabled
+2020-04-28 20:33:57.4152 Info Adding target FileTarget(Name=info-web)
+2020-04-28 20:33:57.4152 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 20:33:57.4152 Info Adding target FileTarget(Name=error-web)
+2020-04-28 20:33:57.4152 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 20:33:57.4152 Info Closing old configuration.
+2020-04-28 20:33:57.4601 Info Found 48 configuration items
+2020-04-28 20:34:50.7896 Info Message Template Auto Format enabled
+2020-04-28 20:34:50.8489 Info Adding target FileTarget(Name=info-web)
+2020-04-28 20:34:50.8489 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 20:34:50.8489 Info Adding target FileTarget(Name=error-web)
+2020-04-28 20:34:50.8489 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 20:34:50.8710 Info Found 48 configuration items
+2020-04-28 20:34:51.1512 Info Configuring from an XML element in D:\Dotnet\Xuesky.Common.System\Xuesky.Common.Web\bin\Debug\netcoreapp3.1\nlog.config...
+2020-04-28 20:34:51.1512 Info Message Template Auto Format enabled
+2020-04-28 20:34:51.1512 Info Adding target FileTarget(Name=info-web)
+2020-04-28 20:34:51.1512 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 20:34:51.1512 Info Adding target FileTarget(Name=error-web)
+2020-04-28 20:34:51.1512 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 20:34:51.1512 Info Closing old configuration.
+2020-04-28 20:34:51.2011 Info Found 48 configuration items
+2020-04-28 20:35:14.9127 Info AppDomain Shutting down. Logger closing...
+2020-04-28 20:35:14.9294 Info Logger has been shut down.
+2020-04-28 20:38:44.9989 Info Message Template Auto Format enabled
+2020-04-28 20:38:45.0767 Info Adding target FileTarget(Name=info-web)
+2020-04-28 20:38:45.0767 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 20:38:45.0767 Info Adding target FileTarget(Name=error-web)
+2020-04-28 20:38:45.0767 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 20:38:45.1131 Info Found 48 configuration items
+2020-04-28 20:38:45.3897 Info Configuring from an XML element in D:\Dotnet\Xuesky.Common.System\Xuesky.Common.Web\bin\Debug\netcoreapp3.1\nlog.config...
+2020-04-28 20:38:45.3897 Info Message Template Auto Format enabled
+2020-04-28 20:38:45.3897 Info Adding target FileTarget(Name=info-web)
+2020-04-28 20:38:45.3897 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 20:38:45.3897 Info Adding target FileTarget(Name=error-web)
+2020-04-28 20:38:45.3897 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 20:38:45.3897 Info Closing old configuration.
+2020-04-28 20:38:45.4497 Info Found 48 configuration items
+2020-04-28 20:39:29.4320 Info Message Template Auto Format enabled
+2020-04-28 20:39:29.4970 Info Adding target FileTarget(Name=info-web)
+2020-04-28 20:39:29.4970 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 20:39:29.4970 Info Adding target FileTarget(Name=error-web)
+2020-04-28 20:39:29.4970 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 20:39:29.5185 Info Found 48 configuration items
+2020-04-28 20:39:29.7983 Info Configuring from an XML element in D:\Dotnet\Xuesky.Common.System\Xuesky.Common.Web\bin\Debug\netcoreapp3.1\nlog.config...
+2020-04-28 20:39:29.7983 Info Message Template Auto Format enabled
+2020-04-28 20:39:29.7983 Info Adding target FileTarget(Name=info-web)
+2020-04-28 20:39:29.7983 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 20:39:29.7983 Info Adding target FileTarget(Name=error-web)
+2020-04-28 20:39:29.7983 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 20:39:29.7983 Info Closing old configuration.
+2020-04-28 20:39:29.8533 Info Found 48 configuration items
+2020-04-28 20:40:16.6584 Info AppDomain Shutting down. Logger closing...
+2020-04-28 20:40:16.6680 Info Logger has been shut down.
+2020-04-28 20:40:49.1282 Info Message Template Auto Format enabled
+2020-04-28 20:40:49.1906 Info Adding target FileTarget(Name=info-web)
+2020-04-28 20:40:49.1906 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 20:40:49.1906 Info Adding target FileTarget(Name=error-web)
+2020-04-28 20:40:49.1906 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 20:40:49.2136 Info Found 48 configuration items
+2020-04-28 20:40:49.4882 Info Configuring from an XML element in D:\Dotnet\Xuesky.Common.System\Xuesky.Common.Web\bin\Debug\netcoreapp3.1\nlog.config...
+2020-04-28 20:40:49.4882 Info Message Template Auto Format enabled
+2020-04-28 20:40:49.4882 Info Adding target FileTarget(Name=info-web)
+2020-04-28 20:40:49.4882 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 20:40:49.4882 Info Adding target FileTarget(Name=error-web)
+2020-04-28 20:40:49.4882 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 20:40:49.4882 Info Closing old configuration.
+2020-04-28 20:40:49.5415 Info Found 48 configuration items
+2020-04-28 20:51:16.8383 Info Message Template Auto Format enabled
+2020-04-28 20:51:16.9076 Info Adding target FileTarget(Name=info-web)
+2020-04-28 20:51:16.9076 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 20:51:16.9076 Info Adding target FileTarget(Name=error-web)
+2020-04-28 20:51:16.9076 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 20:51:16.9317 Info Found 48 configuration items
+2020-04-28 20:51:17.2079 Info Configuring from an XML element in D:\Dotnet\Xuesky.Common.System\Xuesky.Common.Web\bin\Debug\netcoreapp3.1\nlog.config...
+2020-04-28 20:51:17.2079 Info Message Template Auto Format enabled
+2020-04-28 20:51:17.2079 Info Adding target FileTarget(Name=info-web)
+2020-04-28 20:51:17.2079 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 20:51:17.2079 Info Adding target FileTarget(Name=error-web)
+2020-04-28 20:51:17.2115 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 20:51:17.2115 Info Closing old configuration.
+2020-04-28 20:51:17.2564 Info Found 48 configuration items
+2020-04-28 20:53:55.5346 Info Message Template Auto Format enabled
+2020-04-28 20:53:55.5928 Info Adding target FileTarget(Name=info-web)
+2020-04-28 20:53:55.5928 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 20:53:55.5928 Info Adding target FileTarget(Name=error-web)
+2020-04-28 20:53:55.5928 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 20:53:55.6147 Info Found 48 configuration items
+2020-04-28 20:53:55.8804 Info Configuring from an XML element in D:\Dotnet\Xuesky.Common.System\Xuesky.Common.Web\bin\Debug\netcoreapp3.1\nlog.config...
+2020-04-28 20:53:55.8804 Info Message Template Auto Format enabled
+2020-04-28 20:53:55.8804 Info Adding target FileTarget(Name=info-web)
+2020-04-28 20:53:55.8804 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 20:53:55.8833 Info Adding target FileTarget(Name=error-web)
+2020-04-28 20:53:55.8833 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 20:53:55.8833 Info Closing old configuration.
+2020-04-28 20:53:55.9276 Info Found 48 configuration items
+2020-04-28 20:54:27.2477 Info Message Template Auto Format enabled
+2020-04-28 20:54:27.3270 Info Adding target FileTarget(Name=info-web)
+2020-04-28 20:54:27.3270 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 20:54:27.3270 Info Adding target FileTarget(Name=error-web)
+2020-04-28 20:54:27.3270 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 20:54:27.3586 Info Found 48 configuration items
+2020-04-28 20:54:27.6477 Info Configuring from an XML element in D:\Dotnet\Xuesky.Common.System\Xuesky.Common.Web\bin\Release\netcoreapp3.1\nlog.config...
+2020-04-28 20:54:27.6477 Info Message Template Auto Format enabled
+2020-04-28 20:54:27.6477 Info Adding target FileTarget(Name=info-web)
+2020-04-28 20:54:27.6498 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 20:54:27.6498 Info Adding target FileTarget(Name=error-web)
+2020-04-28 20:54:27.6498 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 20:54:27.6498 Info Closing old configuration.
+2020-04-28 20:54:27.6999 Info Found 48 configuration items
+2020-04-28 21:02:56.1563 Info Message Template Auto Format enabled
+2020-04-28 21:02:56.2192 Info Adding target FileTarget(Name=info-web)
+2020-04-28 21:02:56.2192 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 21:02:56.2192 Info Adding target FileTarget(Name=error-web)
+2020-04-28 21:02:56.2192 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 21:02:56.2423 Info Found 48 configuration items
+2020-04-28 21:02:56.5103 Info Configuring from an XML element in D:\Dotnet\Xuesky.Common.System\Xuesky.Common.Web\bin\Release\netcoreapp3.1\nlog.config...
+2020-04-28 21:02:56.5103 Info Message Template Auto Format enabled
+2020-04-28 21:02:56.5103 Info Adding target FileTarget(Name=info-web)
+2020-04-28 21:02:56.5103 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 21:02:56.5103 Info Adding target FileTarget(Name=error-web)
+2020-04-28 21:02:56.5103 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 21:02:56.5103 Info Closing old configuration.
+2020-04-28 21:02:56.5576 Info Found 48 configuration items
+2020-04-28 21:03:59.5794 Info Message Template Auto Format enabled
+2020-04-28 21:03:59.6359 Info Adding target FileTarget(Name=info-web)
+2020-04-28 21:03:59.6359 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 21:03:59.6359 Info Adding target FileTarget(Name=error-web)
+2020-04-28 21:03:59.6359 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 21:03:59.6568 Info Found 48 configuration items
+2020-04-28 21:03:59.9280 Info Configuring from an XML element in D:\Dotnet\Xuesky.Common.System\Xuesky.Common.Web\bin\Release\netcoreapp3.1\nlog.config...
+2020-04-28 21:03:59.9280 Info Message Template Auto Format enabled
+2020-04-28 21:03:59.9280 Info Adding target FileTarget(Name=info-web)
+2020-04-28 21:03:59.9280 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 21:03:59.9280 Info Adding target FileTarget(Name=error-web)
+2020-04-28 21:03:59.9315 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 21:03:59.9315 Info Closing old configuration.
+2020-04-28 21:03:59.9719 Info Found 48 configuration items
+2020-04-28 21:09:01.1264 Info Message Template Auto Format enabled
+2020-04-28 21:09:01.2038 Info Adding target FileTarget(Name=info-web)
+2020-04-28 21:09:01.2038 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 21:09:01.2038 Info Adding target FileTarget(Name=error-web)
+2020-04-28 21:09:01.2038 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 21:09:01.2395 Info Found 48 configuration items
+2020-04-28 21:09:01.5096 Info Configuring from an XML element in D:\Dotnet\Xuesky.Common.System\Xuesky.Common.Web\bin\Release\netcoreapp3.1\nlog.config...
+2020-04-28 21:09:01.5096 Info Message Template Auto Format enabled
+2020-04-28 21:09:01.5096 Info Adding target FileTarget(Name=info-web)
+2020-04-28 21:09:01.5096 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 21:09:01.5096 Info Adding target FileTarget(Name=error-web)
+2020-04-28 21:09:01.5096 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 21:09:01.5096 Info Closing old configuration.
+2020-04-28 21:09:01.5579 Info Found 48 configuration items
+2020-04-28 21:10:11.7857 Info Message Template Auto Format enabled
+2020-04-28 21:10:11.8523 Info Adding target FileTarget(Name=info-web)
+2020-04-28 21:10:11.8537 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 21:10:11.8537 Info Adding target FileTarget(Name=error-web)
+2020-04-28 21:10:11.8537 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 21:10:11.8777 Info Found 48 configuration items
+2020-04-28 21:10:12.1721 Info Configuring from an XML element in D:\Dotnet\Xuesky.Common.System\Xuesky.Common.Web\bin\Release\netcoreapp3.1\nlog.config...
+2020-04-28 21:10:12.1721 Info Message Template Auto Format enabled
+2020-04-28 21:10:12.1721 Info Adding target FileTarget(Name=info-web)
+2020-04-28 21:10:12.1721 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 21:10:12.1721 Info Adding target FileTarget(Name=error-web)
+2020-04-28 21:10:12.1721 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 21:10:12.1721 Info Closing old configuration.
+2020-04-28 21:10:12.2145 Info Found 48 configuration items
+2020-04-28 21:10:40.7673 Info Message Template Auto Format enabled
+2020-04-28 21:10:40.8467 Info Adding target FileTarget(Name=info-web)
+2020-04-28 21:10:40.8467 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 21:10:40.8467 Info Adding target FileTarget(Name=error-web)
+2020-04-28 21:10:40.8467 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 21:10:40.8683 Info Found 48 configuration items
+2020-04-28 21:10:41.1413 Info Configuring from an XML element in D:\Dotnet\Xuesky.Common.System\Xuesky.Common.Web\bin\Release\netcoreapp3.1\nlog.config...
+2020-04-28 21:10:41.1413 Info Message Template Auto Format enabled
+2020-04-28 21:10:41.1413 Info Adding target FileTarget(Name=info-web)
+2020-04-28 21:10:41.1413 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 21:10:41.1413 Info Adding target FileTarget(Name=error-web)
+2020-04-28 21:10:41.1413 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 21:10:41.1413 Info Closing old configuration.
+2020-04-28 21:10:41.1916 Info Found 48 configuration items
+2020-04-28 21:12:20.6575 Info Message Template Auto Format enabled
+2020-04-28 21:12:20.7151 Info Adding target FileTarget(Name=info-web)
+2020-04-28 21:12:20.7151 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 21:12:20.7151 Info Adding target FileTarget(Name=error-web)
+2020-04-28 21:12:20.7151 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 21:12:20.7359 Info Found 48 configuration items
+2020-04-28 21:12:21.0099 Info Configuring from an XML element in D:\Dotnet\Xuesky.Common.System\Xuesky.Common.Web\bin\Release\netcoreapp3.1\nlog.config...
+2020-04-28 21:12:21.0099 Info Message Template Auto Format enabled
+2020-04-28 21:12:21.0099 Info Adding target FileTarget(Name=info-web)
+2020-04-28 21:12:21.0099 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 21:12:21.0099 Info Adding target FileTarget(Name=error-web)
+2020-04-28 21:12:21.0099 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 21:12:21.0099 Info Closing old configuration.
+2020-04-28 21:12:21.0566 Info Found 48 configuration items
+2020-04-28 21:13:01.2906 Info Message Template Auto Format enabled
+2020-04-28 21:13:01.3790 Info Adding target FileTarget(Name=info-web)
+2020-04-28 21:13:01.3790 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 21:13:01.3790 Info Adding target FileTarget(Name=error-web)
+2020-04-28 21:13:01.3790 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 21:13:01.4021 Info Found 48 configuration items
+2020-04-28 21:13:01.6969 Info Configuring from an XML element in D:\Dotnet\Xuesky.Common.System\Xuesky.Common.Web\bin\Debug\netcoreapp3.1\nlog.config...
+2020-04-28 21:13:01.6969 Info Message Template Auto Format enabled
+2020-04-28 21:13:01.6969 Info Adding target FileTarget(Name=info-web)
+2020-04-28 21:13:01.6969 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 21:13:01.6969 Info Adding target FileTarget(Name=error-web)
+2020-04-28 21:13:01.6969 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 21:13:01.6969 Info Closing old configuration.
+2020-04-28 21:13:01.7516 Info Found 48 configuration items
+2020-04-28 21:25:50.3422 Info Message Template Auto Format enabled
+2020-04-28 21:25:50.4000 Info Adding target FileTarget(Name=info-web)
+2020-04-28 21:25:50.4000 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 21:25:50.4000 Info Adding target FileTarget(Name=error-web)
+2020-04-28 21:25:50.4000 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 21:25:50.4217 Info Found 48 configuration items
+2020-04-28 21:25:50.7024 Info Configuring from an XML element in D:\Dotnet\Xuesky.Common.System\Xuesky.Common.Web\bin\Debug\netcoreapp3.1\nlog.config...
+2020-04-28 21:25:50.7024 Info Message Template Auto Format enabled
+2020-04-28 21:25:50.7024 Info Adding target FileTarget(Name=info-web)
+2020-04-28 21:25:50.7024 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 21:25:50.7024 Info Adding target FileTarget(Name=error-web)
+2020-04-28 21:25:50.7024 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 21:25:50.7024 Info Closing old configuration.
+2020-04-28 21:25:50.7466 Info Found 48 configuration items
+2020-04-28 21:28:20.8203 Info Message Template Auto Format enabled
+2020-04-28 21:28:20.8929 Info Adding target FileTarget(Name=info-web)
+2020-04-28 21:28:20.8929 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 21:28:20.8929 Info Adding target FileTarget(Name=error-web)
+2020-04-28 21:28:20.8929 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 21:28:20.9136 Info Found 48 configuration items
+2020-04-28 21:28:21.1974 Info Configuring from an XML element in D:\Dotnet\Xuesky.Common.System\Xuesky.Common.Web\bin\Debug\netcoreapp3.1\nlog.config...
+2020-04-28 21:28:21.1974 Info Message Template Auto Format enabled
+2020-04-28 21:28:21.1974 Info Adding target FileTarget(Name=info-web)
+2020-04-28 21:28:21.1974 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 21:28:21.1974 Info Adding target FileTarget(Name=error-web)
+2020-04-28 21:28:21.1974 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 21:28:21.1974 Info Closing old configuration.
+2020-04-28 21:28:21.2461 Info Found 48 configuration items
+2020-04-28 21:30:36.3463 Info Message Template Auto Format enabled
+2020-04-28 21:30:36.4116 Info Adding target FileTarget(Name=info-web)
+2020-04-28 21:30:36.4116 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 21:30:36.4116 Info Adding target FileTarget(Name=error-web)
+2020-04-28 21:30:36.4148 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 21:30:36.4390 Info Found 48 configuration items
+2020-04-28 21:30:36.7213 Info Configuring from an XML element in D:\Dotnet\Xuesky.Common.System\Xuesky.Common.Web\bin\Debug\netcoreapp3.1\nlog.config...
+2020-04-28 21:30:36.7213 Info Message Template Auto Format enabled
+2020-04-28 21:30:36.7213 Info Adding target FileTarget(Name=info-web)
+2020-04-28 21:30:36.7213 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 21:30:36.7213 Info Adding target FileTarget(Name=error-web)
+2020-04-28 21:30:36.7213 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 21:30:36.7213 Info Closing old configuration.
+2020-04-28 21:30:36.7663 Info Found 48 configuration items
+2020-04-28 21:31:12.4207 Info AppDomain Shutting down. Logger closing...
+2020-04-28 21:31:12.4207 Info Logger has been shut down.
+2020-04-28 21:38:59.5587 Info Message Template Auto Format enabled
+2020-04-28 21:38:59.6588 Info Adding target FileTarget(Name=info-web)
+2020-04-28 21:38:59.6588 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 21:38:59.6588 Info Adding target FileTarget(Name=error-web)
+2020-04-28 21:38:59.6588 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 21:38:59.6842 Info Found 48 configuration items
+2020-04-28 21:38:59.9665 Info Configuring from an XML element in D:\Dotnet\Xuesky.Common.System\Xuesky.Common.Web\bin\Debug\netcoreapp3.1\nlog.config...
+2020-04-28 21:38:59.9665 Info Message Template Auto Format enabled
+2020-04-28 21:38:59.9665 Info Adding target FileTarget(Name=info-web)
+2020-04-28 21:38:59.9665 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 21:38:59.9665 Info Adding target FileTarget(Name=error-web)
+2020-04-28 21:38:59.9665 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 21:38:59.9665 Info Closing old configuration.
+2020-04-28 21:39:00.0341 Info Found 48 configuration items
+2020-04-28 21:40:21.2203 Info Message Template Auto Format enabled
+2020-04-28 21:40:21.3063 Info Adding target FileTarget(Name=info-web)
+2020-04-28 21:40:21.3063 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 21:40:21.3063 Info Adding target FileTarget(Name=error-web)
+2020-04-28 21:40:21.3063 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 21:40:21.3337 Info Found 48 configuration items
+2020-04-28 21:40:21.6412 Info Configuring from an XML element in D:\Dotnet\Xuesky.Common.System\Xuesky.Common.Web\bin\Debug\netcoreapp3.1\nlog.config...
+2020-04-28 21:40:21.6412 Info Message Template Auto Format enabled
+2020-04-28 21:40:21.6412 Info Adding target FileTarget(Name=info-web)
+2020-04-28 21:40:21.6412 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 21:40:21.6412 Info Adding target FileTarget(Name=error-web)
+2020-04-28 21:40:21.6412 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 21:40:21.6412 Info Closing old configuration.
+2020-04-28 21:40:21.6897 Info Found 48 configuration items
+2020-04-28 21:40:58.3663 Info Message Template Auto Format enabled
+2020-04-28 21:40:58.4464 Info Adding target FileTarget(Name=info-web)
+2020-04-28 21:40:58.4464 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 21:40:58.4464 Info Adding target FileTarget(Name=error-web)
+2020-04-28 21:40:58.4464 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 21:40:58.4715 Info Found 48 configuration items
+2020-04-28 21:40:58.7631 Info Configuring from an XML element in D:\Dotnet\Xuesky.Common.System\Xuesky.Common.Web\bin\Debug\netcoreapp3.1\nlog.config...
+2020-04-28 21:40:58.7631 Info Message Template Auto Format enabled
+2020-04-28 21:40:58.7631 Info Adding target FileTarget(Name=info-web)
+2020-04-28 21:40:58.7631 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 21:40:58.7631 Info Adding target FileTarget(Name=error-web)
+2020-04-28 21:40:58.7631 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 21:40:58.7631 Info Closing old configuration.
+2020-04-28 21:40:58.8182 Info Found 48 configuration items
+2020-04-28 21:41:47.4029 Info Message Template Auto Format enabled
+2020-04-28 21:41:47.4755 Info Adding target FileTarget(Name=info-web)
+2020-04-28 21:41:47.4755 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 21:41:47.4779 Info Adding target FileTarget(Name=error-web)
+2020-04-28 21:41:47.4779 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 21:41:47.5015 Info Found 48 configuration items
+2020-04-28 21:41:47.7977 Info Configuring from an XML element in D:\Dotnet\Xuesky.Common.System\Xuesky.Common.Web\bin\Debug\netcoreapp3.1\nlog.config...
+2020-04-28 21:41:47.7977 Info Message Template Auto Format enabled
+2020-04-28 21:41:47.7977 Info Adding target FileTarget(Name=info-web)
+2020-04-28 21:41:47.7977 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 21:41:47.8058 Info Adding target FileTarget(Name=error-web)
+2020-04-28 21:41:47.8058 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 21:41:47.8058 Info Closing old configuration.
+2020-04-28 21:41:47.8550 Info Found 48 configuration items
+2020-04-28 21:43:10.6906 Info Message Template Auto Format enabled
+2020-04-28 21:43:10.7480 Info Adding target FileTarget(Name=info-web)
+2020-04-28 21:43:10.7480 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 21:43:10.7480 Info Adding target FileTarget(Name=error-web)
+2020-04-28 21:43:10.7480 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 21:43:10.7690 Info Found 48 configuration items
+2020-04-28 21:43:11.0549 Info Configuring from an XML element in D:\Dotnet\Xuesky.Common.System\Xuesky.Common.Web\bin\Debug\netcoreapp3.1\nlog.config...
+2020-04-28 21:43:11.0556 Info Message Template Auto Format enabled
+2020-04-28 21:43:11.0556 Info Adding target FileTarget(Name=info-web)
+2020-04-28 21:43:11.0556 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 21:43:11.0556 Info Adding target FileTarget(Name=error-web)
+2020-04-28 21:43:11.0556 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 21:43:11.0556 Info Closing old configuration.
+2020-04-28 21:43:11.1077 Info Found 48 configuration items
+2020-04-28 21:45:30.3976 Info Message Template Auto Format enabled
+2020-04-28 21:45:30.4605 Info Adding target FileTarget(Name=info-web)
+2020-04-28 21:45:30.4605 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 21:45:30.4623 Info Adding target FileTarget(Name=error-web)
+2020-04-28 21:45:30.4623 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 21:45:30.4820 Info Found 48 configuration items
+2020-04-28 21:45:30.7664 Info Configuring from an XML element in D:\Dotnet\Xuesky.Common.System\Xuesky.Common.Web\bin\Debug\netcoreapp3.1\nlog.config...
+2020-04-28 21:45:30.7664 Info Message Template Auto Format enabled
+2020-04-28 21:45:30.7664 Info Adding target FileTarget(Name=info-web)
+2020-04-28 21:45:30.7664 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 21:45:30.7664 Info Adding target FileTarget(Name=error-web)
+2020-04-28 21:45:30.7664 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 21:45:30.7664 Info Closing old configuration.
+2020-04-28 21:45:30.8247 Info Found 48 configuration items
+2020-04-28 21:48:28.8401 Info Message Template Auto Format enabled
+2020-04-28 21:48:28.8993 Info Adding target FileTarget(Name=info-web)
+2020-04-28 21:48:28.8993 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 21:48:28.8993 Info Adding target FileTarget(Name=error-web)
+2020-04-28 21:48:28.8993 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 21:48:28.9199 Info Found 48 configuration items
+2020-04-28 21:48:29.2088 Info Configuring from an XML element in D:\Dotnet\Xuesky.Common.System\Xuesky.Common.Web\bin\Debug\netcoreapp3.1\nlog.config...
+2020-04-28 21:48:29.2088 Info Message Template Auto Format enabled
+2020-04-28 21:48:29.2088 Info Adding target FileTarget(Name=info-web)
+2020-04-28 21:48:29.2088 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 21:48:29.2113 Info Adding target FileTarget(Name=error-web)
+2020-04-28 21:48:29.2113 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 21:48:29.2113 Info Closing old configuration.
+2020-04-28 21:48:29.2601 Info Found 48 configuration items
+2020-04-28 21:57:05.1218 Info Message Template Auto Format enabled
+2020-04-28 21:57:05.1870 Info Adding target FileTarget(Name=info-web)
+2020-04-28 21:57:05.1870 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 21:57:05.1870 Info Adding target FileTarget(Name=error-web)
+2020-04-28 21:57:05.1870 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 21:57:05.2118 Info Found 48 configuration items
+2020-04-28 21:57:05.4995 Info Configuring from an XML element in D:\Dotnet\Xuesky.Common.System\Xuesky.Common.Web\bin\Debug\netcoreapp3.1\nlog.config...
+2020-04-28 21:57:05.4995 Info Message Template Auto Format enabled
+2020-04-28 21:57:05.4995 Info Adding target FileTarget(Name=info-web)
+2020-04-28 21:57:05.4995 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 21:57:05.4995 Info Adding target FileTarget(Name=error-web)
+2020-04-28 21:57:05.4995 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 21:57:05.4995 Info Closing old configuration.
+2020-04-28 21:57:05.5604 Info Found 48 configuration items
+2020-04-28 21:59:46.3313 Info AppDomain Shutting down. Logger closing...
+2020-04-28 21:59:46.3442 Info Logger has been shut down.
+2020-04-28 22:42:27.0471 Info Message Template Auto Format enabled
+2020-04-28 22:42:27.1260 Info Adding target FileTarget(Name=info-web)
+2020-04-28 22:42:27.1260 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 22:42:27.1260 Info Adding target FileTarget(Name=error-web)
+2020-04-28 22:42:27.1260 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 22:42:27.1457 Info Found 48 configuration items
+2020-04-28 22:42:27.4257 Info Configuring from an XML element in D:\Dotnet\Xuesky.Common.System\Xuesky.Common.Web\bin\Debug\netcoreapp3.1\nlog.config...
+2020-04-28 22:42:27.4257 Info Message Template Auto Format enabled
+2020-04-28 22:42:27.4257 Info Adding target FileTarget(Name=info-web)
+2020-04-28 22:42:27.4257 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 22:42:27.4257 Info Adding target FileTarget(Name=error-web)
+2020-04-28 22:42:27.4257 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 22:42:27.4257 Info Closing old configuration.
+2020-04-28 22:42:27.4748 Info Found 48 configuration items
+2020-04-28 22:43:02.7667 Info Message Template Auto Format enabled
+2020-04-28 22:43:02.8762 Info Adding target FileTarget(Name=info-web)
+2020-04-28 22:43:02.8762 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 22:43:02.8762 Info Adding target FileTarget(Name=error-web)
+2020-04-28 22:43:02.8762 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 22:43:02.9164 Info Found 48 configuration items
+2020-04-28 22:43:03.2089 Info Configuring from an XML element in D:\Dotnet\Xuesky.Common.System\Xuesky.Common.Web\bin\Debug\netcoreapp3.1\nlog.config...
+2020-04-28 22:43:03.2089 Info Message Template Auto Format enabled
+2020-04-28 22:43:03.2089 Info Adding target FileTarget(Name=info-web)
+2020-04-28 22:43:03.2089 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 22:43:03.2121 Info Adding target FileTarget(Name=error-web)
+2020-04-28 22:43:03.2121 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 22:43:03.2121 Info Closing old configuration.
+2020-04-28 22:43:03.2757 Info Found 48 configuration items
+2020-04-28 22:44:35.6247 Info Message Template Auto Format enabled
+2020-04-28 22:44:35.7098 Info Adding target FileTarget(Name=info-web)
+2020-04-28 22:44:35.7098 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 22:44:35.7123 Info Adding target FileTarget(Name=error-web)
+2020-04-28 22:44:35.7123 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 22:44:35.7472 Info Found 48 configuration items
+2020-04-28 22:44:36.0245 Info Configuring from an XML element in D:\Dotnet\Xuesky.Common.System\Xuesky.Common.Web\bin\Debug\netcoreapp3.1\nlog.config...
+2020-04-28 22:44:36.0245 Info Message Template Auto Format enabled
+2020-04-28 22:44:36.0245 Info Adding target FileTarget(Name=info-web)
+2020-04-28 22:44:36.0245 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 22:44:36.0245 Info Adding target FileTarget(Name=error-web)
+2020-04-28 22:44:36.0245 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 22:44:36.0245 Info Closing old configuration.
+2020-04-28 22:44:36.0688 Info Found 48 configuration items
+2020-04-28 22:46:17.2221 Info Message Template Auto Format enabled
+2020-04-28 22:46:17.2933 Info Adding target FileTarget(Name=info-web)
+2020-04-28 22:46:17.2933 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 22:46:17.2933 Info Adding target FileTarget(Name=error-web)
+2020-04-28 22:46:17.2933 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 22:46:17.3157 Info Found 48 configuration items
+2020-04-28 22:46:17.5915 Info Configuring from an XML element in D:\Dotnet\Xuesky.Common.System\Xuesky.Common.Web\bin\Debug\netcoreapp3.1\nlog.config...
+2020-04-28 22:46:17.5915 Info Message Template Auto Format enabled
+2020-04-28 22:46:17.5915 Info Adding target FileTarget(Name=info-web)
+2020-04-28 22:46:17.5915 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 22:46:17.5915 Info Adding target FileTarget(Name=error-web)
+2020-04-28 22:46:17.5915 Info Adding target NullTarget(Name=blackhole)
+2020-04-28 22:46:17.5915 Info Closing old configuration.
+2020-04-28 22:46:17.6394 Info Found 48 configuration items

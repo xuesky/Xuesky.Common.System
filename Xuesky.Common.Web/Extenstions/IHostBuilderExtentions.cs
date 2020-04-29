@@ -9,28 +9,32 @@ namespace Xuesky.Common.Web.Extenstions
 {
     public static class IHostBuilderExtentions
     {
-        public static IHostBuilder AddConfigsSetting(this IHostBuilder hostBuilder, string directory = "configs", string environmentName = "", bool reloadOnChange = false)
+        public static IHostBuilder AddConfigsSetting(this IHostBuilder HostBuilder, string directory = "configs", bool reloadOnChange = false)
         {
             var fullPath = Path.Combine(AppContext.BaseDirectory, directory);
             if (!Directory.Exists(fullPath))
-                return hostBuilder;
+                return HostBuilder;
             DirectoryInfo directoryInfo = new DirectoryInfo(fullPath);
             var fileInfos = directoryInfo.GetFiles();
-            fileInfos.ForEach(file =>
+            HostBuilder.ConfigureAppConfiguration((context, config) =>
             {
-                if (file.Extension == ".json")
+                config.Sources.Clear();
+                config.SetBasePath(fullPath);
+                var env = context.HostingEnvironment;
+                fileInfos.ForEach(file =>
                 {
-                    hostBuilder.ConfigureAppConfiguration((context, config) =>
+                    if (file.Extension == ".json")
                     {
-                        config.SetBasePath(fullPath).AddJsonFile(file.Name.ToLower(), true, reloadOnChange);
-                        if (environmentName.NotNull())
+                        config.AddJsonFile(file.Name.ToLower(), true, reloadOnChange);
+                        if (env.EnvironmentName.NotNull())
                         {
-                            config.AddJsonFile(file.Name.ToLower() + "." + environmentName + ".json", true, reloadOnChange);
+                            config.AddJsonFile($"{file.Name.ToLower()}.{env.EnvironmentName}.json", true, reloadOnChange);
                         }
-                    });
-                }
+
+                    }
+                });
             });
-            return hostBuilder;
+            return HostBuilder;
         }
     }
 }
