@@ -8,7 +8,7 @@
             <label class="layui-form-label">用户角色</label>
             <div class="layui-input-inline">
                 <select id="userRole" name="roleId" lay-filter="role">
-                    @foreach (var o in ViewBag.Roles as IEnumerable<SysRole>)
+                    @foreach (var o in ViewBag.Roles as IEnumerable<SysRoleOutput>)
                     {
                         <option value="@o.RoleId">@o.RoleName</option>
                     }
@@ -20,7 +20,7 @@
             <div class="layui-input-inline">
                 <select id="teacher" name="teacherId" lay-filter="teacher" lay-search>
                     <option value="0">--无--</option>
-                    @foreach (var o in ViewBag.Teachers as IEnumerable<TeacherInfo>)
+                    @foreach (var o in ViewBag.Teachers as IEnumerable<TeacherInfoOutput>)
                     {
                         <option value="@o.TeacherId">@o.TeacherNo-@o.TeacherName</option>
                     }
@@ -100,7 +100,7 @@
         form.on('select(teacher)', function (data) {
             if (data.value === "0") {
                 form.val("formUser", {
-                      "userLogin": ''
+                    "userLogin": ''
                     , "userName": ''
                     , "userGender": '男'
                     , "userTel": ''

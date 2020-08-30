@@ -31,7 +31,7 @@ namespace Xuesky.Common.Web
                 config.ExpireTimeSpan = TimeSpan.FromDays(1);
                 config.SlidingExpiration = true;
             });
-            services.AddControllersWithViews().AddRazorRuntimeCompilation().AddNewtonsoftJson(options =>
+            services.AddControllersWithViews().AddControllersAsServices().AddRazorRuntimeCompilation().AddNewtonsoftJson(options =>
             {
                 options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
             });

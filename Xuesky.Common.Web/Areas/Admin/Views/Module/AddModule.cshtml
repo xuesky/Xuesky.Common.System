@@ -9,7 +9,7 @@
             <div class="layui-input-inline">
                 <select id="parentModule" name="parentModule">
                     <option value="0">一级模块</option>
-                    @foreach (var o in ViewBag.Modules as IEnumerable<SysModule>)
+                    @foreach (var o in ViewBag.Modules as IEnumerable<SysModuleOutput>)
                     {
                         <option value="@o.ModuleCode">@o.ModuleCode-@o.ModuleName</option>
                     }
