@@ -15,7 +15,8 @@ namespace Xuesky.Common.Service
         {
             this.context = context;
         }
-        public async Task<SysUserOutput> GetUser(int userId) => await context
+        public async Task<SysUserOutput> GetUser(int userId) =>
+                        await context
                         .SysUsers
                         .Select
                         .Where(s => s.UserId == userId)
@@ -32,9 +33,11 @@ namespace Xuesky.Common.Service
 
         public async Task<(long total, List<SysUserOutput> list)> GetUserListPage(int page, int limit, string key)
         {
-            var dataSource = context.SysUsers.Select
-            .WhereIf(!string.IsNullOrEmpty(key), s => s.UserName.Contains(key) || s.UserLogin.Contains(key))
-            .Count(out var total);
+            var dataSource = context
+                .SysUsers
+                .Select
+                .WhereIf(!string.IsNullOrEmpty(key), s => s.UserName.Contains(key) || s.UserLogin.Contains(key))
+                .Count(out var total);
             if (limit > 0)
             {
                 dataSource = dataSource.Page(page, limit);
@@ -58,11 +61,16 @@ namespace Xuesky.Common.Service
             return await context.SaveChangesAsync();
         }
 
-        public async Task<int> DeleteSysUser(int[] userIds) => await context
-                .Orm
-                .Update<SysUser>(userIds)
-                .Set(d => d.IsDelete, true)
-                .ExecuteAffrowsAsync();
+        public async Task<int> DeleteSysUser(int[] userIds)
+        {
+            var result = await context
+                 .Orm
+                 .Update<SysUser>(userIds)
+                 .Set(d => d.IsDelete, true)
+                 .ExecuteAffrowsAsync();
+            await context.SaveChangesAsync();
+            return result;
+        }
 
         public async Task<int> UpdateSysuer(Expression<Func<SysUser, bool>> condition, object obj)
         {
@@ -76,14 +84,21 @@ namespace Xuesky.Common.Service
                 await Task.CompletedTask;
                 return 0;
             }
-            return await context.Orm.Update<SysUser>().SetDto(obj).Where(condition).ExecuteAffrowsAsync();
+            var result = await context.Orm.Update<SysUser>().SetDto(obj).Where(condition).ExecuteAffrowsAsync();
+            await context.SaveChangesAsync();
+            return result;
         }
 
-        public async Task<int> UseOrStopUser(int[] userIds, bool isUse) => await context
-                .Orm
-                .Update<SysUser>(userIds)
-                .Set(d => d.IsUse, isUse)
-                .ExecuteAffrowsAsync();
+        public async Task<int> UseOrStopUser(int[] userIds, bool isUse)
+        {
+            var result = await context
+                  .Orm
+                  .Update<SysUser>(userIds)
+                  .Set(d => d.IsUse, isUse)
+                  .ExecuteAffrowsAsync();
+            await context.SaveChangesAsync();
+            return result;
+        }
 
 
     }

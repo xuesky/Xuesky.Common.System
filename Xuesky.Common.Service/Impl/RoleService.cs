@@ -17,11 +17,16 @@ namespace Xuesky.Common.Service
             this.context = context;
         }
         #region Role
-        public async Task<int> DeleteRole(int[] roleIds) => await context
-                .Orm
-                .Update<SysModule>(roleIds)
-                .Set(d => d.IsDelete, true)
-                .ExecuteAffrowsAsync();
+        public async Task<int> DeleteRole(int[] roleIds)
+        {
+            var result = await context
+                 .Orm
+                 .Update<SysModule>(roleIds)
+                 .Set(d => d.IsDelete, true)
+                 .ExecuteAffrowsAsync();
+            await context.SaveChangesAsync();
+            return result;
+        }
 
         public async Task<SysRoleOutput> GetRole(int roleId) => await context
                         .SysRoles
@@ -68,14 +73,21 @@ namespace Xuesky.Common.Service
                 await Task.CompletedTask;
                 return 0;
             }
-            return await context.Orm.Update<SysRole>().SetDto(obj).Where(condition).ExecuteAffrowsAsync();
+            var result = await context.Orm.Update<SysRole>().SetDto(obj).Where(condition).ExecuteAffrowsAsync();
+            await context.SaveChangesAsync();
+            return result;
         }
 
-        public async Task<int> UseOrStopRole(int[] roleIds, bool isUse) => await context
-                .Orm
-                .Update<SysRole>(roleIds)
-                .Set(d => d.IsUse, isUse)
-                .ExecuteAffrowsAsync();
+        public async Task<int> UseOrStopRole(int[] roleIds, bool isUse)
+        {
+            var result = await context
+                 .Orm
+                 .Update<SysRole>(roleIds)
+                 .Set(d => d.IsUse, isUse)
+                 .ExecuteAffrowsAsync();
+            await context.SaveChangesAsync();
+            return result;
+        }
         #endregion
         public async Task<int> RoleModuleAuthorize(int roleId, int[] modules)
         {

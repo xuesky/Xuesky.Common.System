@@ -17,10 +17,29 @@ namespace Xuesky.Common.Service
         {
             this.context = context;
         }
-        public Task<int> ChangePassword(SysUserChangePasswordInput sysUserChangePasswordInput)
+        public async Task<int> ChangePassword(SysUserChangePasswordInput sysUserChangePasswordInput)
         {
-            throw new NotImplementedException();
+            string password = Md5Crypto.Md5Hash(sysUserChangePasswordInput.UserNewPwd);
+            int result = await context.Orm.Update<SysUser>(sysUserChangePasswordInput.UserId)
+                .Set(s => s.UserPwd, password)
+                .ExecuteAffrowsAsync();
+            await context.SaveChangesAsync();
+            return result;
         }
+
+        /// <summary>
+        /// CheckAccountPass
+        /// </summary>
+        /// <param name="sysUserChangePasswordInput"></param>
+        /// <returns></returns>
+        /// <exception cref="System.Reflection.TargetInvocationException"></exception>
+        /// <exception cref="ObjectDisposedException"></exception>
+        public async Task<bool> CheckAccountPass(SysUserChangePasswordInput sysUserChangePasswordInput)
+        {
+            string password = Md5Crypto.Md5Hash(sysUserChangePasswordInput.UserOldPwd);
+            return await context.SysUsers.Where(s => s.UserId == sysUserChangePasswordInput.UserId && s.UserPwd == password).AnyAsync();
+        }
+
         /// <summary>
         /// 获取帐户基本数据
         /// </summary>
@@ -53,6 +72,10 @@ namespace Xuesky.Common.Service
             string password = Md5Crypto.Md5Hash(sysUserLoginInput.UserPwd);
             var sysUser = await context.SysUsers
                 .Where(s => s.UserLogin == sysUserLoginInput.UserLogin && s.UserPwd == password).FirstAsync();
+            if (sysUser == null)
+            {
+                return null;
+            }
             var userRole = sysUser.sys_user_roles.FirstOrDefault(s => s.UserId == sysUser.UserId);
 
             Mapper.AddMap<SysUser, SysUserLoginOutput>(src =>
@@ -72,6 +95,7 @@ namespace Xuesky.Common.Service
                 .SetDto(sysUserUpdateInput)
                 .Where(s => s.UserId == sysUserUpdateInput.UserId)
                 .ExecuteAffrowsAsync();
+            await context.SaveChangesAsync();
             return result;
         }
     }

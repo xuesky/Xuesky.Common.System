@@ -16,18 +16,26 @@ namespace Xuesky.Common.Service
             this.context = context;
         }
 
-        public async Task<int> DeleteTeacher(int[] teacherIds) => await context
+        public async Task<int> DeleteTeacher(int[] teacherIds)
+        {
+            var result = await context
                 .Orm
                 .Update<SysModule>(teacherIds)
                 .Set(d => d.IsDelete, true)
                 .ExecuteAffrowsAsync();
+            await context.SaveChangesAsync();
+            return result;
+        }
 
-        public async Task<TeacherInfoOutput> GetTeacher(int teacherId) => await context
+        public async Task<TeacherInfoOutput> GetTeacher(int teacherId) =>
+                        await context
                         .TeacherInfos
                         .Select
                         .Where(s => s.TeacherId == teacherId)
                         .FirstAsync<TeacherInfoOutput>();
-        public async Task<List<TeacherInfoOutput>> GetTeacherList(Expression<Func<TeacherInfo, bool>> func) => await context
+
+        public async Task<List<TeacherInfoOutput>> GetTeacherList(Expression<Func<TeacherInfo, bool>> func) =>
+            await context
             .TeacherInfos
             .Select
             .Where(func)
@@ -65,13 +73,20 @@ namespace Xuesky.Common.Service
                 await Task.CompletedTask;
                 return 0;
             }
-            return await context.Orm.Update<TeacherInfo>().SetDto(obj).Where(condition).ExecuteAffrowsAsync();
+            var result = await context.Orm.Update<TeacherInfo>().SetDto(obj).Where(condition).ExecuteAffrowsAsync();
+            await context.SaveChangesAsync();
+            return result;
         }
 
-        public async Task<int> UseOrStopTeacher(int[] teacherIds, bool isUse) => await context
+        public async Task<int> UseOrStopTeacher(int[] teacherIds, bool isUse)
+        {
+            var result = await context
                 .Orm
                 .Update<TeacherInfo>(teacherIds)
                 .Set(d => d.IsUse, isUse)
                 .ExecuteAffrowsAsync();
+            await context.SaveChangesAsync();
+            return result;
+        }
     }
 }

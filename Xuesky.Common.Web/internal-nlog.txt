@@ -768,3 +768,75 @@
 2020-08-28 14:34:28.8717 Info Validating config: TargetNames=blackhole, info-web, error-web, ConfigItems=48, FilePath=D:\Dotnet\Xuesky.Common.System\Xuesky.Common.Web\bin\Debug\netcoreapp3.1\nlog.config
 2020-08-28 15:04:35.8017 Info AppDomain Shutting down. Logger closing...
 2020-08-28 15:04:35.8160 Info Logger has been shut down.
+2020-09-01 14:31:25.6082 Info Message Template Auto Format enabled
+2020-09-01 14:31:25.6471 Info Adding target FileTarget(Name=info-web)
+2020-09-01 14:31:25.6471 Info Adding target NullTarget(Name=blackhole)
+2020-09-01 14:31:25.6471 Info Adding target FileTarget(Name=error-web)
+2020-09-01 14:31:25.6471 Info Adding target NullTarget(Name=blackhole)
+2020-09-01 14:31:25.6685 Info Validating config: TargetNames=blackhole, info-web, error-web, ConfigItems=48, FilePath=D:\Dotnet\Xuesky.Common.System\Xuesky.Common.Web\bin\Debug\netcoreapp3.1\nlog.config
+2020-09-01 14:31:26.0396 Info Configuring from an XML element in D:\Dotnet\Xuesky.Common.System\Xuesky.Common.Web\bin\Debug\netcoreapp3.1\nlog.config...
+2020-09-01 14:31:26.0396 Info Message Template Auto Format enabled
+2020-09-01 14:31:26.0396 Info Adding target FileTarget(Name=info-web)
+2020-09-01 14:31:26.0396 Info Adding target NullTarget(Name=blackhole)
+2020-09-01 14:31:26.0396 Info Adding target FileTarget(Name=error-web)
+2020-09-01 14:31:26.0396 Info Adding target NullTarget(Name=blackhole)
+2020-09-01 14:31:26.0396 Info Closing old configuration.
+2020-09-01 14:31:26.0862 Info Validating config: TargetNames=blackhole, info-web, error-web, ConfigItems=48, FilePath=D:\Dotnet\Xuesky.Common.System\Xuesky.Common.Web\bin\Debug\netcoreapp3.1\nlog.config
+2020-09-01 16:09:07.8689 Info Message Template Auto Format enabled
+2020-09-01 16:09:07.9260 Info Adding target FileTarget(Name=info-web)
+2020-09-01 16:09:07.9260 Info Adding target NullTarget(Name=blackhole)
+2020-09-01 16:09:07.9260 Info Adding target FileTarget(Name=error-web)
+2020-09-01 16:09:07.9260 Info Adding target NullTarget(Name=blackhole)
+2020-09-01 16:09:07.9444 Info Validating config: TargetNames=blackhole, info-web, error-web, ConfigItems=48, FilePath=D:\Dotnet\Xuesky.Common.System\Xuesky.Common.Web\bin\Debug\netcoreapp3.1\nlog.config
+2020-09-01 16:09:08.2533 Info Configuring from an XML element in D:\Dotnet\Xuesky.Common.System\Xuesky.Common.Web\bin\Debug\netcoreapp3.1\nlog.config...
+2020-09-01 16:09:08.2533 Info Message Template Auto Format enabled
+2020-09-01 16:09:08.2533 Info Adding target FileTarget(Name=info-web)
+2020-09-01 16:09:08.2533 Info Adding target NullTarget(Name=blackhole)
+2020-09-01 16:09:08.2533 Info Adding target FileTarget(Name=error-web)
+2020-09-01 16:09:08.2533 Info Adding target NullTarget(Name=blackhole)
+2020-09-01 16:09:08.2533 Info Closing old configuration.
+2020-09-01 16:09:08.3186 Info Validating config: TargetNames=blackhole, info-web, error-web, ConfigItems=48, FilePath=D:\Dotnet\Xuesky.Common.System\Xuesky.Common.Web\bin\Debug\netcoreapp3.1\nlog.config
+2020-09-01 16:18:24.7067 Info Message Template Auto Format enabled
+2020-09-01 16:18:24.7454 Info Adding target FileTarget(Name=info-web)
+2020-09-01 16:18:24.7454 Info Adding target NullTarget(Name=blackhole)
+2020-09-01 16:18:24.7454 Info Adding target FileTarget(Name=error-web)
+2020-09-01 16:18:24.7454 Info Adding target NullTarget(Name=blackhole)
+2020-09-01 16:18:24.7694 Info Validating config: TargetNames=blackhole, info-web, error-web, ConfigItems=48, FilePath=D:\Dotnet\Xuesky.Common.System\Xuesky.Common.Web\bin\Debug\netcoreapp3.1\nlog.config
+2020-09-01 16:18:25.1182 Info Configuring from an XML element in D:\Dotnet\Xuesky.Common.System\Xuesky.Common.Web\bin\Debug\netcoreapp3.1\nlog.config...
+2020-09-01 16:18:25.1182 Info Message Template Auto Format enabled
+2020-09-01 16:18:25.1182 Info Adding target FileTarget(Name=info-web)
+2020-09-01 16:18:25.1182 Info Adding target NullTarget(Name=blackhole)
+2020-09-01 16:18:25.1182 Info Adding target FileTarget(Name=error-web)
+2020-09-01 16:18:25.1182 Info Adding target NullTarget(Name=blackhole)
+2020-09-01 16:18:25.1182 Info Closing old configuration.
+2020-09-01 16:18:25.1683 Info Validating config: TargetNames=blackhole, info-web, error-web, ConfigItems=48, FilePath=D:\Dotnet\Xuesky.Common.System\Xuesky.Common.Web\bin\Debug\netcoreapp3.1\nlog.config
+2020-09-01 16:18:38.8956 Info Message Template Auto Format enabled
+2020-09-01 16:18:38.9486 Info Adding target FileTarget(Name=info-web)
+2020-09-01 16:18:38.9486 Info Adding target NullTarget(Name=blackhole)
+2020-09-01 16:18:38.9486 Info Adding target FileTarget(Name=error-web)
+2020-09-01 16:18:38.9486 Info Adding target NullTarget(Name=blackhole)
+2020-09-01 16:18:38.9754 Info Validating config: TargetNames=blackhole, info-web, error-web, ConfigItems=48, FilePath=D:\Dotnet\Xuesky.Common.System\Xuesky.Common.Web\bin\Debug\netcoreapp3.1\nlog.config
+2020-09-01 16:18:39.3062 Info Configuring from an XML element in D:\Dotnet\Xuesky.Common.System\Xuesky.Common.Web\bin\Debug\netcoreapp3.1\nlog.config...
+2020-09-01 16:18:39.3062 Info Message Template Auto Format enabled
+2020-09-01 16:18:39.3062 Info Adding target FileTarget(Name=info-web)
+2020-09-01 16:18:39.3062 Info Adding target NullTarget(Name=blackhole)
+2020-09-01 16:18:39.3062 Info Adding target FileTarget(Name=error-web)
+2020-09-01 16:18:39.3062 Info Adding target NullTarget(Name=blackhole)
+2020-09-01 16:18:39.3062 Info Closing old configuration.
+2020-09-01 16:18:39.3557 Info Validating config: TargetNames=blackhole, info-web, error-web, ConfigItems=48, FilePath=D:\Dotnet\Xuesky.Common.System\Xuesky.Common.Web\bin\Debug\netcoreapp3.1\nlog.config
+2020-09-01 16:22:05.6947 Info AppDomain Shutting down. Logger closing...
+2020-09-01 16:22:05.7068 Info Logger has been shut down.
+2020-09-01 16:22:11.2721 Info Message Template Auto Format enabled
+2020-09-01 16:22:11.3129 Info Adding target FileTarget(Name=info-web)
+2020-09-01 16:22:11.3147 Info Adding target NullTarget(Name=blackhole)
+2020-09-01 16:22:11.3147 Info Adding target FileTarget(Name=error-web)
+2020-09-01 16:22:11.3147 Info Adding target NullTarget(Name=blackhole)
+2020-09-01 16:22:11.3356 Info Validating config: TargetNames=blackhole, info-web, error-web, ConfigItems=48, FilePath=D:\Dotnet\Xuesky.Common.System\Xuesky.Common.Web\bin\Debug\netcoreapp3.1\nlog.config
+2020-09-01 16:22:11.6468 Info Configuring from an XML element in D:\Dotnet\Xuesky.Common.System\Xuesky.Common.Web\bin\Debug\netcoreapp3.1\nlog.config...
+2020-09-01 16:22:11.6468 Info Message Template Auto Format enabled
+2020-09-01 16:22:11.6468 Info Adding target FileTarget(Name=info-web)
+2020-09-01 16:22:11.6468 Info Adding target NullTarget(Name=blackhole)
+2020-09-01 16:22:11.6468 Info Adding target FileTarget(Name=error-web)
+2020-09-01 16:22:11.6468 Info Adding target NullTarget(Name=blackhole)
+2020-09-01 16:22:11.6468 Info Closing old configuration.
+2020-09-01 16:22:11.7162 Info Validating config: TargetNames=blackhole, info-web, error-web, ConfigItems=48, FilePath=D:\Dotnet\Xuesky.Common.System\Xuesky.Common.Web\bin\Debug\netcoreapp3.1\nlog.config

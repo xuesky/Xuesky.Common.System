@@ -32,5 +32,11 @@ namespace Xuesky.Common.Service
         /// <param name="sysUserUpdateInput">更新实体对象</param>
         /// <returns></returns>
         Task<int> UpdateAccountInfo(SysUserUpdateInput sysUserUpdateInput);
+        /// <summary>
+        /// 核对用户密码
+        /// </summary>
+        /// <param name="sysUserChangePasswordInput">更新实体对象</param>
+        /// <returns></returns>
+        Task<bool> CheckAccountPass(SysUserChangePasswordInput sysUserChangePasswordInput);
     }
 }

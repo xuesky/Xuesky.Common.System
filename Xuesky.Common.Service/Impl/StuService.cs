@@ -16,18 +16,24 @@ namespace Xuesky.Common.Service
             this.context = context;
         }
 
-        public async Task<int> DeleteStu(int[] stuIds) => await context
+        public async Task<int> DeleteStu(int[] stuIds)
+        {
+            var result = await context
                 .Orm
                 .Update<StuInfo>(stuIds)
                 .Set(d => d.IsDelete, true)
                 .ExecuteAffrowsAsync();
+            await context.SaveChangesAsync();
+            return result;
+        }
 
         public async Task<StuInfoOutput> GetStu(int StuId) => await context
                         .StuInfos
                         .Select
                         .Where(s => s.StuId == StuId)
                         .FirstAsync<StuInfoOutput>();
-        public async Task<List<StuInfoOutput>> GetStuList(Expression<Func<StuInfo, bool>> func) => await context
+        public async Task<List<StuInfoOutput>> GetStuList(Expression<Func<StuInfo, bool>> func) =>
+            await context
             .StuInfos
             .Select
             .Where(func)
@@ -66,13 +72,20 @@ namespace Xuesky.Common.Service
                 await Task.CompletedTask;
                 return 0;
             }
-            return await context.Orm.Update<StuInfo>().SetDto(obj).Where(condition).ExecuteAffrowsAsync();
+            var result = await context.Orm.Update<StuInfo>().SetDto(obj).Where(condition).ExecuteAffrowsAsync();
+            await context.SaveChangesAsync();
+            return result;
         }
 
-        public async Task<int> UseOrStopStu(int[] stuIds, bool isUse) => await context
-                .Orm
-                .Update<StuInfo>(stuIds)
-                .Set(d => d.IsUse, isUse)
-                .ExecuteAffrowsAsync();
+        public async Task<int> UseOrStopStu(int[] stuIds, bool isUse)
+        {
+            var result = await context
+                 .Orm
+                 .Update<StuInfo>(stuIds)
+                 .Set(d => d.IsUse, isUse)
+                 .ExecuteAffrowsAsync();
+            await context.SaveChangesAsync();
+            return result;
+        }
     }
 }

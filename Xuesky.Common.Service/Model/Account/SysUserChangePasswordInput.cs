@@ -16,7 +16,8 @@ namespace Xuesky.Common.Service
         /// <summary>
         /// 密码
         /// </summary>
-        public string UserPwd { get; set; }
+        public string UserNewPwd { get; set; }
 
+        public string UserNewPwdAgain { get; set; }
     }
 }

@@ -16,18 +16,25 @@ namespace Xuesky.Common.Service
             this.context = context;
         }
 
-        public async Task<int> DeleteClass(int[] classIds) => await context
-                .Orm
-                .Update<ClassInfo>(classIds)
-                .Set(d => d.IsDelete, true)
-                .ExecuteAffrowsAsync();
+        public async Task<int> DeleteClass(int[] classIds)
+        {
+            var result = await context
+                 .Orm
+                 .Update<ClassInfo>(classIds)
+                 .Set(d => d.IsDelete, true)
+                 .ExecuteAffrowsAsync();
+            await context.SaveChangesAsync();
+            return result;
+        }
 
-        public async Task<ClassInfoOutput> GetClass(int classId) => await context
-                        .ClassInfos
-                        .Select
-                        .Where(s => s.ClassId == classId)
-                        .FirstAsync<ClassInfoOutput>();
-        public async Task<List<ClassInfoOutput>> GetClassList(Expression<Func<ClassInfo, bool>> func) => await context
+        public async Task<ClassInfoOutput> GetClass(int classId) =>
+            await context
+                    .ClassInfos
+                    .Select
+                    .Where(s => s.ClassId == classId)
+                    .FirstAsync<ClassInfoOutput>();
+        public async Task<List<ClassInfoOutput>> GetClassList(Expression<Func<ClassInfo, bool>> func) =>
+            await context
             .ClassInfos
             .Select
             .Where(func)
@@ -65,13 +72,20 @@ namespace Xuesky.Common.Service
                 await Task.CompletedTask;
                 return 0;
             }
-            return await context.Orm.Update<ClassInfo>().SetDto(obj).Where(condition).ExecuteAffrowsAsync();
+            var result = await context.Orm.Update<ClassInfo>().SetDto(obj).Where(condition).ExecuteAffrowsAsync();
+            await context.SaveChangesAsync();
+            return result;
         }
 
-        public async Task<int> UseOrStopClass(int[] classIds, bool isUse) => await context
-                .Orm
-                .Update<ClassInfo>(classIds)
-                .Set(d => d.IsUse, isUse)
-                .ExecuteAffrowsAsync();
+        public async Task<int> UseOrStopClass(int[] classIds, bool isUse)
+        {
+            var result = await context
+                 .Orm
+                 .Update<ClassInfo>(classIds)
+                 .Set(d => d.IsUse, isUse)
+                 .ExecuteAffrowsAsync();
+            await context.SaveChangesAsync();
+            return result;
+        }
     }
 }

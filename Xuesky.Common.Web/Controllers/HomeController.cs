@@ -16,7 +16,8 @@ namespace Xuesky.Common.Web.Controllers
 
         public HomeController(IdentityExtentions identityExtentions
             , IAccountService accountService
-            , IRoleService roleService)
+            , IRoleService roleService
+            , ISysUserService sysUserService)
         {
             this.identityExtentions = identityExtentions;
             this.accountService = accountService;
@@ -29,6 +30,10 @@ namespace Xuesky.Common.Web.Controllers
         public async Task<IActionResult> MyInfo()
         {
             ViewBag.Roles = await roleService.GetRoleList(s => true);
+            return View();
+        }
+        public IActionResult ChangePass()
+        {
             return View();
         }
         /// <summary>
@@ -57,6 +62,29 @@ namespace Xuesky.Common.Web.Controllers
             var result = await accountService.UpdateAccountInfo(sysUserUpdateInput);
 
             return new JsonResult(result > 0 ? JsonResultWrap.Success("OK") : JsonResultWrap.Fail("更新失败"));
+        }
+        /// <summary>
+        /// Update密码
+        /// </summary>
+        /// <param name="sysUserUpdateInput"></param>
+        /// <returns></returns>
+        /// <exception cref="System.InvalidOperationException"></exception>
+        [HttpPost]
+        public async Task<JsonResult> UpdatePass(SysUserChangePasswordInput sysUserChangePasswordInput)
+        {
+            int userId = identityExtentions.getUserId();
+            sysUserChangePasswordInput.UserId = userId;
+            if (sysUserChangePasswordInput.UserNewPwd != sysUserChangePasswordInput.UserNewPwdAgain)
+            {
+                return new JsonResult(JsonResultWrap.Fail("新密码与确认密码不一致"));
+            }
+            if (!await accountService.CheckAccountPass(sysUserChangePasswordInput))
+            {
+                return new JsonResult(JsonResultWrap.Fail("旧密码不正确"));
+            }
+            var result = await accountService.ChangePassword(sysUserChangePasswordInput);
+
+            return new JsonResult(result > 0 ? JsonResultWrap.Success("密码更新成功") : JsonResultWrap.Fail("更新失败"));
         }
         /// <summary>
         /// Welcome

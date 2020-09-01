@@ -24,11 +24,16 @@ namespace Xuesky.Common.Service
             return await context.SaveChangesAsync();
         }
 
-        public async Task<int> DeleteSysModule(int[] moduleIds) => await context
-                .Orm
-                .Update<SysModule>(moduleIds)
-                .Set(d => d.IsDelete, true)
-                .ExecuteAffrowsAsync();
+        public async Task<int> DeleteSysModule(int[] moduleIds)
+        {
+            var result = await context
+                 .Orm
+                 .Update<SysModule>(moduleIds)
+                 .Set(d => d.IsDelete, true)
+                 .ExecuteAffrowsAsync();
+            await context.SaveChangesAsync();
+            return result;
+        }
         public async Task<SysModuleOutput> GetSysModule(int moduleId) => await context
                 .SysModules
                 .Select
@@ -75,11 +80,16 @@ namespace Xuesky.Common.Service
             return (total, list);
         }
 
-        public async Task<int> UseOrStopSysModule(int[] moduleIds, bool isUse) => await context
+        public async Task<int> UseOrStopSysModule(int[] moduleIds, bool isUse)
+        {
+            var result = await context
                 .Orm
                 .Update<SysModule>(moduleIds)
                 .Set(d => d.IsUse, isUse)
                 .ExecuteAffrowsAsync();
+            await context.SaveChangesAsync();
+            return result;
+        }
 
         public async Task<int> UpdateSysModule(Expression<Func<SysModule, bool>> condition, object obj)
         {
@@ -93,7 +103,9 @@ namespace Xuesky.Common.Service
                 await Task.CompletedTask;
                 return 0;
             }
-            return await context.Orm.Update<SysModule>().SetDto(obj).Where(condition).ExecuteAffrowsAsync();
+            var result = await context.Orm.Update<SysModule>().SetDto(obj).Where(condition).ExecuteAffrowsAsync();
+            await context.SaveChangesAsync();
+            return result;
 
         }
     }
