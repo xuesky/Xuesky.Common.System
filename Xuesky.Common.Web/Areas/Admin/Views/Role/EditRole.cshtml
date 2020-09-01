@@ -51,7 +51,6 @@
         })
         form.on('submit(edit)', function (data) {
             data.field.roleId =@ViewBag.roleId
-                console.log(data)
             $.post('EditRole', data.field, function (res) {
                 if (res.succeed) {
                     layer.confirm('编辑成功,是否关闭当前窗口并刷新列表数据?', { icon: 1, btn: ['关闭', '取消'] }, function () {

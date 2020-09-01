@@ -3,7 +3,6 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="layui-col-md12">
-
     <div class="layui-form layui-form-pane" lay-filter="formInfo">
         <div class="layui-form-item">
             <label class="layui-form-label">旧密码</label>
@@ -15,14 +14,14 @@
         <div class="layui-form-item">
             <label class="layui-form-label">新密码</label>
             <div class="layui-input-inline">
-                <input type="text" name="userNewPwd" lay-verify="required" lay-reqText="新密码不可为空" value="" class="layui-input">
+                <input type="text" id="userNewPwd" name="userNewPwd" lay-verify="required" lay-reqText="新密码不可为空" value="" class="layui-input">
             </div>
             <div class="layui-form-mid layui-word-aux">新密码不可为空</div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">确认新密码</label>
             <div class="layui-input-inline">
-                <input type="text" name="userNewPwdAgain" lay-verify="required" lay-reqText="请再次确认新密码" value="" class="layui-input">
+                <input type="text" name="userNewPwdAgain" lay-verify="userNewPwdAgain" lay-reqText="请再次确认新密码" value="" class="layui-input">
             </div>
             <div class="layui-form-mid layui-word-aux">请确认新密码</div>
         </div>
@@ -37,6 +36,13 @@
     layui.use('form', function () {
         var form = layui.form
             , $ = layui.jquery;
+        form.verify({
+            userNewPwdAgain: function (value, item) {
+                if (value != $('#userNewPwd').val()) {
+                    return '两次输入新密码不一致';
+                }
+            }
+        });
         form.on('submit(updatePass)', function (data) {
             $.post('/Home/UpdatePass', data.field, function (res) {
                 if (res.succeed) {
@@ -48,6 +54,6 @@
                     layer.msg(res.message, { icon: 2, time: 1000 });
                 }
             })
-        })
+        });
     })
 </script>
