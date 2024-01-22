@@ -25,7 +25,7 @@ namespace Xuesky.Common.Service
         /// <param name="sysUserId">用户主键</param>
         /// <param name="loginId">登录ID</param>
         /// <returns></returns>
-        Task<SysUserAddInput> GetAccountInfo(int sysUserId, string loginId);
+        Task<SysUserOutput> GetAccountInfo(int sysUserId, string loginId);
         /// <summary>
         /// 更新用户基本数据
         /// </summary>

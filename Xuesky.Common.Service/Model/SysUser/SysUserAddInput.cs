@@ -9,10 +9,7 @@ namespace Xuesky.Common.Service
         /// 组织ID
         /// </summary>
         public int OrgId { get; set; }
-        /// <summary>
-        /// 角色ID
-        /// </summary>
-        public int RoleId { get; set; }
+
         /// <summary>
         /// 密码
         /// </summary>

@@ -42,5 +42,10 @@ namespace Xuesky.Common.Service
         /// 备注
         /// </summary>
         public string Remark { get; set; }
+
+        /// <summary>
+        /// 角色ID
+        /// </summary>
+        public int RoleId { get; set; }
     }
 }

@@ -47,17 +47,17 @@ namespace Xuesky.Common.Service
         /// <param name="loginId"></param>
         /// <returns></returns>
         /// <exception cref="InvalidOperationException">Ignore.</exception>
-        public async Task<SysUserAddInput> GetAccountInfo(int sysUserId, string loginId)
+        public async Task<SysUserOutput> GetAccountInfo(int sysUserId, string loginId)
         {
             var sysUser = await context.SysUsers.Where(s => s.UserId == sysUserId && s.UserLogin == loginId).FirstAsync();
-            Mapper.AddMap<SysUser, SysUserAddInput>(src =>
+            Mapper.AddMap<SysUser, SysUserOutput>(src =>
             {
-                var vm = new SysUserAddInput();
+                var vm = new SysUserOutput();
                 vm.InjectFrom(src);
                 vm.RoleId = sysUser.sys_user_roles.First(s => s.UserId == sysUser.UserId).RoleId;
                 return vm;
             });
-            return Mapper.Map<SysUser, SysUserAddInput>(sysUser);
+            return Mapper.Map<SysUser, SysUserOutput>(sysUser);
         }
 
         /// <summary>

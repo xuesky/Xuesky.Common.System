@@ -49,16 +49,18 @@ namespace Xuesky.Common.Service
         {
             var sysUser = Mapper.Map<SysUserAddInput, SysUser>(sysUserAddInput);
             sysUser.UserAddtime = sysUser.UserLasttime = DateTime.Now;
-
-            await context.SysUsers.AddAsync(sysUser);
+            var userId = await context.Orm.Insert(sysUser).ExecuteIdentityAsync();
+            var userRole = new SysUserRole { UserId = (int)userId, RoleId = sysUserAddInput.RoleId };
+            context.SysUserRoles.Add(userRole);
             return await context.SaveChangesAsync();
         }
 
         public async Task<int> BatchInserSysUser(IEnumerable<SysUserAddInput> sysUserAddInputs)
         {
             var sysUsers = Mapper.Map<IEnumerable<SysUserAddInput>, IEnumerable<SysUser>>(sysUserAddInputs);
-            await context.Orm.Insert(sysUsers).ExecuteAffrowsAsync();
-            return await context.SaveChangesAsync();
+            var result = await context.Orm.Insert(sysUsers).ExecuteAffrowsAsync();
+            await context.SaveChangesAsync();
+            return result;
         }
 
         public async Task<int> DeleteSysUser(int[] userIds)
